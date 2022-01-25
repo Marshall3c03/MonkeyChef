@@ -1,30 +1,27 @@
 import react from "react";
+import Recipe from "../containers/Recipe";
 
 
-const RecipesList = ({recipes})=>{
+const RecipesList = ({recipes} )=>{
 
-    const listOfRecipes = recipes.map(recipe => {
 
-        const fullIngredients = recipe.ingredients.map(ingredient => {
-            return(
-                <p>{ingredient.amount} {ingredient.unit} {ingredient.ingredient}</p>
-            )
-        })
+    let listOfRecipes = recipes.map(recipe => {
+
+        const url = "/recipebook/" + recipe._id
 
         return(
             <div>
-                <a href="/recipes/{recipe[_id]}">{recipe.name}</a>
-                {fullIngredients}
-                {/* <a href="/recipes/{recipe[_id]}">{recipe._id}</a> */}
-                {/* <p>{recipe.ingredients[0].amount} </p> */}
-                <p>{recipe.method}</p>
+                <a href={url}>{recipe.name}</a>
+                <img src="https://previews.123rf.com/images/krimkate/krimkate1908/krimkate190800024/129017535-food-square-background-top-view-of-various-fresh-vegetables-on-wooden-table.jpg" width="250px"/>
             </div>
         )
     });
 
     return(
         <>
+        <div>
         {listOfRecipes}
+        </div>
         </>
     );
 };
