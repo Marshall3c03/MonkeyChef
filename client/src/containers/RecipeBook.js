@@ -1,5 +1,8 @@
-import react, {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import RecipesList from "../components/RecipesList";
+import Recipe from "./Recipe";
+import RecipeDetail from "./RecipeDetail";
+
 // import { useMatch } from "@reach/router"
 
 

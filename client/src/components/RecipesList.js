@@ -2,7 +2,7 @@ import react from "react";
 import Recipe from "../containers/Recipe";
 
 
-const RecipesList = ({recipes} )=>{
+const RecipesList = ({recipes, onRecipeClick} )=>{
 
 
     let listOfRecipes = recipes.map(recipe => {
