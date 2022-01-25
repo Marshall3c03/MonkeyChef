@@ -1,5 +1,8 @@
-import react, {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import RecipesList from "../components/RecipesList";
+import Recipe from "./Recipe";
+import RecipeDetail from "./RecipeDetail";
+
 // import { useMatch } from "@reach/router"
 
 
@@ -15,6 +18,8 @@ const RecipeBook = () => {
       ]
 
       const [recipesList, setRecipesList] = useState([]);
+      const [selectedRecipe, setSelectedRecipe] = React.useState(null);
+
 
       useEffect(() => {
             loadRecipes(RecipesApi[0].url)
@@ -29,10 +34,19 @@ const RecipeBook = () => {
         .then(recipesJson => setRecipesList(recipesJson))
         }
 
+      const onRecipeClick = function(recipe) {
+        setSelectedRecipe(recipe);
+      }
+
+      const closeRecipe = function() {
+        setSelectedRecipe(null);
+    }
+
     return(
         <>
         <h1>Your Recipes</h1>
-        <RecipesList recipes={recipesList} />
+        {selectedRecipe ? <RecipeDetail recipe = {selectedRecipe} closeRecipe = {closeRecipe}/> : null};
+        <RecipesList recipes={recipesList} onRecipeClick = {onRecipeClick} />
         </>
     );
 };
