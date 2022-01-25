@@ -1,13 +1,12 @@
 import react from "react";
 
-
 const AddRecipe = ()=>{
     return(
         <>
-        <h1>Add Recipe</h1>
-        <form>
-            <input></input>
-        </form>
+            <h1>Add Recipe</h1>
+            <form>
+                <input></input>
+            </form>
         </>
     );
 };
