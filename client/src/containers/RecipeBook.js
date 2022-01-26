@@ -9,45 +9,34 @@ import RecipeDetail from "./RecipeDetail";
 // const RecipeID = useMatch("/films/:id").params.id;
 
 const RecipeBook = () => {
-
     const RecipesApi = [
-        {
-          name: "recipes", 
-          url: "http://localhost:5000/api/recipes"
-        }
-      ]
+      {
+        name: "recipes", 
+        url: "http://localhost:5000/api/recipes"
+      }
+    ]
 
-      const [recipesList, setRecipesList] = useState([]);
-      const [selectedRecipe, setSelectedRecipe] = React.useState(null);
+    const [recipesList, setRecipesList] = useState([]);
 
+    useEffect(() => {
+      loadRecipes(RecipesApi[0].url)
 
-      useEffect(() => {
-            loadRecipes(RecipesApi[0].url)
-            return () => {
-                // console.log('planets unloaded')
-            }
-        }, [])
-      
-      const loadRecipes = url => {
-        fetch(url)
+      return () => {
+          // console.log('planets unloaded')
+      }
+    }, []);
+    
+    const loadRecipes = url => {
+      fetch(url)
         .then(result => result.json())
         .then(recipesJson => setRecipesList(recipesJson))
-        }
-
-      const onRecipeClick = function(recipe) {
-        setSelectedRecipe(recipe);
-      }
-
-      const closeRecipe = function() {
-        setSelectedRecipe(null);
     }
 
-    return(
-        <>
+    return (
+      <>
         <h1>Your Recipes</h1>
-        {selectedRecipe ? <RecipeDetail recipe = {selectedRecipe} closeRecipe = {closeRecipe}/> : null};
-        <RecipesList recipes={recipesList} onRecipeClick = {onRecipeClick} />
-        </>
+        <RecipesList recipes={recipesList} />
+      </>
     );
 };
 
