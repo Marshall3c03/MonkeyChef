@@ -10,27 +10,31 @@ import RecipeDetail from "./RecipeDetail";
 
 const RecipeBook = () => {
     const RecipesApi = [
-      {
-        name: "recipes", 
-        url: "http://localhost:5000/api/recipes"
-      }
-    ]
+        {
+          name: "recipes", 
+          url: "http://localhost:5000/api/recipes"
+        }
+      ]
 
-    const [recipesList, setRecipesList] = useState([]);
+      const [recipesList, setRecipesList] = useState([]);
+      const [selectedRecipe, setSelectedRecipe] = React.useState(null);
 
-    useEffect(() => {
-      loadRecipes(RecipesApi[0].url)
 
-      return () => {
-          // console.log('planets unloaded')
-      }
-    }, []);
-    
-    const loadRecipes = url => {
-      fetch(url)
+      useEffect(() => {
+            loadRecipes(RecipesApi[0].url)
+            return () => {
+            }
+        }, [])
+      
+      const loadRecipes = url => {
+        fetch(url)
         .then(result => result.json())
         .then(recipesJson => setRecipesList(recipesJson))
-    }
+        }
+
+      const onRecipeClick = function(recipe) {
+        setSelectedRecipe(recipe);
+      }
 
     return (
       <>
