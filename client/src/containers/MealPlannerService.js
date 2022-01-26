@@ -7,7 +7,7 @@ const MealPlannerService = {
 // },
 
     createRecipe (recipe){
-        console.log(JSON.stringify(recipe))
+        // console.log(JSON.stringify(recipe))
         return fetch(baseURL, {
             method: 'POST',
             body: JSON.stringify(recipe),
