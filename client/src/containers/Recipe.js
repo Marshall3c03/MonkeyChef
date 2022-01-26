@@ -17,16 +17,13 @@ const Recipe = () => {
 
     const numOfServings = 4;
 
-        // const roundedIngredient = function() {
-        //     if (Number.isInteger(perDesiredPortions)) {
-        //         return perDesiredPortions;
-        //     } else {
-        //         return Math.ceil(perDesiredPortions/5) * 5;
-        //     };
-        // }
-        // return roundedIngredient;
-
-        ///////////////////////////////////////////////////////////////
+    const roundedIngredient = function(number) {
+        if (Number.isInteger(number)) {
+            return number;
+        } else {
+            return Math.ceil(number/5) * 5;
+        };
+    };
 
     useEffect(()=>{
         fetch(`http://localhost:5000/api/recipes/${recipeId}`)
@@ -36,12 +33,11 @@ const Recipe = () => {
 
     const fullIngredients = currentRecipe?.ingredients.map(ingredient => {
 
-
         const perDesiredPortions = (ingredient.amount/numOfServings) * servings;
         
         return(
             <>
-            <p>{perDesiredPortions}{ingredient?.unit} {ingredient.ingredient}</p>
+            <p>{roundedIngredient(perDesiredPortions)}{ingredient?.unit} {ingredient.ingredient}</p>
             </>
         )
     })
