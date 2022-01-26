@@ -29,13 +29,13 @@ const createRouter = function (collection) {
     });
 
     router.post('/', (req,res)=>{
-      console.log("router.post")
+      // console.log("router.post")
         const newData=req.body;
         collection
         .insertOne(newData)
         .then((result)=>{
-          console.log("Hello");
-          console.log(result);
+          // console.log("Hello");
+          // console.log(result);
           res.json(result.ops[0])
         })
         .catch((err) => {
