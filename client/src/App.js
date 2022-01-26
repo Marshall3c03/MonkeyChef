@@ -49,7 +49,7 @@ function App() {
       <Routes>
         <Route path='/' element={<HomePage />} />
         <Route path='/addrecipe' element={<AddRecipe  addRecipe={addRecipe}/>} />
-        <Route path='/recipebook' element={<RecipeBook/>} />
+        <Route path='/recipebook' element={<RecipeBook />} />
         <Route path='/planner' element={<Planner />} />
         <Route path='/shoppingList' element={<ShoppingList />} />
         {/* <Route path={`/recipebook/${recipe_id}`} element={<Recipe/>} /> */}

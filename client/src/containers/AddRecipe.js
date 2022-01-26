@@ -38,7 +38,13 @@ const AddRecipe = ({addRecipe})=>{
             </div>
             <div className="formWrap">
                 <label htmlFor="ingredients">Ingredients:</label>
-                <input onChange={handleIngredientsChange} type="text" id="ingridients"  />
+                <label htmlFor="amount">Amount:</label>
+                <input onChange={handleIngredientsChange} type="number" id="amount"  />
+                <label htmlFor="unit">Unit:</label>
+                <input onChange={handleIngredientsChange} type="text" id="unit"  />
+                <label htmlFor="ingredient">Ingredient:</label>
+                <input onChange={handleIngredientsChange} type="text" id="ingridient"  />
+
             </div>
             <div className="formWrap">
                 <label htmlFor="method">Method:</label>
