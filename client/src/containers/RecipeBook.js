@@ -9,7 +9,6 @@ import RecipeDetail from "./RecipeDetail";
 // const RecipeID = useMatch("/films/:id").params.id;
 
 const RecipeBook = () => {
-
     const RecipesApi = [
         {
           name: "recipes", 
@@ -37,16 +36,11 @@ const RecipeBook = () => {
         setSelectedRecipe(recipe);
       }
 
-      const closeRecipe = function() {
-        setSelectedRecipe(null);
-    }
-
-    return(
-        <>
+    return (
+      <>
         <h1>Your Recipes</h1>
-        {selectedRecipe ? <RecipeDetail recipe = {selectedRecipe} closeRecipe = {closeRecipe}/> : null};
-        <RecipesList recipes={recipesList} onRecipeClick = {onRecipeClick} />
-        </>
+        <RecipesList recipes={recipesList} />
+      </>
     );
 };
 

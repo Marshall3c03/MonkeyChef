@@ -54,9 +54,8 @@ const AddRecipe = ({addRecipe})=>{
 
             <input type="submit" value="Save" id="save"/>
 	    </form>
-
         </>
-    );
-};
+        )
+    }
 
 export default AddRecipe;
