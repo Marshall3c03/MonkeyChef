@@ -1,10 +1,10 @@
 const baseURL = "http://localhost:5000/api/recipes/"
 
 const MealPlannerService = {
-    getRecipes () {
-    return fetch(baseURL)
-        .then(res => res.json());
-},
+//     getRecipes () {
+//     return fetch(baseURL)
+//         .then(res => res.json());
+// },
 
     addRecipe (recipe){
         return fetch(baseURL, {

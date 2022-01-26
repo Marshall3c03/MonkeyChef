@@ -16,7 +16,7 @@ const RecipesList = ({recipes, onRecipeClick} )=>{
         return(
             <div onClick={handleClick}>
                 <p>{recipe.name}</p>
-                <img src="https://previews.123rf.com/images/krimkate/krimkate1908/krimkate190800024/129017535-food-square-background-top-view-of-various-fresh-vegetables-on-wooden-table.jpg" width="250px"/>
+                <img src={recipe.image} width="250px"/>
             </div>
         )
     });
