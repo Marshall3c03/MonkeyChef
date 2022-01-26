@@ -8,7 +8,9 @@ const Recipe = () => {
     const {recipeId} = useParams();
     
     const handleMinus = function() {
-        setServings(servings - 1);
+        if (servings > 1) {
+            setServings(servings - 1);
+        }
     };
 
     const handlePlus = function() {
@@ -50,9 +52,7 @@ const Recipe = () => {
         />
             <p>RecipeID: {recipeId}</p>
             <div>
-                <button onClick = {handleMinus}>-</button>
-                {servings}
-                <button onClick = {handlePlus}>+</button>
+                <button onClick = {handleMinus}>-</button> {servings} <button onClick = {handlePlus}>+</button>
             </div>
             
             <h2>Recipe Name: {currentRecipe?.name}</h2>
