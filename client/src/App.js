@@ -12,6 +12,7 @@ import RecipeBook from './containers/RecipeBook';
 import ShoppingList from './containers/ShoppingList';
 import Recipe from './containers/Recipe';
 import AddRecipe from './containers/AddRecipe';
+import MealPlannerService from './containers/MealPlannerService';
 
 function App() {
 
@@ -34,13 +35,20 @@ function App() {
 
   const recipe_id = "Hello"
 
+  const [recipes, setRecipes] = useState([]);
+
+  const addRecipe = newRecipe => {
+    MealPlannerService.addRecipe(newRecipe)
+      .then(savedRecipe => setRecipes([ ...recipes, savedRecipe ]));
+  };
+
   return (
     <>
     <NavBar/>
     <BrowserRouter>
       <Routes>
         <Route path='/' element={<HomePage />} />
-        <Route path='/addrecipe' element={<AddRecipe />} />
+        <Route path='/addrecipe' element={<AddRecipe  addRecipe={addRecipe}/>} />
         <Route path='/recipebook' element={<RecipeBook/>} />
         <Route path='/planner' element={<Planner />} />
         <Route path='/shoppingList' element={<ShoppingList />} />

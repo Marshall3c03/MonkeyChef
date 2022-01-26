@@ -24,7 +24,6 @@ const RecipeBook = () => {
       useEffect(() => {
             loadRecipes(RecipesApi[0].url)
             return () => {
-                // console.log('planets unloaded')
             }
         }, [])
       
