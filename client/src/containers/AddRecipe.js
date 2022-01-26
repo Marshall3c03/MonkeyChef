@@ -32,25 +32,26 @@ const AddRecipe = ({addRecipe})=>{
         // document.getElementById("amount").reset();
     };
 
-    // const handleSubmit = (e) =>{
-    //     e.preventDefault();
-    //     addRecipe({
-    //         name: name,
-    //         ingredients:[],
-    //         method: method,
-    //     });
-    //     setName("");
-    //     setIngredient("");
-    //     setUnit("");
-    //     setAmount("");
-    //     setIngredients([]);
-    //     setMethod("");
-    // };
+    const handleSubmit = (e) =>{
+        e.preventDefault();
+        console.log("handleSubmit")
+        addRecipe({
+            "name": name,
+            "ingredients":[],
+            "method": method,
+        });
+        setName("");
+        setIngredient("");
+        setUnit("");
+        setAmount("");
+        setIngredients([]);
+        setMethod("");
+    };
     return(
         <>
         
         <h2>Add a Recipe</h2>
-        <form  id="recipe-form" >
+        <form method= "post" onSubmit={handleSubmit} id="recipe-form" >
             <div className="formWrap">
                 <label htmlFor="name">Name:</label>
                 <input onChange={handleNameChange} type="name" id="name"  />

@@ -19,7 +19,8 @@ function App() {
   const [recipes, setRecipes] = useState([]);
 
   const addRecipe = newRecipe => {
-    MealPlannerService.addRecipe(newRecipe)
+    console.log("Hello")
+    MealPlannerService.createRecipe(newRecipe)
       .then(savedRecipe => setRecipes([ ...recipes, savedRecipe ]));
   };
 

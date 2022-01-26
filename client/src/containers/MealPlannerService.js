@@ -1,4 +1,4 @@
-const baseURL = "http://localhost:5000/api/recipes/"
+const baseURL = "http://localhost:5000/api/recipes"
 
 const MealPlannerService = {
 //     getRecipes () {
@@ -6,7 +6,8 @@ const MealPlannerService = {
 //         .then(res => res.json());
 // },
 
-    addRecipe (recipe){
+    createRecipe (recipe){
+        console.log(JSON.stringify(recipe))
         return fetch(baseURL, {
             method: 'POST',
             body: JSON.stringify(recipe),
