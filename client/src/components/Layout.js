@@ -2,13 +2,17 @@ import React from 'react'
 
 import SideNav from './SideNav';
 
+import '../static/CSS/layout.css'
+
 
 const Layout = ({ children }) => {
     return (
-      <>
+      <div className='layout'>
         <SideNav/>
-        {children}
-      </>
+        <div className='layout-container'>
+          {children}
+        </div>
+      </div>
     )
   }
 

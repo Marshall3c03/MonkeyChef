@@ -1,3 +1,7 @@
+:root {
+    --page-button-group-margin: 30px;
+}
+
 .body{
     background-color: black;
 }
@@ -5,32 +9,37 @@
 .link-container {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
+    margin-bottom: 500px;
+
 }
 
 .button-group {
-    margin: 50px;
+    margin: var(--page-button-group-margin);
     background-color: white;
     border-radius: 10px;
     padding: 20px;
-    width: 150px;
-    height: 200px;
+    width: 100px;
+    height: 150px;
     display: flex;
     flex-direction: column;
+    transition: 0.5s ease;
     justify-content: center;
     align-items: center;
     box-shadow: 5px 2px 25px #e4e4e4;
+
 }
 
 .button-group:hover {
-    margin: 50px;
+    margin: var(--page-button-group-margin);
     background-color: rgb(230, 230, 230);
     transition: 0.5s ease;
     border-radius: 10px;
     padding: 20px;
-    width: 150px;
-    height: 200px;
+    width: 100px;
+    height: 150px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -45,6 +54,7 @@
     justify-content: center;
     align-items: center;
     margin-bottom: 30px;
+    text-align: center;
 }
 
 .button-group .button-title .button-image{
@@ -95,27 +105,6 @@
     color: white;
 }
 
-
-.banner-container .banner-group .banner-company-text .banner-company-name{
-    /* position: relative; */
-    /* top: -90px;
-    right: 350px;
-    color: white; */
-}
-
-.banner-container .banner-group .banner-company-text .banner-company-slogan{
-    /* position: relative; */
-    /* top: -90px;
-    right: 350px;
-    color: white; */
-}
-
-.banner-container .banner-group .banner-instructions{
-    /* display: flex;
-    justify-content: center;
-    align-content: center; */
-}
-
 .banner-container .banner-group .banner-instructions .instruction1{
     color: white;
     font-weight: 600;
@@ -145,5 +134,3 @@
     right: 0px;
     left: 150px;
 }
-
-

@@ -1,18 +1,22 @@
 .nav-menu {
     background-color: aqua;
-    width: 250px;
+    width: 100%;
+    max-width: 3.5rem;
+    min-width: 3.5rem;
     height: 100vh;
     display: flex;
-    justify-content: flex-start;
-    position: fixed;
-    top:0;
-    left: 0;
-    cursor: pointer;
-    z-index: 1;
 }
 
 .nav-text{
     background-color: red;
     margin-bottom: 10px;
     list-style: none;
+}
+
+.nav-menu-items {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 30px 0 0 0;
 }

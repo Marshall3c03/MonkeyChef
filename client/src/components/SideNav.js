@@ -18,7 +18,7 @@ const SideNav = ( {})=>{
                 {SidebarData.map((item, index)=>{
                     return(
                         <li onClick={()=>item.onClick(navigate)} key={index} className={item.cName}>
-                            <img src={item.icon}/>
+                            <img className="navIcon" src={item.icon}/>
                         </li>
                     )})
                 }

@@ -2,86 +2,91 @@ import React, {useState, useEffect} from "react";
 
 const ShoppingList = () => {
 
-//     const RecipesApi = [
-//         {
-//           name: "recipes", 
-//           url: "http://localhost:5000/api/recipes"
-//         }
-//       ]
-  
-//       const [recipesList, setRecipesList] = useState([]);
-//     //   const [shoppingList, setShoppingList] = useState([]);
 
-//       const shoppingList = [];
-//       const condensedList = [];
   
-//       useEffect(() => {
-//         loadRecipes(RecipesApi[0].url)
-//         }, []);
+      const [recipesList, setRecipesList] = useState([]);
+      const [shoppingList, setShoppingList] = useState([]);
+ 
+
+      const condensedList = [];
       
-//       const loadRecipes = url => {
-//         fetch(url)
-//           .then(result => result.json())
-//           .then(recipesJson => setRecipesList(recipesJson))
-//       }
-
-//     //   const condenseShoppingList = shoppingList.map(ingredient => {
-//             // return ingredient.name;
-//     //   })
+      const loadRecipes = url => {
+        fetch(url)
+          .then(result => result.json())
+          .then(recipesJson => setRecipesList(recipesJson))
+      }
 
 
-//       let listOfIngredients = recipesList.map(recipe => {
 
-//         const fullIngredientDetails = recipe.ingredients.map(ingredient => {
+      let listOfIngredients = recipesList.map(recipe => {
+          
+        let fullIngredientList = recipe.ingredients.map(ingredient => {
+            
+            
+            shoppingList.push(ingredient); 
+            
+            
+            return (
+                <>
+                <a key="{ingredient}">{ingredient.amount}{ingredient.unit} {ingredient.ingredient}</a><br />
+                </>
 
-//             shoppingList.push(ingredient);
+                   
+        )})
+        
+        return(
+            <div>
+            {shoppingList}
+            </div>
+        )
+        
+    });
+    
 
-//             return (
-//                 <>
-//                 {ingredient.amount}{ingredient.unit} {ingredient.ingredient}<br />
-//                 </>
-//                 )})
+    const loopedList = {};
 
-//         return(
-//             <div>
-//                 {/* {listOfIngredients} */}
-//                 {fullIngredientDetails}
-//             </div>
-//         )
-//     });
+    for (let item of shoppingList){
+      const keys = Object.keys(loopedList);
+      let found = false;
+      const name = item.ingredient.toLowerCase();
+      const quantity = item.amount;
 
-//     // console.log(shoppingList);
+      console.log("These are the keys ", keys);
+  
 
-//     condensedList.push(shoppingList[0]);
+      for (let key of keys){
+        if (name == key) { 
+          found = true 
+        }
+      }
 
-//     // console.log(condensedList);
+      console.log(found);
+     
 
-//     const mapShoppingList = shoppingList.map(result => {
-//         const index = 10;
-//         condensedList.indexOf(result.ingredient)
-//         if (result.ingredient ==  shoppingList[index].ingredient && result.unit == shoppingList[index].unit) {
-//             shoppingList[index].amount += result.amount
-//         }
-//         index ++;
-//         condensedList.push(result);
-//     })
+      if(found){
+            
+            loopedList[name] += quantity;
+            console.log(loopedList[name]);
+          }
+      else {
+            loopedList[name] = quantity;
+            console.log(loopedList[name]);
+          };
+    
+      
+    }
+    console.log(loopedList);
 
-//         console.log(condensedList);
 
-
-//     return(
-//         <>
-//             <h1>Shopping List</h1>
-//             <p>
-//                 {listOfIngredients}
-//                 {mapShoppingList}
-//             </p>
-//         </>
-//     );
-// };
-
-return(
-  null
-)}
+    
+    return(
+        <>
+            <h1>Shopping List</h1>
+            <div>
+                {condensedList}
+            </div>
+        </>
+    );
+};
 
 export default ShoppingList;

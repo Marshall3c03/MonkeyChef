@@ -8,7 +8,7 @@ import './App.css';
 
 import MealPlannerService from './containers/MealPlannerService';
 import Layout from './components/Layout';
-import WebRoutes from './routes/routes';
+import WebRoutes from './routes/WebRoutes';
 
 function App() {
 
