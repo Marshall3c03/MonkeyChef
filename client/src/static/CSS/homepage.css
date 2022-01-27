@@ -1,0 +1,53 @@
+.body{
+    background-color: black;
+}
+
+.link-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.button-group {
+    margin: 50px;
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    width: 150px;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 5px 2px 25px #e4e4e4;
+}
+
+.button-group:hover {
+    margin: 50px;
+    background-color: red;
+    transition: 0.5s;
+    border-radius: 10px;
+    padding: 20px;
+    width: 150px;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.button-group .button-title {
+    color: black;
+    font-weight: 500;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.button-group .button-title .button-image{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
