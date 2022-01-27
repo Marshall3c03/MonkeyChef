@@ -19,7 +19,18 @@ const AddRecipe = ({addRecipe})=>{
     const handleMethodChange = (ev) => setMethod(ev.target.value);
     const handleImageChange = (ev) => setImage(ev.target.value);
 
-    const handleNewIngredientClick = () => {
+    const clearState= ()=>{
+        setName("");
+        setIngredient("");
+        setUnit(undefined);
+        setAmount();
+        setIngredients([]);
+        setMethod();
+        setImage();
+    }
+    
+    const handleNewIngredientClick = (e) => {
+        e.preventDefault();
         console.log("you clicked new ingredient")
         const newIngredient =
             {"amount" : amount,
@@ -37,17 +48,6 @@ const AddRecipe = ({addRecipe})=>{
         })
     }
 
-    // useEffect();
-
-    const clearState= ()=>{
-        setName("");
-        setIngredient("");
-        setUnit(undefined);
-        setAmount("");
-        setIngredients([]);
-        setMethod("");
-        setImage("");
-    }
 
     const handleSubmit = (e) =>{
         e.preventDefault();
@@ -56,10 +56,10 @@ const AddRecipe = ({addRecipe})=>{
              "unit" : unit,
              "ingredient": ingredient
             };
-        console.log(newIngredient);
+        // console.log(newIngredient);
         ingredients.push(newIngredient);
         setIngredients([...ingredients, newIngredient]);
-        console.log(ingredients);
+        // console.log(ingredients);
         const newRecipe = {
             "name": name,
             "ingredients": ingredients,
@@ -70,13 +70,14 @@ const AddRecipe = ({addRecipe})=>{
         };
         MealPlannerService.createRecipe(newRecipe).then(() => clearState());
     };
+    
     return(
         <>
         <h2>Add a Recipe</h2>
         <form method= "post" onSubmit={handleSubmit} id="recipe-form" >
             <div className="formWrap">
                 <label htmlFor="name">Name:</label>
-                <input onChange={handleNameChange} type="name" id="name" required value={name} />
+                <input onChange={handleNameChange} type="name" id="name" required />
             </div>
             <div>
                 <label htmlFor="image">Image URL:</label>
@@ -86,13 +87,13 @@ const AddRecipe = ({addRecipe})=>{
                 <label htmlFor="ingredients">Ingredients:</label>
 
                 <label htmlFor="amount">Amount:</label>
-                <input onChange={handleAmountChange} type="number" id="amount" required placeholder="Enter amount"/>
+                <input onChange={handleAmountChange} type="number" id="amount" value={amount} required placeholder="Enter amount"/>
 
                 <label htmlFor="unit">Unit:</label>
-                <input onChange={handleUnitChange} type="text" id="unit"  />
+                <input onChange={handleUnitChange} type="text" id="unit" value={unit}  />
 
                 <label htmlFor="ingredient">Ingredient:</label>
-                <input onChange={handleIngredientChange} type="text" id="ingridient" />
+                <input onChange={handleIngredientChange} type="text" id="ingridient" value={ingredient}/>
 
                 <button onClick={handleNewIngredientClick}>+</button>
             </div>
