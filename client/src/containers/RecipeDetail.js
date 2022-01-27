@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 
 
-const Recipe = ({recipe, onRecipeClick})=>{
+const RecipeDetail = ({recipe, onRecipeClick})=>{
 
     const handleClick = function() {
         onRecipeClick(recipe);
@@ -23,4 +23,4 @@ const Recipe = ({recipe, onRecipeClick})=>{
     );
 };
 
-export default Recipe;
+export default RecipeDetail;
