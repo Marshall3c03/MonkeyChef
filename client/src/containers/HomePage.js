@@ -12,8 +12,26 @@ const HomePage = ()=>{
 
     return(
         <>
-        <div onClick={() => handleClick("/")}>
-            <h1>Home Page</h1>
+        <div className="banner-container">
+            <div className="banner-group">
+                <div className="banner-company-text">
+                    <h2 className="banner-company-name">Rossipy</h2>
+                    <h4 className="banner-company-slogan">Plan like a <b>BOSS,</b></h4>
+                </div>
+                <div className="banner-instructions">
+                    <ul>
+                        <li className="instruction1">
+                            <a href="/addrecipe">Add a recipe</a>
+                        </li>
+                        <li className="instruction2">
+                            <a href="/planner">Plan your meals</a>
+                        </li>
+                        <li className="instruction3">
+                            <a href="/shoppinglist">Check your shoppinglist</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </div>
 
         <div className="link-container">

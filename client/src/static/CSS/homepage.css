@@ -25,8 +25,8 @@
 
 .button-group:hover {
     margin: 50px;
-    background-color: red;
-    transition: 0.5s;
+    background-color: rgb(230, 230, 230);
+    transition: 1s;
     border-radius: 10px;
     padding: 20px;
     width: 150px;
@@ -35,6 +35,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    transform:translateY(-10px);
 }
 
 .button-group .button-title {
@@ -51,3 +52,98 @@
     justify-content: center;
     align-items: center;
 }
+
+.banner-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.banner-container .banner-group {
+    margin: 50px;
+    background-color: rgb(50, 191, 183);
+    border-radius: 10px;
+    padding: 20px;
+    width: 800px;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;}
+
+.banner-container .banner-group:hover {
+    margin: 50px;
+    background-color: rgb(230, 230, 230);
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;    
+    border-radius: 10px;
+    transition: 1s;
+    padding: 20px;
+    width: 800px;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.banner-container .banner-group .banner-company-text{
+    position: relative;
+    top: -25px;
+    right: 325px;
+    color: white;
+}
+
+
+.banner-container .banner-group .banner-company-text .banner-company-name{
+    /* position: relative; */
+    /* top: -90px;
+    right: 350px;
+    color: white; */
+}
+
+.banner-container .banner-group .banner-company-text .banner-company-slogan{
+    /* position: relative; */
+    /* top: -90px;
+    right: 350px;
+    color: white; */
+}
+
+.banner-container .banner-group .banner-instructions{
+    /* display: flex;
+    justify-content: center;
+    align-content: center; */
+}
+
+.banner-container .banner-group .banner-instructions .instruction1{
+    color: white;
+    font-weight: 600;
+    position: relative;
+    top: -85px;
+    bottom: 0px;
+    right: 0px;
+    left: 200px;
+}
+
+.banner-container .banner-group .banner-instructions .instruction2{
+    color: white;
+    font-weight: 600;
+    position: relative;
+    top: -60px;
+    bottom: 0px;
+    right: 0px;
+    left: 175px;
+}
+
+.banner-container .banner-group .banner-instructions .instruction3{
+    color: white;
+    font-weight: 600;
+    position: relative;
+    top: -35px;
+    bottom: 0px;
+    right: 0px;
+    left: 150px;
+}
+
+
