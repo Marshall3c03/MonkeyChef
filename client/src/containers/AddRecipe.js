@@ -63,8 +63,6 @@ const AddRecipe = ({addRecipe})=>{
         const newRecipe = {
             "name": name,
             "ingredients": ingredients,
-            // "amount": amount,
-            // "unit": unit,
             "image" : image,
             "method": method,
         };
@@ -79,24 +77,28 @@ const AddRecipe = ({addRecipe})=>{
                 <label htmlFor="name">Name:</label>
                 <input onChange={handleNameChange} type="name" id="name" required />
             </div>
+            <br/>
+            <div className="formWrap">
+                <label htmlFor="ingredients">Ingredients:</label>
+
+                <br/>
+
+                <label htmlFor="amount">Amount:</label>
+                <input onChange={handleAmountChange} type="number" id="amount"  required placeholder="Enter amount"/>
+
+                <label htmlFor="unit">Unit:</label>
+                <input onChange={handleUnitChange} type="text" id="unit"  />
+
+                <label htmlFor="ingredient">Ingredient:</label>
+                <input onChange={handleIngredientChange} type="text" id="ingridient"/>
+
+                <button onClick={handleNewIngredientClick}>+</button>
+            </div>
+            <br/>
             <div>
                 <label htmlFor="image">Image URL:</label>
                 <input onChange={handleImageChange} type="text" id="image" />
             </div>    
-            <div className="formWrap">
-                <label htmlFor="ingredients">Ingredients:</label>
-
-                <label htmlFor="amount">Amount:</label>
-                <input onChange={handleAmountChange} type="number" id="amount" value={amount} required placeholder="Enter amount"/>
-
-                <label htmlFor="unit">Unit:</label>
-                <input onChange={handleUnitChange} type="text" id="unit" value={unit}  />
-
-                <label htmlFor="ingredient">Ingredient:</label>
-                <input onChange={handleIngredientChange} type="text" id="ingridient" value={ingredient}/>
-
-                <button onClick={handleNewIngredientClick}>+</button>
-            </div>
             <div className="formWrap">
                 <label htmlFor="method">Method:</label>
                 <input onChange={handleMethodChange} type="text" id="method"  />
