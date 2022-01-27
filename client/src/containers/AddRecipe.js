@@ -87,7 +87,18 @@ const AddRecipe = ({addRecipe})=>{
                 <input onChange={handleAmountChange} type="number" id="amount"  required placeholder="Enter amount"/>
 
                 <label htmlFor="unit">Unit:</label>
-                <input onChange={handleUnitChange} type="text" id="unit"  />
+                <select onChange={handleUnitChange} name="unit" id="unit">
+                        <option ></option>
+                        <option value="kg">Kg</option>
+                        <option value="g">G</option>
+                        <option value="l">L</option>
+                        <option value="tbsp">tbsp</option>
+                        <option value="ml">ml</option>
+                        <option value="tsp">tsp</option>
+                        <option value="cup">Cup</option>
+
+                </select>
+
 
                 <label htmlFor="ingredient">Ingredient:</label>
                 <input onChange={handleIngredientChange} type="text" id="ingridient"/>
