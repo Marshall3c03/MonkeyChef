@@ -38,6 +38,7 @@ const AddRecipe = ({addRecipe})=>{
              "ingredient": ingredient
             };
         setIngredients([...ingredients, newIngredient])
+        setIngredient("");
     };
 
     const allIngredients = ()=>{
@@ -50,16 +51,7 @@ const AddRecipe = ({addRecipe})=>{
 
 
     const handleSubmit = (e) =>{
-        e.preventDefault();
-        const newIngredient =
-            {"amount" : amount,
-             "unit" : unit,
-             "ingredient": ingredient
-            };
-        // console.log(newIngredient);
-        ingredients.push(newIngredient);
-        setIngredients([...ingredients, newIngredient]);
-        // console.log(ingredients);
+        e.preventDefault()
         const newRecipe = {
             "name": name,
             "ingredients": ingredients,
@@ -88,7 +80,7 @@ const AddRecipe = ({addRecipe})=>{
 
                 <label htmlFor="unit">Unit:</label>
                 <select onChange={handleUnitChange} name="unit" id="unit">
-                        <option ></option>
+                        <option  value={undefined}></option>
                         <option value="kg">Kg</option>
                         <option value="g">G</option>
                         <option value="l">L</option>
@@ -101,7 +93,7 @@ const AddRecipe = ({addRecipe})=>{
 
 
                 <label htmlFor="ingredient">Ingredient:</label>
-                <input onChange={handleIngredientChange} type="text" id="ingridient"/>
+                <input onChange={handleIngredientChange} type="text" id="ingredient" required/>
 
                 <button onClick={handleNewIngredientClick}>+</button>
             </div>
