@@ -2,13 +2,22 @@ import React, {useState, useEffect} from "react";
 
 const ShoppingList = () => {
 
-
+    const RecipesApi = [
+        {
+          name: "recipes", 
+          url: "http://localhost:5000/api/recipes"
+        }
+      ]
   
       const [recipesList, setRecipesList] = useState([]);
-      const [shoppingList, setShoppingList] = useState([]);
- 
+      // const [shoppingList, setShoppingList] = useState([]);
 
+      const shoppingList = [];
       const condensedList = [];
+  
+      useEffect(() => {
+        loadRecipes(RecipesApi[0].url)
+        }, []);
       
       const loadRecipes = url => {
         fetch(url)
@@ -22,7 +31,7 @@ const ShoppingList = () => {
           
         let fullIngredientList = recipe.ingredients.map(ingredient => {
             
-            
+            // console.log(ingredient)
             shoppingList.push(ingredient); 
             
             
@@ -49,8 +58,8 @@ const ShoppingList = () => {
       const keys = Object.keys(loopedList);
       let found = false;
       const name = item.ingredient.toLowerCase();
-      const quantity = item.amount;
-
+      const quantity = parseInt(item.amount);
+      
       console.log("These are the keys ", keys);
   
 
@@ -73,11 +82,11 @@ const ShoppingList = () => {
             console.log(loopedList[name]);
           };
     
-      
+      // return loopedList;
     }
     console.log(loopedList);
 
-
+    
     
     return(
         <>
