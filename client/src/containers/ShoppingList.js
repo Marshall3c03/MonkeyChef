@@ -10,7 +10,7 @@ const ShoppingList = () => {
       ]
   
       const [recipesList, setRecipesList] = useState([]);
-    //   const [shoppingList, setShoppingList] = useState([]);
+      // const [shoppingList, setShoppingList] = useState([]);
 
       const shoppingList = [];
       const condensedList = [];
@@ -25,57 +25,75 @@ const ShoppingList = () => {
           .then(recipesJson => setRecipesList(recipesJson))
       }
 
-    //   const condenseShoppingList = shoppingList.map(ingredient => {
-            // return ingredient.name;
-    //   })
 
 
       let listOfIngredients = recipesList.map(recipe => {
-
-        const fullIngredientDetails = recipe.ingredients.map(ingredient => {
-
-            shoppingList.push(ingredient);
-
+          
+        let fullIngredientList = recipe.ingredients.map(ingredient => {
+            
+            // console.log(ingredient)
+            shoppingList.push(ingredient); 
+            
+            
             return (
                 <>
-                {ingredient.amount}{ingredient.unit} {ingredient.ingredient}<br />
+                <a key="{ingredient}">{ingredient.amount}{ingredient.unit} {ingredient.ingredient}</a><br />
                 </>
-                )})
 
+                   
+        )})
+        
         return(
             <div>
-                {/* {listOfIngredients} */}
-                {fullIngredientDetails}
+            {shoppingList}
             </div>
         )
+        
     });
+    
 
-    // console.log(shoppingList);
+    const loopedList = {};
 
-    condensedList.push(shoppingList[0]);
+    for (let item of shoppingList){
+      const keys = Object.keys(loopedList);
+      let found = false;
+      const name = item.ingredient.toLowerCase();
+      const quantity = parseInt(item.amount);
 
-    // console.log(condensedList);
+      console.log("These are the keys ", keys);
+  
 
-    const mapShoppingList = shoppingList.map(result => {
-        const index = 10;
-        condensedList.indexOf(result.ingredient)
-        if (result.ingredient ==  shoppingList[index].ingredient && result.unit == shoppingList[index].unit) {
-            shoppingList[index].amount += result.amount
+      for (let key of keys){
+        if (name == key) { 
+          found = true 
         }
-        index ++;
-        condensedList.push(result);
-    })
+      }
 
-        console.log(condensedList);
+      console.log(found);
+     
 
+      if(found){
+            
+            loopedList[name] += quantity;
+            console.log(loopedList[name]);
+          }
+      else {
+            loopedList[name] = quantity;
+            console.log(loopedList[name]);
+          };
+    
+      // return loopedList;
+    }
+    console.log("looped list ", loopedList);
 
+    
+    
     return(
         <>
             <h1>Shopping List</h1>
-            <p>
-                {listOfIngredients}
-                {mapShoppingList}
-            </p>
+            <div>
+                {condensedList}
+            </div>
         </>
     );
 };
