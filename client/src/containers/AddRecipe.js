@@ -60,6 +60,7 @@ const AddRecipe = ({addRecipe})=>{
             "image" : image,
             "method": method,
         };
+        // const url = /api/recipes
         MealPlannerService.createRecipe(newRecipe).then(() => clearState());
     };
     
