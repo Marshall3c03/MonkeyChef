@@ -70,6 +70,10 @@ const AddRecipe = ({addRecipe})=>{
                 <input onChange={handleNameChange} type="name" id="name" required />
             </div>
             <br/>
+            <div>
+                <label htmlFor="image">Image URL:</label>
+                <input onChange={handleImageChange} type="text" id="image" />
+            </div>    
             <div className="formWrap">
                 <label htmlFor="ingredients">Ingredients:</label>
 
@@ -98,18 +102,16 @@ const AddRecipe = ({addRecipe})=>{
                 <button onClick={handleNewIngredientClick}>+</button>
             </div>
             <br/>
-            <div>
-                <label htmlFor="image">Image URL:</label>
-                <input onChange={handleImageChange} type="text" id="image" />
-            </div>    
+           
             <div className="formWrap">
                 <label htmlFor="method">Method:</label>
-                <input onChange={handleMethodChange} type="text" id="method"  />
+                <input onChange={handleMethodChange} type="text" id="method" width="500px" />
             </div>
+            {allIngredients()}
             <input type="submit" value="Save" id="save"/>
 	    </form>
 
-        {allIngredients()}
+        
         </>
         )
     }
