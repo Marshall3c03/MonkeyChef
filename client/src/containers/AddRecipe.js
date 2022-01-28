@@ -25,8 +25,8 @@ const AddRecipe = ({addRecipe})=>{
         setUnit(undefined);
         setAmount();
         setIngredients([]);
-        setMethod();
-        setImage();
+        setMethod("");
+        setImage("");
     }
     
     const handleNewIngredientClick = (e) => {
@@ -39,6 +39,8 @@ const AddRecipe = ({addRecipe})=>{
             };
         setIngredients([...ingredients, newIngredient])
         setIngredient("");
+        setAmount();
+        setUnit(undefined)
     };
 
     const allIngredients = ()=>{
@@ -67,12 +69,12 @@ const AddRecipe = ({addRecipe})=>{
         <form method= "post" onSubmit={handleSubmit} id="recipe-form" >
             <div className="formWrap">
                 <label htmlFor="name">Name:</label>
-                <input onChange={handleNameChange} type="name" id="name" required />
+                <input onChange={handleNameChange} type="name" id="name" value={name} required />
             </div>
             <br/>
             <div>
                 <label htmlFor="image">Image URL:</label>
-                <input onChange={handleImageChange} type="text" id="image" />
+                <input onChange={handleImageChange} type="text" value={image}  id="image" />
             </div>    
             <div className="formWrap">
                 <label htmlFor="ingredients">Ingredients:</label>
@@ -80,13 +82,13 @@ const AddRecipe = ({addRecipe})=>{
                 <br/>
 
                 <label htmlFor="amount">Amount:</label>
-                <input onChange={handleAmountChange} type="number" id="amount"  required placeholder="Enter amount"/>
+                <input onChange={handleAmountChange} type="number" id="amount" value={amount}  required placeholder="Enter amount"/>
 
                 <label htmlFor="unit">Unit:</label>
                 <select onChange={handleUnitChange} name="unit" id="unit">
-                        <option  value={undefined}></option>
+                        <option  value={unit}></option>
                         <option value="kg">Kg</option>
-                        <option value="g">G</option>
+                        <option value="g">g</option>
                         <option value="l">L</option>
                         <option value="tbsp">tbsp</option>
                         <option value="ml">ml</option>
@@ -97,7 +99,7 @@ const AddRecipe = ({addRecipe})=>{
 
 
                 <label htmlFor="ingredient">Ingredient:</label>
-                <input onChange={handleIngredientChange} type="text" id="ingredient" required/>
+                <input onChange={handleIngredientChange} type="text" id="ingredient" value={ingredient} required/>
 
                 <button onClick={handleNewIngredientClick}>+</button>
             </div>
@@ -105,7 +107,7 @@ const AddRecipe = ({addRecipe})=>{
            
             <div className="formWrap">
                 <label htmlFor="method">Method:</label>
-                <input onChange={handleMethodChange} type="text" id="method" width="500px" />
+                <input onChange={handleMethodChange} type="text" id="method" value={method} width="500px" />
             </div>
             {allIngredients()}
             <input type="submit" value="Save" id="save"/>
