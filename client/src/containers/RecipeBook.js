@@ -43,13 +43,21 @@ const RecipeBook = () => {
       return x < y ? -1 : x > y ? 1 : 0;
       });
 
+      const recipeByDefault = recipesList.slice(0);
+      recipeByDefault.sort(function(a,b) {
+          let x = a._id;
+          let y = b._id;
+      return x < y ? -1 : x > y ? 1 : 0;
+      });
+
       const sortName = function() {
         setRecipesList(recipeByTitle);
       }
 
-      const sortChron = function() {
-        loadRecipes();
+      const sortDefault = function() {
+        setRecipesList(recipeByDefault.reverse());
       }
+
 
       let foundItems = [];
 
@@ -72,7 +80,7 @@ const RecipeBook = () => {
         <input onChange = {handleSearch} value = {searchTerm} type = "searchTerm" id = "searchTerm"/><button onClick = {search}>Search</button>
         <h1>Your Recipes</h1>
         <button onClick = {sortName}>A - Z</button>
-        <button onClick = {sortChron}>Old to</button>
+        <button onClick = {sortDefault}>Newest</button>
         <RecipesList recipes={recipesList} />
       </>
     );
