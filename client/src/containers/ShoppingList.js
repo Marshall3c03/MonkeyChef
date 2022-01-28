@@ -59,7 +59,6 @@ const ShoppingList = () => {
       let found = false;
       const name = item.ingredient.toLowerCase();
       const quantity = parseInt(item.amount);
-
       console.log("These are the keys ", keys);
   
 

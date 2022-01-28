@@ -17,8 +17,6 @@ const RecipeBook = () => {
       ]
 
       const [recipesList, setRecipesList] = useState([]);
-      const [selectedRecipe, setSelectedRecipe] = React.useState(null);
-
 
       useEffect(() => {
             loadRecipes(RecipesApi[0].url)
@@ -32,13 +30,30 @@ const RecipeBook = () => {
         .then(recipesJson => setRecipesList(recipesJson))
         }
 
-      const onRecipeClick = function(recipe) {
-        setSelectedRecipe(recipe);
+      const recipeByTitle = recipesList.slice(0);
+      recipeByTitle.sort(function(a,b) {
+          let x = a.name.toLowerCase();
+          let y = b.name.toLowerCase();
+      return x < y ? -1 : x > y ? 1 : 0;
+      });
+
+      const sortName = function() {
+        setRecipesList(recipeByTitle);
       }
+
+      const sortChron = function() {
+        loadRecipes();
+      }
+    
+      // const onRecipeClick = function(recipe) {
+      //   setSelectedRecipe(recipe);
+      // }
 
     return (
       <>
         <h1>Your Recipes</h1>
+        <button onClick = {sortName}>A - Z</button>
+        <button onClick = {sortChron}>Old to</button>
         <RecipesList recipes={recipesList} />
       </>
     );
