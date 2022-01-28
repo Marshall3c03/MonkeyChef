@@ -10,19 +10,31 @@ const Planner = ({removeMeal})=>{
         {
           name: "planner", 
           url: "http://localhost:5000/api/planner"
-        }
+        },
+        {
+            name: "recipe", 
+            url: "http://localhost:5000/api/recipes"
+          },
       ]
 
     const [recipesList, setRecipesList] = useState([]);
+    const [recipeBookList, setRecipeBookList] = useState([]);
 
     useEffect(() => {
         loadAllRecipesInPlanner(PlannerApi[0].url)
+        loadAllRecipes(PlannerApi[1].url)
     },[])
 
     const loadAllRecipesInPlanner = url => {
         fetch(url)
         .then(result => result.json())
         .then(recipesJson => setRecipesList(recipesJson))
+    }
+
+    const loadAllRecipes = url => {
+        fetch(url)
+        .then(result => result.json())
+        .then(recipesJson => setRecipeBookList(recipesJson))
     }
 
     // make a dropdown menu
