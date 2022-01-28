@@ -31,7 +31,7 @@ const AddRecipe = ({addRecipe})=>{
     
     const handleNewIngredientClick = (e) => {
         e.preventDefault();
-        console.log("you clicked new ingredient")
+        // console.log("you clicked new ingredient")
         const newIngredient =
             {"amount" : amount,
              "unit" : unit,
