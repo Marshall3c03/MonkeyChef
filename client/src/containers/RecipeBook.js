@@ -9,6 +9,7 @@ import RecipeDetail from "./RecipeDetail";
 // const RecipeID = useMatch("/films/:id").params.id;
 
 const RecipeBook = () => {
+
     const RecipesApi = [
         {
           name: "recipes", 
@@ -17,6 +18,11 @@ const RecipeBook = () => {
       ]
 
       const [recipesList, setRecipesList] = useState([]);
+      const [searchTerm, setSearchTerm] = useState([]);
+
+      const handleSearch = (ev) => setSearchTerm(ev.target.value);
+
+
 
       useEffect(() => {
             loadRecipes(RecipesApi[0].url)
@@ -44,13 +50,26 @@ const RecipeBook = () => {
       const sortChron = function() {
         loadRecipes();
       }
-    
+
+      let foundItems = [];
+
+      const search = function() {
+        foundItems = [];
+        recipesList.map(recipe => {
+          if (recipe.name.toLowerCase().includes(searchTerm.toLowerCase()) === true) {
+            foundItems.push(recipe)
+          }
+          setRecipesList(foundItems)
+        })
+      }
+
       // const onRecipeClick = function(recipe) {
       //   setSelectedRecipe(recipe);
       // }
 
     return (
       <>
+        <input onChange = {handleSearch} value = {searchTerm} type = "searchTerm" id = "searchTerm"/><button onClick = {search}>Search</button>
         <h1>Your Recipes</h1>
         <button onClick = {sortName}>A - Z</button>
         <button onClick = {sortChron}>Old to</button>
