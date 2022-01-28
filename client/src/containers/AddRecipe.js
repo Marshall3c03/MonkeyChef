@@ -60,8 +60,8 @@ const AddRecipe = ({addRecipe})=>{
             "image" : image,
             "method": method,
         };
-        // const url = /api/recipes
-        MealPlannerService.createRecipe(newRecipe).then(() => clearState());
+        const url = "http://localhost:5000/api/recipes"
+        MealPlannerService.createRecipe(newRecipe, url).then(() => clearState());
     };
     
     return(
@@ -100,7 +100,7 @@ const AddRecipe = ({addRecipe})=>{
 
 
                 <label htmlFor="ingredient">Ingredient:</label>
-                <input onChange={handleIngredientChange} type="text" id="ingredient" value={ingredient} required/>
+                <input onChange={handleIngredientChange} type="text" id="ingredient" value={ingredient}/>
 
                 <button onClick={handleNewIngredientClick}>+</button>
             </div>

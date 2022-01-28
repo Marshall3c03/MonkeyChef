@@ -3,6 +3,8 @@ import RecipesList from "../components/RecipesList";
 import Recipe from "./Recipe";
 import RecipeDetail from "./RecipeDetail";
 
+import '../static/CSS/recipebook.css'
+
 // import { useMatch } from "@reach/router"
 
 

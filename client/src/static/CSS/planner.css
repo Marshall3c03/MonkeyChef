@@ -4,8 +4,7 @@
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    margin-bottom: 500px;
-
+    margin-bottom: 50px;
 }
 
 .button-group {
@@ -37,4 +36,19 @@
     justify-content: center;
     align-items: center;
     transform:translateY(-10px);
+}
+
+.link-container .button-group .button-text{
+    text-align: center;
+    font-weight: 500;
+    margin: 10px;
+    margin-bottom: 0;
+}
+
+.button-title {
+    flex-direction: column;
+}
+
+.button-image{
+    border-radius: 10px;
 }

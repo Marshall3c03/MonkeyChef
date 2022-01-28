@@ -1,6 +1,8 @@
 import React, {useState, useEffect} from "react";
 import MealPlannerService from "./MealPlannerService";
 
+import '../static/CSS/planner.css'
+
 
 const Planner = ()=>{
 
@@ -12,6 +14,7 @@ const Planner = ()=>{
       ]
 
     const [recipesList, setRecipesList] = useState([]);
+    const [content, setContent] = useState("+");
 
     useEffect(() => {
         loadAllRecipesInPlanner(PlannerApi[0].url)
@@ -39,11 +42,12 @@ const Planner = ()=>{
 
         return(
         <>
-            {/* <p>{recipe._id}</p> */}
-            <p><b>{recipe.name}</b></p>
-            <h4>ingredients</h4>
-            {recipeIngredientList}
-            {/* <p>{recipe.ingredients.ingredient}</p> */}
+            <div className="link-container">
+                <div className="button-group">
+                    <img className="button-image" src={recipe.image} width="100px"/>
+                    <p className="button-text">{recipe.name}</p>
+                </div>
+            </div>
         </>
     )})
 
@@ -82,13 +86,23 @@ const Planner = ()=>{
 //       )
 //   }
 
+const handlePlusClick = ()=> {
+    return(
+        setContent(plannerList) 
+    )
+}
+
     return(
         <>
             <h1>Planner</h1>
+            <select type="select"></select>
+            
             {plannerList}
+
+
             <div className="link-container">
                 <div className="button-group">
-                    <p className="button-title" >+</p>
+                    <p className="button-title" onClick={handlePlusClick}>{content}</p>
                 </div>
                 <div className="button-group">
                     <p className="button-title" >+</p>

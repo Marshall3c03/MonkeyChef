@@ -1,6 +1,8 @@
 import react from "react";
 import Recipe from "../containers/Recipe";
 
+import '../static/CSS/homepage.css'
+
 
 const RecipesList = ({recipes, onRecipeClick} )=>{
 
@@ -14,16 +16,16 @@ const RecipesList = ({recipes, onRecipeClick} )=>{
         // const url = "/recipebook/" + recipe._id
 
         return(
-            <div onClick={handleClick}>
-                <p>{recipe.name}</p>
-                <img src={recipe.image} width="250px"/>
+            <div onClick={handleClick}className="button-group">
+                <img className="button-image" src={recipe.image} width="100px"/>
+                <p className="button-text">{recipe.name}</p>
             </div>
         )
     });
 
     return(
         <>
-        <div>
+        <div className="link-container">
         {listOfRecipes}
         </div>
         </>
