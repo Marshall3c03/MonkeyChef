@@ -19,13 +19,6 @@ const Recipe = () => {
 
     const numOfServings = 4;
 
-    const roundedIngredient = function(number) {
-        if (Number.isInteger(number)) {
-            return number;
-        } else {
-            return Math.ceil(number/5) * 5;
-        };
-    };
 
     useEffect(()=>{
         fetch(`http://localhost:5000/api/recipes/${recipeId}`)
@@ -39,7 +32,7 @@ const Recipe = () => {
         
         return(
             <>
-            <p>{roundedIngredient(perDesiredPortions)}{ingredient?.unit} {ingredient.ingredient}</p>
+            <p>{perDesiredPortions}{ingredient?.unit} {ingredient.ingredient}</p>
             </>
         )
     })
@@ -57,6 +50,7 @@ const Recipe = () => {
             
             <h2>Recipe Name: {currentRecipe?.name}</h2>
             {fullIngredients}
+            {currentRecipe?.method}
             {/* // the questionmark means a Nullcoalesent meaning if current recipe has a value... then try index into name */}
             {/* If ingredient can produce a null or undefined for the value its trying to index into.. i.e units then put a ? before the .unit  */}
         </>
