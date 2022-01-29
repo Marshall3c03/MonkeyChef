@@ -59,6 +59,7 @@ const Recipe = () => {
             
             <h2>Recipe Name: {currentRecipe?.name}</h2>
             {fullIngredients}
+            {currentRecipe?.method}
 
             <button onClick={handleAdding}>Add Recipe to Meal Plan</button>
             {/* // the questionmark means a Nullcoalesent meaning if current recipe has a value... then try index into name */}
