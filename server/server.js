@@ -14,19 +14,9 @@ MongoClient.connect('mongodb://127.0.0.1:27017', {useUnifiedTopology:true})
         const recipesCollection = db.collection('recipes');
         const recipesRouter = createRouter(recipesCollection);
         app.use('/api/recipes', recipesRouter);
-        // app.post('/api/recipes', (req, res) => {
-        //     const newData = req.body;
-        //     recipesCollection
-        //         .insertOne(newData)
-        //         .then((result) => {
-        //           res.json(result.ops[0]);
-        //         })
-        //         .catch((err) => {
-        //           console.error(err);
-        //           res.status(500);
-        //           res.json({ status: 500, error: err });
-        //         });
-        
+        const plannerCollection = db.collection('planner');
+        const plannerRouter = createRouter(plannerCollection);
+        app.use('/api/planner', plannerRouter);
     })
     .catch(console.error)
 
