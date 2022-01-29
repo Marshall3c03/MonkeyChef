@@ -22,8 +22,6 @@ const RecipeBook = () => {
 
       const handleSearch = (ev) => setSearchTerm(ev.target.value);
 
-
-
       useEffect(() => {
             loadRecipes(RecipesApi[0].url)
             return () => {
@@ -77,9 +75,12 @@ const RecipeBook = () => {
 
     return (
       <>
-        <input onChange = {handleSearch} value = {searchTerm} type = "searchTerm" id = "searchTerm"/><button onClick = {search}>Search</button>
+        <input onChange = {handleSearch} value = {searchTerm} type = "searchTerm" id = "searchTerm"/>
+        <button onClick = {search}>Search</button><button onClick = {() => fetch("http://localhost:5000/api/recipes")
+        .then(result => result.json())
+        .then(recipesJson => setRecipesList(recipesJson))}>Reset</button>
         <h1>Your Recipes</h1>
-        <button onClick = {sortName}>A - Z</button>
+        Sort by: <button onClick = {sortName}>A - Z</button>
         <button onClick = {sortDefault}>Newest</button>
         <RecipesList recipes={recipesList} />
       </>

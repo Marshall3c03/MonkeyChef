@@ -33,14 +33,18 @@ const Recipe = () => {
             .then(resultJson => setCurrentRecipe(resultJson))
     }, []);
 
+    let counter = 1;
+
     const fullIngredients = currentRecipe?.ingredients.map((ingredient) => {
 
         const perDesiredPortions = (ingredient.amount/numOfServings) * servings;
         
+        counter += 1; 
         return(
-            <>
+            
+            <div key={counter}>
             <p>{perDesiredPortions} {ingredient?.unit} {ingredient.ingredient}</p>
-            </>
+            </div>
         )
     })
 

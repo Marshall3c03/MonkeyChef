@@ -1,7 +1,6 @@
 import react from "react";
 import Recipe from "../containers/Recipe";
 
-
 const RecipesList = ({recipes, onRecipeClick} )=>{
 
 
@@ -14,7 +13,7 @@ const RecipesList = ({recipes, onRecipeClick} )=>{
         // const url = "/recipebook/" + recipe._id
 
         return(
-            <div onClick={handleClick}>
+            <div onClick={handleClick} key={recipe._id}>
                 <p>{recipe.name}</p>
                 <img src={recipe.image} width="250px"/>
             </div>
