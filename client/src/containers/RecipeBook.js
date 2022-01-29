@@ -3,6 +3,8 @@ import RecipesList from "../components/RecipesList";
 import Recipe from "./Recipe";
 import RecipeDetail from "./RecipeDetail";
 
+import '../static/CSS/recipebook.css'
+
 // import { useMatch } from "@reach/router"
 
 
@@ -24,6 +26,7 @@ const RecipeBook = () => {
 
       useEffect(() => {
             loadRecipes(RecipesApi[0].url)
+            loadSearchJson(RecipesApi[0].url)
             return () => {
             }
         }, [])
@@ -33,6 +36,12 @@ const RecipeBook = () => {
         .then(result => result.json())
         .then(recipesJson => setRecipesList(recipesJson))
         }
+
+        const loadSearchJson = url => {
+          fetch(url)
+          .then(result => result.json())
+          .then(recipesJson => setRecipesList(recipesJson))
+          }
 
       const recipeByTitle = recipesList.slice(0);
       recipeByTitle.sort(function(a,b) {

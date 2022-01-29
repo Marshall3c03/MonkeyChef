@@ -1,8 +1,9 @@
-import react from "react";
+import react, { useState } from "react";
 import Recipe from "../containers/Recipe";
 
 const RecipesList = ({recipes, onRecipeClick} )=>{
 
+    // const [recipies, setRecipes]=useState([])    
 
     let listOfRecipes = recipes.map(recipe => {
 
@@ -13,16 +14,16 @@ const RecipesList = ({recipes, onRecipeClick} )=>{
         // const url = "/recipebook/" + recipe._id
 
         return(
-            <div onClick={handleClick} key={recipe._id}>
-                <p>{recipe.name}</p>
-                <img src={recipe.image} width="250px"/>
+            <div onClick={handleClick}className="button-group" key={recipe._id}>
+                <img className="button-image" src={recipe.image} width="100px"/>
+                <p className="button-text">{recipe.name}</p>
             </div>
         )
     });
 
     return(
         <>
-        <div>
+        <div className="link-container">
         {listOfRecipes}
         </div>
         </>
