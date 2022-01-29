@@ -1,5 +1,6 @@
 import react, {useEffect, useState} from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import MealPlannerService from "./MealPlannerService";
 
 const Recipe = () => {
     const navigate = useNavigate(); 
@@ -19,13 +20,10 @@ const Recipe = () => {
 
     const numOfServings = 4;
 
-    // const roundedIngredient = function(number) {
-    //     if (Number.isInteger(number)) {
-    //         return number;
-    //     } else {
-    //         return Math.ceil(number/5) * 5;
-    //     };
-    // };
+    const handleAdding = ()=> {
+        const url = "http://localhost:5000/api/planner"
+        MealPlannerService.createRecipe(currentRecipe, url)
+    }
 
     useEffect(()=>{
         fetch(`http://localhost:5000/api/recipes/${recipeId}`)
@@ -57,6 +55,8 @@ const Recipe = () => {
             
             <h2>Recipe Name: {currentRecipe?.name}</h2>
             {fullIngredients}
+
+            <button onClick={handleAdding}>Add Recipe to Meal Plan</button>
             {/* // the questionmark means a Nullcoalesent meaning if current recipe has a value... then try index into name */}
             {/* If ingredient can produce a null or undefined for the value its trying to index into.. i.e units then put a ? before the .unit  */}
         </>

@@ -142,3 +142,26 @@ db.recipes.insertMany([
         "image": "https://images.immediate.co.uk/production/volatile/sites/30/2020/08/mushroom_soup-9b55c55.jpg"
     },
 ]);
+
+db.planner.insertMany([
+  {
+    "name" : "Balmoral Chicken",
+    "ingredients" : [
+        { "amount" : 4,
+        "ingredient" : "chicken breasts" },
+        { "amount" : 130,
+        "unit" : "g",
+        "ingredient" : "haggis" },
+        { "amount" : 4,
+        "ingredient" : "rashes of bacon" },
+        { "amount" : 30,
+        "unit" : "ml",
+        "ingredient" : "olive oil" },
+        { "amount" : 20,
+        "unit" : "g",
+        "ingredient" : "butter" },
+    ],
+    "method" : "1. Preheat oven to 180°C. \n 2. Slice down the side of each chicken breast, making a pocket. \n 3. Slice the haggis into small chunks and squidge (technical term) into the chicken pocket. \n 4. Wrap each breast in a rasher of bacon and secure with a toothpick if necessary. \n 5. Heat the oil and butter in a non-stick frying pan, sear the bacon wrapped around the chicken breasts. Give 2 minutes on each side. \n 6. Place in an oven proof dish and transfer to the oven for 35-40 minutes or until cooked through & piping hot. \n 7. Serve with the peppercorn sauce and a selection of vegetables and/ or mash potato.",
+    "image": "https://www.carolinescooking.com/wp-content/uploads/2022/01/haggis-stuffed-chicken-Balmoral-featured-pic-sq.jpg"
+}
+])

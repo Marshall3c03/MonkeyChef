@@ -1,4 +1,5 @@
-const baseURL = "http://localhost:5000/api/recipes"
+// const baseURL = "http://localhost:5000/api/recipes"
+// const baseURL = "http://localhost:5000/api/planner"
 
 const MealPlannerService = {
 //     getRecipes () {
@@ -6,9 +7,9 @@ const MealPlannerService = {
 //         .then(res => res.json());
 // },
 
-    createRecipe (recipe){
+    createRecipe (recipe, url){
         // console.log(JSON.stringify(recipe))
-        return fetch(baseURL, {
+        return fetch(url, {
             method: 'POST',
             body: JSON.stringify(recipe),
             headers: { 'Content-Type': 'application/json' }
@@ -16,14 +17,14 @@ const MealPlannerService = {
         .then(res => res.json())
     },
 
-    deleteRecipe (id) {
-    return fetch(baseURL + id, {
+    deleteRecipe (id, url) {
+    return fetch(url + id, {
         method: 'DELETE'
     }) 
 },
 
-    updateRecipe (id) {
-    return fetch(baseURL + id, {
+    updateRecipe (id, url) {
+    return fetch(url + id, {
         method: 'PUT'
     }) 
 }
