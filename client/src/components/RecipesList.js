@@ -1,4 +1,4 @@
-import react from "react";
+import react, { useState } from "react";
 import Recipe from "../containers/Recipe";
 
 import '../static/CSS/homepage.css'
@@ -6,6 +6,7 @@ import '../static/CSS/homepage.css'
 
 const RecipesList = ({recipes, onRecipeClick} )=>{
 
+    // const [recipies, setRecipes]=useState([])    
 
     let listOfRecipes = recipes.map(recipe => {
 

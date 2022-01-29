@@ -1,15 +1,16 @@
-import React, {useState, useEffect} from "react";
+import React, {useState, useEffect, useMemo} from "react";
 import MealPlannerService from "./MealPlannerService";
+
 
 import '../static/CSS/planner.css'
 
 
-const Planner = ({removeMeal})=>{
+function Planner({removeMeal}){
 
     const PlannerApi = [
         {
-          name: "planner", 
-          url: "http://localhost:5000/api/planner"
+            name: "planner", 
+            url: "http://localhost:5000/api/planner"
         },
         {
             name: "recipe", 
@@ -20,9 +21,10 @@ const Planner = ({removeMeal})=>{
     const [recipesList, setRecipesList] = useState([]);
     const [recipeBookList, setRecipeBookList] = useState([]);
 
+
     useEffect(() => {
-        loadAllRecipesInPlanner(PlannerApi[0].url)
-        loadAllRecipes(PlannerApi[1].url)
+        loadAllRecipesInPlanner(PlannerApi[0].url);
+        loadAllRecipes(PlannerApi[1].url);
     },[])
 
     const loadAllRecipesInPlanner = url => {
@@ -49,20 +51,16 @@ const Planner = ({removeMeal})=>{
     //     // })
     // }
 
-    const plannerList= recipesList?.map(recipe=>{
+    const plannerList= useMemo(() => recipesList?.map(recipe=>{
 
         const recipeId = recipe._id;
-
-        const recipeIngredientList = recipe.ingredients.map(ingredient => {
+        // const recipeIngredientList = recipe.ingredients.map(ingredient => {
+   
+        //     return(
+        //         <p>{ingredient.amount} {ingredient?.unit} {ingredient.ingredient} </p>
             
-            return(
-                <p>{ingredient.amount} {ingredient?.unit} {ingredient.ingredient} </p>
-            
-            )
-        })
-
-
-
+        //     )
+        // })
         return(
         <>
             {/* <div className="link-container"> */}
@@ -70,16 +68,22 @@ const Planner = ({removeMeal})=>{
                     <img className="button-image" src={recipe.image} width="100px"/>
                     <p className="button-text">{recipe.name}</p>
                     <img onClick={()=>{
-                        console.log(recipeId)
-                        const url = 'http://localhost:5000/api/planner/'
-                        MealPlannerService.deleteRecipe(recipeId,url)
-                        console.log("You clicked the delete button")
-                        console.log(url + recipeId)
+                        // console.log(recipeId);
+                        const url = 'http://localhost:5000/api/planner/';
+                        MealPlannerService.deleteRecipe(recipeId,url);
+                        // console.log("You clicked the delete button");
+                        // console.log(url + recipeId);
+                        var array = [...recipesList]; 
+                        var index = array.indexOf(recipe)
+                        if (index !== -1) {
+                          array.splice(index, 1);
+                          setRecipesList(array);
+                        }
                     }} src="https://findicons.com/files/icons/1262/amora/256/delete.png" width="25px"/>
                 </div>
             {/* </div> */}
         </>
-    )})
+    )}), [recipesList]);
 
 
     return(

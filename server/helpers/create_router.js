@@ -31,6 +31,7 @@ const createRouter = function (collection) {
     router.post('/', (req,res)=>{
       // console.log("router.post")
         const newData=req.body;
+        req.body._id = ObjectID(req.body.id);
         collection
         .insertOne(newData)
         .then((result)=>{
@@ -48,8 +49,8 @@ const createRouter = function (collection) {
     router.delete('/:id',(req,res)=>{
         const id=req.params.id;
         collection
-        // .deleteOne({_id: ObjectID(id)})
-        .deleteOne({_id: (id)})
+        .deleteOne({_id: ObjectID(id)})
+        //.deleteOne({_id: (id)})
         .then((result)=>{
           res.json(result)
         })
