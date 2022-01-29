@@ -11,6 +11,7 @@ import '../static/CSS/recipebook.css'
 // const RecipeID = useMatch("/films/:id").params.id;
 
 const RecipeBook = () => {
+
     const RecipesApi = [
         {
           name: "recipes", 
@@ -19,8 +20,9 @@ const RecipeBook = () => {
       ]
 
       const [recipesList, setRecipesList] = useState([]);
-      const [selectedRecipe, setSelectedRecipe] = React.useState(null);
+      const [searchTerm, setSearchTerm] = useState([]);
 
+      const handleSearch = (ev) => setSearchTerm(ev.target.value);
 
       useEffect(() => {
             loadRecipes(RecipesApi[0].url)
@@ -38,18 +40,57 @@ const RecipeBook = () => {
         const loadSearchJson = url => {
           fetch(url)
           .then(result => result.json())
-  
-          .then(recipesJson => console.log(recipesJson))
-  
+          .then(recipesJson => setRecipesList(recipesJson))
           }
 
-      const onRecipeClick = function(recipe) {
-        setSelectedRecipe(recipe);
+      const recipeByTitle = recipesList.slice(0);
+      recipeByTitle.sort(function(a,b) {
+          let x = a.name.toLowerCase();
+          let y = b.name.toLowerCase();
+      return x < y ? -1 : x > y ? 1 : 0;
+      });
+
+      const recipeByDefault = recipesList.slice(0);
+      recipeByDefault.sort(function(a,b) {
+          let x = a._id;
+          let y = b._id;
+      return x < y ? -1 : x > y ? 1 : 0;
+      });
+
+      const sortName = function() {
+        setRecipesList(recipeByTitle);
       }
+
+      const sortDefault = function() {
+        setRecipesList(recipeByDefault.reverse());
+      }
+
+
+      let foundItems = [];
+
+      const search = function() {
+        foundItems = [];
+        recipesList.map(recipe => {
+          if (recipe.name.toLowerCase().includes(searchTerm.toLowerCase()) === true) {
+            foundItems.push(recipe)
+          }
+          setRecipesList(foundItems)
+        })
+      }
+
+      // const onRecipeClick = function(recipe) {
+      //   setSelectedRecipe(recipe);
+      // }
 
     return (
       <>
+        <input onChange = {handleSearch} value = {searchTerm} type = "searchTerm" id = "searchTerm"/>
+        <button onClick = {search}>Search</button><button onClick = {() => fetch("http://localhost:5000/api/recipes")
+        .then(result => result.json())
+        .then(recipesJson => setRecipesList(recipesJson))}>Reset</button>
         <h1>Your Recipes</h1>
+        Sort by: <button onClick = {sortName}>A - Z</button>
+        <button onClick = {sortDefault}>Newest</button>
         <RecipesList recipes={recipesList} />
       </>
     );
