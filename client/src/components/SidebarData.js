@@ -1,29 +1,35 @@
 import React from 'react'
+import home from '../static/CSS/graphics/HomeIcon.png'
+import add from '../static/CSS/graphics/AddRecipeIcon.png'
+import book from '../static/CSS/graphics/RecipeBookIcon.png'
+import planner from '../static/CSS/graphics/WeeklyPlannerIcon.png'
+import shoppinglist from '../static/CSS/graphics/ShoppingListIcon.png'
+
 
 export const SidebarData = [
     {
         onClick: (navigate) => navigate('/'),
-        icon: 'https://icons.iconarchive.com/icons/graphicloads/100-flat/48/home-icon.png',
+        icon: home,
         cName: 'nav-text'
     },
     {
         onClick: (navigate) => navigate('/addrecipe'),
-        icon: 'https://icons.iconarchive.com/icons/martz90/circle-addon1/48/text-plus-icon.png',
+        icon: add,
         cName: 'nav-text'
     },
     {
         onClick: (navigate) => navigate('/recipebook'),
-        icon: 'https://icons.iconarchive.com/icons/iconsmind/outline/48/Books-2-icon.png',  
+        icon: book,
         cName: 'nav-text'  
     },
     {
         onClick: (navigate) => navigate('/planner'),
-        icon: 'https://icons.iconarchive.com/icons/youthedesigner/new-year/48/calendar-icon.png', 
-        cName: 'nav-text'   
+        icon: planner, 
+        cName: 'nav-text'
     },
     {
         onClick: (navigate) => navigate('/shoppinglist'),
-        icon: 'https://icons.iconarchive.com/icons/graphicloads/100-flat/48/cart-icon.png',
+        icon: shoppinglist,
         cName: 'nav-text'    
     },
 ]

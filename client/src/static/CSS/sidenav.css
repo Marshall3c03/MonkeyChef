@@ -8,8 +8,8 @@
 }
 
 .nav-text{
-    background-color: red;
     margin-bottom: 10px;
+    width: 10px;
     list-style: none;
 }
 
@@ -19,4 +19,12 @@
     align-items: center;
     width: 100%;
     padding: 30px 0 0 0;
+}
+
+.home {
+    width: 20px;
+}
+
+.navIcon {
+    width: 40px;
 }
