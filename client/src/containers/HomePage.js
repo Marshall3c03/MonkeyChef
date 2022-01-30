@@ -37,7 +37,7 @@ const HomePage = ()=>{
         <div className="link-container">
             <div className="button-group" onClick={() => handleClick("/addrecipe")}>
                 <p className="button-title" >Add Recipe</p>
-                <img className="button-image" src="https://icons.iconarchive.com/icons/paomedia/small-n-flat/1024/sign-add-icon.png" width="100px" height="100px"/>
+                {/* <img className="button-image" src={require('../static/graphics/AddRecipe.png').default} width="100px" height="100px"/> */}
             </div>
 
             <div className="button-group" onClick={() => handleClick("/recipebook")}>

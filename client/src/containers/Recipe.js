@@ -5,7 +5,7 @@ import MealPlannerService from "./MealPlannerService";
 const Recipe = () => {
     const navigate = useNavigate(); 
     const [currentRecipe,setCurrentRecipe] = useState(null);
-    const [servings, setServings] = useState(1);
+    const [servings, setServings] = useState(4);
     const {recipeId} = useParams();
     
     const handleMinus = function() {
@@ -52,13 +52,13 @@ const Recipe = () => {
             onClick={()=> { navigate(-1) }}
             src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Back_Arrow.svg/768px-Back_Arrow.svg.png" width="55px"
         />
-            <p>RecipeID: {recipeId}</p>
             <div>
                 <button onClick = {handleMinus}>-</button> {servings} <button onClick = {handlePlus}>+</button>
             </div>
             
-            <h2>Recipe Name: {currentRecipe?.name}</h2>
+            <h2>{currentRecipe?.name}</h2>
             {fullIngredients}
+            <p>{currentRecipe?.method}</p>
 
             <button onClick={handleAdding}>Add Recipe to Meal Plan</button>
             {/* // the questionmark means a Nullcoalesent meaning if current recipe has a value... then try index into name */}

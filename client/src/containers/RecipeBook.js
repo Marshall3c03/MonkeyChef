@@ -43,6 +43,11 @@ const RecipeBook = () => {
           .then(recipesJson => setRecipesList(recipesJson))
           }
 
+        const reloadRecipes = () => { fetch("http://localhost:5000/api/recipes")
+          .then(result => result.json())
+          .then(recipesJson => setRecipesList(recipesJson))
+        }
+
       const recipeByTitle = recipesList.slice(0);
       recipeByTitle.sort(function(a,b) {
           let x = a.name.toLowerCase();
@@ -73,9 +78,61 @@ const RecipeBook = () => {
         recipesList.map(recipe => {
           if (recipe.name.toLowerCase().includes(searchTerm.toLowerCase()) === true) {
             foundItems.push(recipe)
+          } else if (recipe.method.toLowerCase().includes(searchTerm.toLowerCase()) === true) {
+              foundItems.push(recipe)
           }
           setRecipesList(foundItems)
         })
+      }
+
+      const filterByCategory = function(filterBy) {
+        // reloadRecipes();
+        foundItems = [];
+        recipesList.map(recipe => {
+          if (recipe.category.toLowerCase() === filterBy) {
+            foundItems.push(recipe)
+          }
+          setRecipesList(foundItems)
+        })
+      }
+
+      const filterByDiet = function(filterBy) {
+        // reloadRecipes();
+        foundItems = [];
+        recipesList.map(recipe => {
+          if (recipe.dietary.toLowerCase() === filterBy) {
+            foundItems.push(recipe)
+          }
+          setRecipesList(foundItems)
+        })
+      }
+
+      const filterByBreakfast = function() {
+        filterByCategory("breakfast");
+      }
+
+      const filterByLunch = function() {
+        filterByCategory("lunch");
+      }
+
+      const filterByDinner = function() {
+        filterByCategory("dinner");
+      }
+
+      const filterBySweet = function() {
+        filterByCategory("sweet");
+      }
+
+      const filterByVegan = function() {
+        filterByDiet("vegan");
+      }
+
+      const filterByVegetarian = function() {
+        filterByDiet("vegetarian");
+      }
+
+      const filterByGlutenFree = function() {
+        filterByDiet("gluten-free");
       }
 
       // const onRecipeClick = function(recipe) {
@@ -85,12 +142,26 @@ const RecipeBook = () => {
     return (
       <>
         <input onChange = {handleSearch} value = {searchTerm} type = "searchTerm" id = "searchTerm"/>
-        <button onClick = {search}>Search</button><button onClick = {() => fetch("http://localhost:5000/api/recipes")
-        .then(result => result.json())
-        .then(recipesJson => setRecipesList(recipesJson))}>Reset</button>
+        <button onClick = {search}>Search</button>
+        <button onClick = {reloadRecipes}>Reset</button>
+
         <h1>Your Recipes</h1>
-        Sort by: <button onClick = {sortName}>A - Z</button>
-        <button onClick = {sortDefault}>Newest</button>
+        <div>
+          Sort by: <button onClick = {sortName}>A - Z</button>
+          <button onClick = {sortDefault}>Newest</button>
+        </div>
+        <div>
+          Filter By: MEAL <button onClick = {filterByBreakfast}>Breakfast</button>
+          <button onClick = {filterByLunch}>Lunch</button>
+          <button onClick = {filterByDinner}>Dinner</button>
+          <button onClick = {filterBySweet}>Sweet</button>
+        </div>
+        <div>
+          DIET <button onClick = {filterByVegetarian}>Vegetarian</button>
+          <button onClick = {filterByVegan}>Vegan</button>
+          <button onClick = {filterByGlutenFree}>Gluten-Free</button>
+        </div>
+
         <RecipesList recipes={recipesList} />
       </>
     );
