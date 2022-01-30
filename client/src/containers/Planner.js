@@ -2,10 +2,12 @@ import React, {useState, useEffect, useMemo} from "react";
 import MealPlannerService from "./MealPlannerService";
 
 
+
+
 import '../static/CSS/planner.css'
 
 
-function Planner({removeMeal}){
+function Planner({removeMeal, data}){
 
     const PlannerApi = [
         {
@@ -20,7 +22,7 @@ function Planner({removeMeal}){
 
     const [recipesList, setRecipesList] = useState([]);
     const [recipeBookList, setRecipeBookList] = useState([]);
-
+    const [wordEntered, setWordEntered] = useState("");
 
     useEffect(() => {
         loadAllRecipesInPlanner(PlannerApi[0].url);
@@ -31,39 +33,51 @@ function Planner({removeMeal}){
         fetch(url)
         .then(result => result.json())
         .then(recipesJson => setRecipesList(recipesJson))
-    }
+    };
 
     const loadAllRecipes = url => {
         fetch(url)
         .then(result => result.json())
         .then(recipesJson => setRecipeBookList(recipesJson))
-    }
+    };
 
-    // make a dropdown menu
+    // make a dropdown menu 
 
-    // const handleRemove = ()=>{
-    //     console.log("delete button was pressed")
-    //     // console.log(recipe)
-    //     // const recipeid = recipe._id;
-    //     // const url = 'http://localhost:5000/api/planner/'
-    //     // MealPlannerService.deleteRecipe(recipeid,url).then(()=>{
-    //     //     removeMeal(recipeid)
-    //     // })
-    // }
+    const recipesSearchList=recipeBookList?.slice(0,15).map(recipeToSearch=>{
+            const handleClick = ()=>{
+                window.location.href = "/recipebook/" + recipeToSearch._id
+            }
+            return(
+                <div onClick={handleClick} target="_blank">
+                    <img className="button-image" src={recipeToSearch.image} width="70px"/>
+                    <p>{recipeToSearch.name}</p>
+                </div>
+            )
+        });    
 
+    const handleFilter = (event) => {
+        const searchWord = event.target.value;
+        setWordEntered(searchWord);
+        const newFilter = recipeBookList.filter((value) => {
+          return value.name.toLowerCase().includes(searchWord.toLowerCase());
+        });
+        if (searchWord === "") {
+            setRecipeBookList([]);
+        } else {
+            setRecipeBookList(newFilter);
+        }
+      };
+
+    const clearInput = () => {
+        setWordEntered("");
+        setRecipeBookList([]);
+      };
+        
     const plannerList= useMemo(() => recipesList?.map(recipe=>{
 
         const recipeId = recipe._id;
-        // const recipeIngredientList = recipe.ingredients.map(ingredient => {
-   
-        //     return(
-        //         <p>{ingredient.amount} {ingredient?.unit} {ingredient.ingredient} </p>
-            
-        //     )
-        // })
         return(
         <>
-            {/* <div className="link-container"> */}
                 <div className="button-group">
                     <img className="button-image" src={recipe.image} width="100px"/>
                     <p className="button-text">{recipe.name}</p>
@@ -81,7 +95,6 @@ function Planner({removeMeal}){
                         }
                     }} src="https://findicons.com/files/icons/1262/amora/256/delete.png" width="25px"/>
                 </div>
-            {/* </div> */}
         </>
     )}), [recipesList]);
 
@@ -89,12 +102,31 @@ function Planner({removeMeal}){
     return(
         <>
             <h1>Planner</h1>
-            {/* <select type="select"></select> */}
             <div className="link-container">
                 {plannerList}
             </div>
+
+            <div className="search">
+                <div className="searchInput">
+                    <input onChange = {handleFilter}
+                           type="text" 
+                           value={wordEntered}
+                           placeholder="Enter a recipe to search ..." />
+                    <div className="searchButton">
+                        {recipeBookList.length===0? (
+                        <button>Search</button>):(
+                        <button id="clearButton" onClick={clearInput}>Clear</button>
+                        )}
+                     </div>
+                </div>
+              
+                <div className="dataResult">
+                {recipesSearchList}
+            
+                </div>
+            </div>
         </>
-    );
+    )
 };
 
 export default Planner; 

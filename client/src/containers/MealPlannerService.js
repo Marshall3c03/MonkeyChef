@@ -3,7 +3,7 @@
 
 const MealPlannerService = {
 //     getRecipes () {
-//     return fetch(baseURL)
+//     return fetch(url)
 //         .then(res => res.json());
 // },
 
