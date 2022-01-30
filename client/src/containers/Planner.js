@@ -7,7 +7,7 @@ import MealPlannerService from "./MealPlannerService";
 import '../static/CSS/planner.css'
 
 
-function Planner({removeMeal, data}){
+function Planner({}){
 
     const PlannerApi = [
         {
@@ -41,23 +41,35 @@ function Planner({removeMeal, data}){
         .then(recipesJson => setRecipeBookList(recipesJson))
     };
 
-    // make a dropdown menu 
+    const recipesSearchList=recipeBookList?.map(recipeToSearch=>{
+            const handleAdding = ()=> {
+            const url = "http://localhost:5000/api/planner"
+            MealPlannerService.createRecipe(recipeToSearch, url)
+            } 
 
-    const recipesSearchList=recipeBookList?.slice(0,15).map(recipeToSearch=>{
             const handleClick = ()=>{
                 window.location.href = "/recipebook/" + recipeToSearch._id
             }
             return(
-                <div onClick={handleClick} target="_blank">
-                    <img className="button-image" src={recipeToSearch.image} width="70px"/>
-                    <p>{recipeToSearch.name}</p>
+                <>
+                <div className="recipe-group">
+                    <div onClick={handleClick} className="recipe" >
+                         <img className="image" src={recipeToSearch.image} width="70px"/>
+                         <p>{recipeToSearch.name}</p>
+                    </div>
+                    <div>
+                        <button onClick={handleAdding}>Add to Meal Plan</button>
+                    </div>  
                 </div>
+                </> 
             )
         });    
+
 
     const handleFilter = (event) => {
         const searchWord = event.target.value;
         setWordEntered(searchWord);
+        
         const newFilter = recipeBookList.filter((value) => {
           return value.name.toLowerCase().includes(searchWord.toLowerCase());
         });
@@ -113,16 +125,13 @@ function Planner({removeMeal, data}){
                            value={wordEntered}
                            placeholder="Enter a recipe to search ..." />
                     <div className="searchButton">
-                        {recipeBookList.length===0? (
-                        <button>Search</button>):(
-                        <button id="clearButton" onClick={clearInput}>Clear</button>
-                        )}
+                        <button >Search</button>
+                        <button onClick={clearInput}>Clear</button>
                      </div>
                 </div>
               
                 <div className="dataResult">
                 {recipesSearchList}
-            
                 </div>
             </div>
         </>
