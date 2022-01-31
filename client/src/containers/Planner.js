@@ -1,6 +1,8 @@
 import React, {useState, useEffect, useMemo} from "react";
 import MealPlannerService from "./MealPlannerService";
 import '../static/CSS/planner.css'
+import { useNavigate } from "react-router-dom";
+import MealRecipeService from "./MealRecipeService";
 
 
 function Planner({}){
@@ -52,7 +54,7 @@ function Planner({}){
                 window.location.href = "/recipebook/" + recipe._id
             }
             return(
-                <>
+            <>
                 <div className="recipe-group">
                     <div onClick={handleClick} className="recipe" >
                          <img className="image" src={recipe.image} width="70px"/>
@@ -62,7 +64,7 @@ function Planner({}){
                         <button onClick={handleAdding}>Add to Meal Plan</button>
                     </div>  
                 </div>
-                </> 
+            </> 
             )
         });    
 
@@ -70,40 +72,46 @@ function Planner({}){
     const handleFilter = (event) => {
         const searchWord = event.target.value;
         setWordEntered(searchWord);
-        
         if (searchWord === "") {
             setFilteredRecipeBookList(recipeBookList);
         } else {
             setFilteredRecipeBookList(recipeBookList.filter((value) => {
-                return value.name.toLowerCase().includes(searchWord.toLowerCase());
-              }));
+                return value.name.toLowerCase().includes(searchWord.toLowerCase())
+            }));
         }
-      };
+    };
 
     const clearInput = () => {
         setWordEntered("");
         setFilteredRecipeBookList(recipeBookList);
-      };
+    };
         
     const plannerList= useMemo(() => recipesList?.map(recipe=>{
 
         const recipeId = recipe._id;
+
+        const handleImageClick = ()=>{
+            window.location.href = "/recipebook/" + recipe._id
+        }
+
         return(
         <>
             <div className="button-group">
-                    <img className="button-image" src={recipe.image} width="100px"/>
-                    <p className="button-text">{recipe.name}</p>
-                    <img onClick={()=>{
-                        MealPlannerService.delete(recipeId).then(() => {
-                            var array = [...recipesList]; 
-                            var index = array.indexOf(recipe)
-                            if (index !== -1) {
-                              array.splice(index, 1);
-                              setRecipesList(array);
-                            }
+                <img onClick = {handleImageClick} className="button-image" src={recipe.image} width="100px"/>
+                <p className="button-text">{recipe.name}</p>
+                <img 
+                onClick={()=>{
+                    MealPlannerService.delete(recipeId).then(() => {
+                        var array = [...recipesList]; 
+                        var index = array.indexOf(recipe)
+                        if (index !== -1) {
+                            array.splice(index, 1);
+                            setRecipesList(array);
+                        }
                         });
-                    }} src="https://findicons.com/files/icons/1262/amora/256/delete.png" width="25px"/>
-                </div>
+                    }} 
+                src="https://findicons.com/files/icons/1262/amora/256/delete.png" width="25px"/>
+            </div>
         </>
     )}), [recipesList]);
 
