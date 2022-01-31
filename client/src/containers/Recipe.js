@@ -15,8 +15,8 @@ const Recipe = () => {
         MealRecipeService.getById(recipeId)
             .then(resultJson => setCurrentRecipe(resultJson))
 
-        MealPlannerService.getById(recipeId)
-            .then(resultJson => setCurrentRecipe(resultJson))
+        // MealPlannerService.getById(recipeId)
+        //     .then(resultJson => setCurrentRecipe(resultJson))
     }, []);
     
     const handleMinus = function() {
@@ -65,7 +65,13 @@ const Recipe = () => {
                         </div>
                         {fullIngredients}
                     </td>
-                    <td width = "70%"><p>{currentRecipe?.method}</p></td>
+                    <td width = "70%">
+                        <p><b>Method:</b> {currentRecipe?.method}</p>
+                        <p><b>Notes:</b>{currentRecipe?.notes}</p>
+                        <p><b>Category:</b>{currentRecipe?.category} </p>
+                        <p><b>Dietary:</b>{currentRecipe?.dietary} </p>
+                        <p><b>Recommended Servings:</b>{currentRecipe?.servings} </p>
+                    </td>
                 </tbody>
             </table>
             <button onClick={handleAdding}>Add Recipe to Meal Plan</button>

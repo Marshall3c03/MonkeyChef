@@ -1,0 +1,54 @@
+.form-wrap{
+    display:flex;
+    padding-top: 5%;
+    width: 55%;
+    margin: auto;
+}
+
+select{
+    width: 200px;
+    height: 35px;
+    padding: 10px;
+    border-radius: 20px;
+    border: 1px solid grey;
+    width: 50%;
+    min-width: 300px;
+    margin-right: 5px;
+}
+
+option{
+    font-size: 15px;
+}
+
+input{
+    height: 10%;
+    width: 50%;
+    box-sizing: border-box;
+}
+
+
+
+label{
+    font-weight: bold;
+    font-size: 20px;
+}
+.ingredients{
+    font-size: 25px;
+}
+
+.ingredient-form{
+    padding-right: 80px;
+}
+
+td{
+    padding-right:50px;
+    min-width: 80px;
+}
+
+
+
+
+
+
+
+
