@@ -5,7 +5,7 @@ const ShoppingList = () => {
     const RecipesApi = [
         {
           name: "recipes", 
-          url: "http://localhost:5000/api/recipes"
+          url: "http://localhost:5000/api/planner"
         }
       ]
   
@@ -70,7 +70,7 @@ const ShoppingList = () => {
       // const quantityAndUnit = {quantity: "blarg",
       // unit: item.unit}
 
-      const quantity = parseInt(item.amount);
+      const quantity = parseFloat(item.amount);
       let unit = item.unit;
       // console.log(unit)
 

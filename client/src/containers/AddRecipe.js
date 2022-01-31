@@ -5,7 +5,7 @@ import MealRecipeService from "./MealRecipeService";
 const AddRecipe = ({addRecipe})=>{
 
     const [name, setName] = useState("");
-    const [amount, setAmount] = useState();
+    const [amount, setAmount] = useState("");
     const [unit, setUnit] = useState(undefined);
     const [ingredient, setIngredient] = useState("");
     const [ingredients, setIngredients] = useState([]);
@@ -14,7 +14,7 @@ const AddRecipe = ({addRecipe})=>{
     const [servings, setServings]=useState()
 
     const handleNameChange = (ev) => setName(ev.target.value);
-    const handleAmountChange = (ev) => setAmount(parseInt(ev.target.value));
+    const handleAmountChange = (ev) => setAmount(parseFloat(ev.target.value));
     const handleUnitChange = (ev) => setUnit(ev.target.value === "" ? undefined : ev.target.value);
     const handleIngredientChange = (ev) => setIngredient(ev.target.value);
     const handleMethodChange = (ev) => setMethod(ev.target.value);
