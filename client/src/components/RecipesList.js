@@ -20,8 +20,7 @@ const RecipesList = ({recipes} )=>{
                     <img onClick={handleClick} className="button-image" src={recipe.image} width="100px"/>
                     <p className="button-text">{recipe.name}</p>
                     <img onClick={()=>{
-                        const url = 'http://localhost:5000/api/planner/';
-                        MealPlannerService.createRecipe(recipe,url);
+                        MealPlannerService.create(recipe);
                     }} src="https://icons.iconarchive.com/icons/martz90/circle-addon1/48/text-plus-icon.png" width="25px"/>
                 </div>
                
