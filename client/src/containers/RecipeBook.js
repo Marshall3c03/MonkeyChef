@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from "react";
 import RecipesList from "../components/RecipesList";
-import Recipe from "./Recipe";
-import RecipeDetail from "./RecipeDetail";
+import MealRecipeService from "./MealRecipeService";
 
 import '../static/CSS/recipebook.css'
 
@@ -81,13 +80,15 @@ const RecipeBook = () => {
       // const onRecipeClick = function(recipe) {
       //   setSelectedRecipe(recipe);
       // }
+      const resetOnClick = () => {
+        MealRecipeService.getAll()
+          .then(recipesJson => setRecipesList(recipesJson))
+      };
 
     return (
       <>
         <input onChange = {handleSearch} value = {searchTerm} type = "searchTerm" id = "searchTerm"/>
-        <button onClick = {search}>Search</button><button onClick = {() => fetch("http://localhost:5000/api/recipes")
-        .then(result => result.json())
-        .then(recipesJson => setRecipesList(recipesJson))}>Reset</button>
+        <button onClick = {search}>Search</button><button onClick = {resetOnClick}>Reset</button>
         <h1>Your Recipes</h1>
         Sort by: <button onClick = {sortName}>A - Z</button>
         <button onClick = {sortDefault}>Newest</button>

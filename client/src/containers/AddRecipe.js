@@ -1,6 +1,6 @@
 import {useState} from "react";
-import Recipe from "./Recipe";
-import MealPlannerService from "./MealPlannerService";
+import MealRecipeService from "./MealRecipeService";
+
 
 const AddRecipe = ({addRecipe})=>{
 
@@ -60,8 +60,7 @@ const AddRecipe = ({addRecipe})=>{
             "image" : image,
             "method": method,
         };
-        const url = "http://localhost:5000/api/recipes"
-        MealPlannerService.createRecipe(newRecipe, url).then(() => clearState());
+        MealRecipeService.create(newRecipe).then(() => clearState());
     };
     
     return(

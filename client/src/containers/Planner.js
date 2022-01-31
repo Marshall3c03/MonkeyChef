@@ -22,6 +22,7 @@ function Planner({}){
 
     const [recipesList, setRecipesList] = useState([]);
     const [recipeBookList, setRecipeBookList] = useState([]);
+    const [filteredRecipeBookList, setFilteredRecipeBookList] = useState([]);
     const [wordEntered, setWordEntered] = useState("");
 
     useEffect(() => {
@@ -38,24 +39,26 @@ function Planner({}){
     const loadAllRecipes = url => {
         fetch(url)
         .then(result => result.json())
-        .then(recipesJson => setRecipeBookList(recipesJson))
+        .then(recipesJson => {
+            setRecipeBookList(recipesJson);
+            setFilteredRecipeBookList(recipesJson);
+        })
     };
 
-    const recipesSearchList=recipeBookList?.map(recipeToSearch=>{
+    const recipesSearchList = filteredRecipeBookList?.map(recipe=>{
             const handleAdding = ()=> {
-            const url = "http://localhost:5000/api/planner"
-            MealPlannerService.createRecipe(recipeToSearch, url)
+                MealPlannerService.create(recipe)
+                .then(savedRecipe => setRecipesList([...recipesList, savedRecipe]))
             } 
-
             const handleClick = ()=>{
-                window.location.href = "/recipebook/" + recipeToSearch._id
+                window.location.href = "/recipebook/" + recipe._id
             }
             return(
                 <>
                 <div className="recipe-group">
                     <div onClick={handleClick} className="recipe" >
-                         <img className="image" src={recipeToSearch.image} width="70px"/>
-                         <p>{recipeToSearch.name}</p>
+                         <img className="image" src={recipe.image} width="70px"/>
+                         <p>{recipe.name}</p>
                     </div>
                     <div>
                         <button onClick={handleAdding}>Add to Meal Plan</button>
@@ -70,19 +73,18 @@ function Planner({}){
         const searchWord = event.target.value;
         setWordEntered(searchWord);
         
-        const newFilter = recipeBookList.filter((value) => {
-          return value.name.toLowerCase().includes(searchWord.toLowerCase());
-        });
         if (searchWord === "") {
-            setRecipeBookList([]);
+            setFilteredRecipeBookList(recipeBookList);
         } else {
-            setRecipeBookList(newFilter);
+            setFilteredRecipeBookList(recipeBookList.filter((value) => {
+                return value.name.toLowerCase().includes(searchWord.toLowerCase());
+              }));
         }
       };
 
     const clearInput = () => {
         setWordEntered("");
-        setRecipeBookList([]);
+        setFilteredRecipeBookList(recipeBookList);
       };
         
     const plannerList= useMemo(() => recipesList?.map(recipe=>{
@@ -90,21 +92,18 @@ function Planner({}){
         const recipeId = recipe._id;
         return(
         <>
-                <div className="button-group">
+            <div className="button-group">
                     <img className="button-image" src={recipe.image} width="100px"/>
                     <p className="button-text">{recipe.name}</p>
                     <img onClick={()=>{
-                        // console.log(recipeId);
-                        const url = 'http://localhost:5000/api/planner/';
-                        MealPlannerService.deleteRecipe(recipeId,url);
-                        // console.log("You clicked the delete button");
-                        // console.log(url + recipeId);
-                        var array = [...recipesList]; 
-                        var index = array.indexOf(recipe)
-                        if (index !== -1) {
-                          array.splice(index, 1);
-                          setRecipesList(array);
-                        }
+                        MealPlannerService.delete(recipeId).then(() => {
+                            var array = [...recipesList]; 
+                            var index = array.indexOf(recipe)
+                            if (index !== -1) {
+                              array.splice(index, 1);
+                              setRecipesList(array);
+                            }
+                        });
                     }} src="https://findicons.com/files/icons/1262/amora/256/delete.png" width="25px"/>
                 </div>
         </>

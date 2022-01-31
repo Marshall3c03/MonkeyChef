@@ -1,6 +1,7 @@
 import react, {useEffect, useState} from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import MealPlannerService from "./MealPlannerService";
+import MealRecipeService from "./MealRecipeService";
 
 const Recipe = () => {
     const navigate = useNavigate(); 
@@ -21,13 +22,11 @@ const Recipe = () => {
     const numOfServings = 4;
 
     const handleAdding = ()=> {
-        const url = "http://localhost:5000/api/planner"
-        MealPlannerService.createRecipe(currentRecipe, url)
+        MealPlannerService.create(currentRecipe)
     }
 
     useEffect(()=>{
-        fetch(`http://localhost:5000/api/recipes/${recipeId}`)
-            .then(result => result.json())
+        MealRecipeService.getById(recipeId)
             .then(resultJson => setCurrentRecipe(resultJson))
     }, []);
 

@@ -1,6 +1,16 @@
-const baseURL = "http://localhost:5000/api/planner/"
+ const baseURL = "http://localhost:5000/api/recipes/"
 
-const MealPlannerService = {
+const MealRecipeService = {
+    getById(recipeId) {
+        return fetch(baseURL + recipeId)
+        .then(result => result.json())
+    },
+
+    getAll() {
+        return fetch(baseURL)
+        .then(result => result.json())
+    },
+
     create (recipe){
         return fetch(baseURL, {
             method: 'POST',
@@ -22,4 +32,4 @@ const MealPlannerService = {
         }) 
     }
 }
-export default MealPlannerService;
+export default MealRecipeService;
