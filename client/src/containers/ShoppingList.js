@@ -5,7 +5,7 @@ const ShoppingList = () => {
     const RecipesApi = [
         {
           name: "recipes", 
-          url: "http://localhost:5000/api/recipes"
+          url: "http://localhost:5000/api/planner"
         }
       ]
   
