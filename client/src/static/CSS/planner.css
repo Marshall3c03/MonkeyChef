@@ -6,6 +6,10 @@
     align-items: center;
     margin-bottom: 50px;
 }
+.search {
+    display:flex;
+    flex-direction: column;
+}
 
 .button-group {
     margin: var(--page-button-group-margin);
@@ -48,6 +52,46 @@
     flex-direction: column;
 }
 
+.image {
+    margin-left:0%;
+    float:left; 
+    height:40px;
+    width:40px;
+    margin-right:7px;
+    } 
+   
+   .recipe-group {
+   width:250px;
+   height:70px;
+   padding:1px;
+ 
+
+   }
+   .recipe p {
+   margin:1px;
+   margin-top:3%;
+   }
+
+
+.button-image{
+    border-radius: 10px;
+}
+
+.search input {
+    background-color: white;
+    border-color: black;
+    border-radius: 10px;
+    font-size: 18px;
+    padding: 15px;
+    height: 30px;
+    width: 220px;
+  }
+  
+  .searchInputs {
+    margin-top: 105px;
+    display: flex;
+  }
+  
 .button-text {
     padding-bottom: 10px;
 }

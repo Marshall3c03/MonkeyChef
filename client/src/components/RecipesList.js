@@ -11,7 +11,7 @@ const RecipesList = ({recipes, onRecipeClick} )=>{
             window.location.href = "/recipebook/" + recipe._id
         }
 
-        // const url = "/recipebook/" + recipe._id
+       
 
         return(
             <div onClick={handleClick}className="button-group" key={recipe._id}>

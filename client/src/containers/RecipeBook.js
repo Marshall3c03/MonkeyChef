@@ -1,8 +1,6 @@
 import React, {useEffect, useState} from "react";
 import RecipesList from "../components/RecipesList";
-import Recipe from "./Recipe";
-import RecipeDetail from "./RecipeDetail";
-
+import MealRecipeService from "./MealRecipeService";
 import '../static/CSS/recipebook.css'
 
 // import { useMatch } from "@reach/router"
@@ -142,18 +140,19 @@ const RecipeBook = () => {
 
       // const onRecipeClick = function(recipe) {
       //   setSelectedRecipe(recipe);
-      // }
+      // }  
+
+      // const resetOnClick = () => {
+      //   MealRecipeService.getAll()
+      //     .then(recipesJson => setRecipesList(recipesJson))
+      // };
 
     return (
       <>
         <input onChange = {handleSearch} value = {searchTerm} type = "searchTerm" id = "searchTerm"/>
-        <button onClick = {search}>Search</button>
-        <button onClick = {reloadRecipes}>Reset</button>
-
         <h1>Your Recipes</h1>
         <div>
           Sort by: <button onClick = {sortName}>A - Z</button>
-          <button onClick = {sortDefault}>Newest</button>
 
           Filter By: MEAL <button onClick = {filterByBreakfast}>Breakfast</button>
           <button onClick = {filterByLunch}>Lunch</button>
