@@ -1,23 +1,31 @@
-import react, { useState } from "react";
+import react, { useState, useEffect} from "react";
 import Recipe from "../containers/Recipe";
+import MealPlannerService from "../containers/MealPlannerService";
 
-const RecipesList = ({recipes, onRecipeClick} )=>{
 
-    // const [recipies, setRecipes]=useState([])    
-
+const RecipesList = ({recipes} )=>{
+   
     let listOfRecipes = recipes.map(recipe => {
+        
+        const recipeId = recipe._id;
 
         const handleClick = ()=>{
-            window.location.href = "/recipebook/" + recipe._id
+            window.location.href = "/recipebook/" + recipeId
         }
-
-        // const url = "/recipebook/" + recipe._id
+          
 
         return(
-            <div onClick={handleClick}className="button-group" key={recipe._id}>
-                <img className="button-image" src={recipe.image} width="100px"/>
-                <p className="button-text">{recipe.name}</p>
-            </div>
+            <>
+                <div className="button-group" key={recipe}>
+                    <img onClick={handleClick} className="button-image" src={recipe.image} width="100px"/>
+                    <p className="button-text">{recipe.name}</p>
+                    <img onClick={()=>{
+                        const url = 'http://localhost:5000/api/planner/';
+                        MealPlannerService.createRecipe(recipe,url);
+                    }} src="https://icons.iconarchive.com/icons/martz90/circle-addon1/48/text-plus-icon.png" width="25px"/>
+                </div>
+               
+            </>
         )
     });
 
