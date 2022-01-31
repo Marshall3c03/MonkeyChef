@@ -81,8 +81,8 @@ const RecipeBook = () => {
       }
 
       const filterByCategory = function(filterBy) {
-        console.log("filterBy", filterBy);
-        console.log("recipeList", displayedRecipesList);
+        // console.log("filterBy", filterBy);
+        // console.log("recipeList", displayedRecipesList);
         foundItems = [];
         permanantRecipesList.map(recipe => {
           if (recipe.category.toLowerCase() === filterBy) {
@@ -94,8 +94,8 @@ const RecipeBook = () => {
       }
 
       const filterByDiet = function(filterBy) {
-        console.log("filterbydiet", "button pressed")
-        console.log(filterBy)
+        // console.log("filterbydiet", "button pressed")
+        // console.log(filterBy)
         foundItems = [];
         console.log(foundItems);
         permanantRecipesList.map(recipe=> {
@@ -149,10 +149,10 @@ const RecipeBook = () => {
 
     return (
       <>
-        <input onChange = {handleSearch} value = {searchTerm} type = "searchTerm" id = "searchTerm"/>
+        <input onChange = {handleSearch} value = {searchTerm} type = "searchTerm" id = "searchTerm"/><button onClick = {search}>Search</button><button onClick = {reloadRecipes}>Reset</button>
         <h1>Your Recipes</h1>
         <div>
-          Sort by: <button onClick = {sortName}>A - Z</button>
+          Sort by: <button onClick = {sortName}>A - Z</button><button onClick = {sortDefault}>Newest</button>
 
           Filter By: MEAL <button onClick = {filterByBreakfast}>Breakfast</button>
           <button onClick = {filterByLunch}>Lunch</button>

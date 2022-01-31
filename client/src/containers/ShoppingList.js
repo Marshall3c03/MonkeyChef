@@ -37,7 +37,6 @@ const ShoppingList = () => {
                 <>
                 <a>{ingredient.amount}{ingredient.unit} {ingredient.ingredient}</a><br />
                 </>
-
                    
         )})
         

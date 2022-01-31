@@ -77,7 +77,7 @@ const AddRecipe = ({addRecipe})=>{
             <br/>
 
             <label htmlFor="amount">Amount:</label>
-            <input onChange={handleAmountChange} type="number" id="amount" value={amount} required placeholder="Enter amount"/>
+            <input onChange={handleAmountChange} type="number" id="amount" value={amount} required/>
 
             <label htmlFor="unit">Unit:</label>
             <select onChange={handleUnitChange} type="text" name="unit" id="unit" value={unit}>
