@@ -11,6 +11,7 @@ const AddRecipe = ({addRecipe})=>{
     const [ingredients, setIngredients] = useState([]);
     const [image, setImage] = useState();
     const [method, setMethod] = useState();
+    const [servings, setServings]=useState()
 
     const handleNameChange = (ev) => setName(ev.target.value);
     const handleAmountChange = (ev) => setAmount(parseInt(ev.target.value));
@@ -18,6 +19,8 @@ const AddRecipe = ({addRecipe})=>{
     const handleIngredientChange = (ev) => setIngredient(ev.target.value);
     const handleMethodChange = (ev) => setMethod(ev.target.value);
     const handleImageChange = (ev) => setImage(ev.target.value);
+    const handleServingsChange = (ev) => setServings(parseInt(ev.target.value));
+
 
     const clearState= ()=>{
         setName("");
@@ -27,6 +30,7 @@ const AddRecipe = ({addRecipe})=>{
         setIngredients([]);
         setMethod("");
         setImage("");
+        setServings();
     }
     
     const handleNewIngredientClick = (e) => {
@@ -59,6 +63,7 @@ const AddRecipe = ({addRecipe})=>{
             "ingredients": ingredients,
             "image" : image,
             "method": method,
+            "servings": servings
         };
         MealRecipeService.create(newRecipe).then(() => clearState());
     };
@@ -77,13 +82,13 @@ const AddRecipe = ({addRecipe})=>{
             <label htmlFor="unit">Unit:</label>
             <select onChange={handleUnitChange} type="text" name="unit" id="unit" value={unit}>
                     <option value={undefined}></option>
-                    <option value="kg">Kg</option>
+                    <option value="kg">kg</option>
                     <option value="g">g</option>
-                    <option value="l">L</option>
+                    <option value="l">l</option>
                     <option value="tbsp">tbsp</option>
                     <option value="ml">ml</option>
                     <option value="tsp">tsp</option>
-                    <option value="cup">Cup</option>
+                    <option value="cup">cup</option>
             </select>
 
             <label htmlFor="ingredient">Ingredient:</label>
@@ -97,6 +102,10 @@ const AddRecipe = ({addRecipe})=>{
                 <label htmlFor="name">Name:</label>
                 <input onChange={handleNameChange} type="name" id="name" value={name} required />
             </div>
+            <div>
+                <label htmlFor="servings">Servings:</label>
+                <input onChange={handleServingsChange} type="number" value={servings}  id="servings" />
+            </div> 
             <br/>
             <div>
                 <label htmlFor="image">Image URL:</label>
@@ -111,6 +120,7 @@ const AddRecipe = ({addRecipe})=>{
                 <label htmlFor="method">Method:</label>
                 <input onChange={handleMethodChange} type="text" id="method" value={method} width="500px" />
             </div>
+
             {allIngredients()}
             <input type="submit" value="Save" id="save"/>
 	    </form>

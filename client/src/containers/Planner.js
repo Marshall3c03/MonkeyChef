@@ -1,9 +1,5 @@
 import React, {useState, useEffect, useMemo} from "react";
 import MealPlannerService from "./MealPlannerService";
-
-
-
-
 import '../static/CSS/planner.css'
 
 
@@ -22,6 +18,7 @@ function Planner({}){
 
     const [recipesList, setRecipesList] = useState([]);
     const [recipeBookList, setRecipeBookList] = useState([]);
+    const [displayedRecipesList, setDisplayedRecipesList] = useState([]);
     const [filteredRecipeBookList, setFilteredRecipeBookList] = useState([]);
     const [wordEntered, setWordEntered] = useState("");
 
@@ -34,7 +31,8 @@ function Planner({}){
         fetch(url)
         .then(result => result.json())
         .then(recipesJson => setRecipesList(recipesJson))
-    };
+        .then(recipesJson => setDisplayedRecipesList(recipesJson))
+    }
 
     const loadAllRecipes = url => {
         fetch(url)
