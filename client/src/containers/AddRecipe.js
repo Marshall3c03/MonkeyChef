@@ -85,7 +85,7 @@ const AddRecipe = ({addRecipe})=>{
     
     return(
         <>
-       
+       <h1>Recipe Form</h1>
         <div className="form-wrap">
             <form className="ingredient-form" onSubmit={handleNewIngredientClick} id="ingredient-form" >
             
