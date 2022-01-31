@@ -88,14 +88,13 @@ const AddRecipe = ({addRecipe})=>{
                 <label htmlFor="unit">Unit:</label>
                 <select onChange={handleUnitChange} name="unit" id="unit">
                         <option  value={unit}></option>
-                        <option value="kg">Kg</option>
+                        <option value="kg">kg</option>
                         <option value="g">g</option>
-                        <option value="l">L</option>
+                        <option value="l">l</option>
                         <option value="tbsp">tbsp</option>
                         <option value="ml">ml</option>
                         <option value="tsp">tsp</option>
-                        <option value="cup">Cup</option>
-
+                        <option value="cup">cup</option>
                 </select>
 
 

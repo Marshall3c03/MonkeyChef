@@ -35,23 +35,23 @@ const HomePage = ()=>{
         </div>
 
         <div className="link-container">
-            <div className="button-group" onClick={() => handleClick("/addrecipe")}>
-                <img className="button-image" src={require('../static/CSS/graphics/AddRecipe.png')} width="100%"/>
+            <div className="home-button-group" onClick={() => handleClick("/addrecipe")}>
+                <img className="home-button-image" src={require('../static/CSS/graphics/AddRecipe.png')} width="100%"/>
                 <p className="button-title" >Add <br />Recipe</p>
             </div>
 
-            <div className="button-group" onClick={() => handleClick("/recipebook")}>
-                <img className="button-image" src={require('../static/CSS/graphics/RecipeBook.png')} width="100%"/>
+            <div className="home-button-group" onClick={() => handleClick("/recipebook")}>
+                <img className="home-button-image" src={require('../static/CSS/graphics/RecipeBook.png')} width="100%"/>
                 <p className="button-title" >Recipe <br />Book</p>
             </div>
 
-            <div className="button-group" onClick={() => handleClick("/planner")}>
-                <img className="button-image" src={require('../static/CSS/graphics/WeeklyPlanner.png')} width="100%"/>
+            <div className="home-button-group" onClick={() => handleClick("/planner")}>
+                <img className="home-button-image" src={require('../static/CSS/graphics/WeeklyPlanner.png')} width="100%"/>
                 <p className="button-title" >Weekly <br />Planner</p>
             </div>
 
-            <div className="button-group" onClick={() => handleClick("/shoppingList")}>
-                <img className="button-image" src={require('../static/CSS/graphics/ShoppingList.png')} width="100%"/>
+            <div className="home-button-group" onClick={() => handleClick("/shoppingList")}>
+                <img className="home-button-image" src={require('../static/CSS/graphics/ShoppingList.png')} width="100%"/>
                 <p className="button-title" >Shopping <br />List</p>
             </div>
         </div>

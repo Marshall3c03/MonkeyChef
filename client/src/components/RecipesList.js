@@ -15,7 +15,7 @@ const RecipesList = ({recipes, onRecipeClick} )=>{
 
         return(
             <div onClick={handleClick}className="button-group" key={recipe._id}>
-                <img className="button-image" src={recipe.image} width="100px"/>
+                <img className="button-image" src={recipe.image} width="100px" height="200px"/>
                 <p className="button-text">{recipe.name}</p>
             </div>
         )

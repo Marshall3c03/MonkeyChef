@@ -4,12 +4,13 @@ import add from '../static/CSS/graphics/AddRecipeIcon.png'
 import book from '../static/CSS/graphics/RecipeBookIcon.png'
 import planner from '../static/CSS/graphics/WeeklyPlannerIcon.png'
 import shoppinglist from '../static/CSS/graphics/ShoppingListIcon.png'
+import logo from '../static/CSS/graphics/MonkeyChefLogoIcon.png'
 
 
 export const SidebarData = [
     {
         onClick: (navigate) => navigate('/'),
-        icon: home,
+        icon: logo,
         cName: 'nav-text'
     },
     {

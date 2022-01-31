@@ -19,14 +19,14 @@ const RecipeBook = () => {
         }
       ]
 
-      const [recipesList, setRecipesList] = useState([]);
+      const [displayedRecipesList, setDisplayedRecipesList] = useState([]);
+      const [permanantRecipesList, setPermanantRecipesList] = useState([]);
       const [searchTerm, setSearchTerm] = useState([]);
 
       const handleSearch = (ev) => setSearchTerm(ev.target.value);
 
       useEffect(() => {
             loadRecipes(RecipesApi[0].url)
-            loadSearchJson(RecipesApi[0].url)
             return () => {
             }
         }, [])
@@ -34,28 +34,26 @@ const RecipeBook = () => {
       const loadRecipes = url => {
         fetch(url)
         .then(result => result.json())
-        .then(recipesJson => setRecipesList(recipesJson))
+        .then(recipesJson => {
+          setDisplayedRecipesList(recipesJson)
+          setPermanantRecipesList(recipesJson)})
         }
 
-        const loadSearchJson = url => {
-          fetch(url)
-          .then(result => result.json())
-          .then(recipesJson => setRecipesList(recipesJson))
-          }
+      
 
         const reloadRecipes = () => { fetch("http://localhost:5000/api/recipes")
           .then(result => result.json())
-          .then(recipesJson => setRecipesList(recipesJson))
-        }
+          .then(recipesJson => setDisplayedRecipesList(recipesJson))
+              }
 
-      const recipeByTitle = recipesList.slice(0);
+      const recipeByTitle = displayedRecipesList.slice(0);
       recipeByTitle.sort(function(a,b) {
           let x = a.name.toLowerCase();
           let y = b.name.toLowerCase();
       return x < y ? -1 : x > y ? 1 : 0;
       });
 
-      const recipeByDefault = recipesList.slice(0);
+      const recipeByDefault = displayedRecipesList.slice(0);
       recipeByDefault.sort(function(a,b) {
           let x = a._id;
           let y = b._id;
@@ -63,11 +61,11 @@ const RecipeBook = () => {
       });
 
       const sortName = function() {
-        setRecipesList(recipeByTitle);
+        setDisplayedRecipesList(recipeByTitle);
       }
 
       const sortDefault = function() {
-        setRecipesList(recipeByDefault.reverse());
+        setDisplayedRecipesList(recipeByDefault.reverse());
       }
 
 
@@ -75,36 +73,36 @@ const RecipeBook = () => {
 
       const search = function() {
         foundItems = [];
-        recipesList.map(recipe => {
+        displayedRecipesList.map(recipe => {
           if (recipe.name.toLowerCase().includes(searchTerm.toLowerCase()) === true) {
             foundItems.push(recipe)
-          } else if (recipe.method.toLowerCase().includes(searchTerm.toLowerCase()) === true) {
-              foundItems.push(recipe)
           }
-          setRecipesList(foundItems)
+          setDisplayedRecipesList(foundItems)
+          document.getElementById('searchTerm').value = ''
         })
       }
 
       const filterByCategory = function(filterBy) {
-        // reloadRecipes();
+        console.log("filterBy", filterBy);
+        console.log("recipeList", displayedRecipesList);
         foundItems = [];
-        recipesList.map(recipe => {
+        permanantRecipesList.map(recipe => {
           if (recipe.category.toLowerCase() === filterBy) {
             foundItems.push(recipe)
           }
-          setRecipesList(foundItems)
         })
+        console.log("FoundItems", foundItems);
+        setDisplayedRecipesList(foundItems)
       }
 
       const filterByDiet = function(filterBy) {
-        // reloadRecipes();
         foundItems = [];
-        recipesList.map(recipe => {
+        displayedRecipesList.map(recipe => {
           if (recipe.dietary.toLowerCase() === filterBy) {
             foundItems.push(recipe)
           }
-          setRecipesList(foundItems)
         })
+        setDisplayedRecipesList(foundItems)
       }
 
       const filterByBreakfast = function() {
@@ -149,20 +147,18 @@ const RecipeBook = () => {
         <div>
           Sort by: <button onClick = {sortName}>A - Z</button>
           <button onClick = {sortDefault}>Newest</button>
-        </div>
-        <div>
+
           Filter By: MEAL <button onClick = {filterByBreakfast}>Breakfast</button>
           <button onClick = {filterByLunch}>Lunch</button>
           <button onClick = {filterByDinner}>Dinner</button>
           <button onClick = {filterBySweet}>Sweet</button>
-        </div>
-        <div>
+
           DIET <button onClick = {filterByVegetarian}>Vegetarian</button>
           <button onClick = {filterByVegan}>Vegan</button>
           <button onClick = {filterByGlutenFree}>Gluten-Free</button>
         </div>
 
-        <RecipesList recipes={recipesList} />
+        <RecipesList recipes={displayedRecipesList} />
       </>
     );
 };
