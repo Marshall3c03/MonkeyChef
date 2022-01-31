@@ -149,10 +149,10 @@ const RecipeBook = () => {
 
     return (
       <>
-        <input onChange = {handleSearch} value = {searchTerm} type = "searchTerm" id = "searchTerm"/>
+        <input onChange = {handleSearch} value = {searchTerm} type = "searchTerm" id = "searchTerm"/><button onClick = {search}>search</button><button onClick = {reloadRecipes}>Reset</button>
         <h1>Your Recipes</h1>
         <div>
-          Sort by: <button onClick = {sortName}>A - Z</button>
+          Sort by: <button onClick = {sortName}>A - Z</button><button onClick = {sortDefault}>Newest</button>
 
           Filter By: MEAL <button onClick = {filterByBreakfast}>Breakfast</button>
           <button onClick = {filterByLunch}>Lunch</button>

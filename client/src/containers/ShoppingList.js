@@ -70,7 +70,7 @@ const ShoppingList = () => {
       // const quantityAndUnit = {quantity: "blarg",
       // unit: item.unit}
 
-      const quantity = parseInt(item.amount);
+      const quantity = parseFloat(item.amount);
       let unit = item.unit;
       // console.log(unit)
 

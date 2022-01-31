@@ -14,7 +14,7 @@ const AddRecipe = ({addRecipe})=>{
     const [servings, setServings]=useState()
 
     const handleNameChange = (ev) => setName(ev.target.value);
-    const handleAmountChange = (ev) => setAmount(parseInt(ev.target.value));
+    const handleAmountChange = (ev) => setAmount(parseFloat(ev.target.value));
     const handleUnitChange = (ev) => setUnit(ev.target.value === "" ? undefined : ev.target.value);
     const handleIngredientChange = (ev) => setIngredient(ev.target.value);
     const handleMethodChange = (ev) => setMethod(ev.target.value);
@@ -77,7 +77,7 @@ const AddRecipe = ({addRecipe})=>{
             <br/>
 
             <label htmlFor="amount">Amount:</label>
-            <input onChange={handleAmountChange} type="number" id="amount" value={amount} required placeholder="Enter amount"/>
+            <input onChange={handleAmountChange} type="number" id="amount" value={amount} required/>
 
             <label htmlFor="unit">Unit:</label>
             <select onChange={handleUnitChange} type="text" name="unit" id="unit" value={unit}>
