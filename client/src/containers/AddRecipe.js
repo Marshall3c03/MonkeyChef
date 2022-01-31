@@ -14,7 +14,7 @@ const AddRecipe = ({addRecipe})=>{
 
     const handleNameChange = (ev) => setName(ev.target.value);
     const handleAmountChange = (ev) => setAmount(parseInt(ev.target.value));
-    const handleUnitChange = (ev) => setUnit(ev.target.value);
+    const handleUnitChange = (ev) => setUnit(ev.target.value === "" ? undefined : ev.target.value);
     const handleIngredientChange = (ev) => setIngredient(ev.target.value);
     const handleMethodChange = (ev) => setMethod(ev.target.value);
     const handleImageChange = (ev) => setImage(ev.target.value);
@@ -31,6 +31,9 @@ const AddRecipe = ({addRecipe})=>{
     
     const handleNewIngredientClick = (e) => {
         e.preventDefault();
+        setAmount();
+        setUnit(undefined);
+        setIngredient("");
         // console.log("you clicked new ingredient")
         const newIngredient =
             {"amount" : amount,
@@ -38,9 +41,6 @@ const AddRecipe = ({addRecipe})=>{
              "ingredient": ingredient
             };
         setIngredients([...ingredients, newIngredient])
-        setIngredient("");
-        setAmount();
-        setUnit(undefined)
     };
 
     const allIngredients = ()=>{
@@ -66,6 +66,32 @@ const AddRecipe = ({addRecipe})=>{
     return(
         <>
         <h2>Add a Recipe</h2>
+
+        <form onSubmit={handleNewIngredientClick} id="ingredient-form" >
+            <label htmlFor="ingredients">Ingredients:</label>
+            <br/>
+
+            <label htmlFor="amount">Amount:</label>
+            <input onChange={handleAmountChange} type="number" id="amount" value={amount} required placeholder="Enter amount"/>
+
+            <label htmlFor="unit">Unit:</label>
+            <select onChange={handleUnitChange} type="text" name="unit" id="unit" value={unit}>
+                    <option value={undefined}></option>
+                    <option value="kg">Kg</option>
+                    <option value="g">g</option>
+                    <option value="l">L</option>
+                    <option value="tbsp">tbsp</option>
+                    <option value="ml">ml</option>
+                    <option value="tsp">tsp</option>
+                    <option value="cup">Cup</option>
+            </select>
+
+            <label htmlFor="ingredient">Ingredient:</label>
+            <input onChange={handleIngredientChange} type="text" id="ingredient" value={ingredient}/>
+
+            <input type="submit" value="+" id="save"/>   
+        </form>
+        <br/>
         <form method= "post" onSubmit={handleSubmit} id="recipe-form" >
             <div className="formWrap">
                 <label htmlFor="name">Name:</label>
@@ -77,31 +103,7 @@ const AddRecipe = ({addRecipe})=>{
                 <input onChange={handleImageChange} type="text" value={image}  id="image" />
             </div>    
             <div className="formWrap">
-                <label htmlFor="ingredients">Ingredients:</label>
 
-                <br/>
-
-                <label htmlFor="amount">Amount:</label>
-                <input onChange={handleAmountChange} type="number" id="amount" value={amount}  required placeholder="Enter amount"/>
-
-                <label htmlFor="unit">Unit:</label>
-                <select onChange={handleUnitChange} name="unit" id="unit">
-                        <option  value={unit}></option>
-                        <option value="kg">Kg</option>
-                        <option value="g">g</option>
-                        <option value="l">L</option>
-                        <option value="tbsp">tbsp</option>
-                        <option value="ml">ml</option>
-                        <option value="tsp">tsp</option>
-                        <option value="cup">Cup</option>
-
-                </select>
-
-
-                <label htmlFor="ingredient">Ingredient:</label>
-                <input onChange={handleIngredientChange} type="text" id="ingredient" value={ingredient}/>
-
-                <button onClick={handleNewIngredientClick}>+</button>
             </div>
             <br/>
            
