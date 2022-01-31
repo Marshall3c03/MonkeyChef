@@ -96,14 +96,21 @@ const RecipeBook = () => {
       }
 
       const filterByDiet = function(filterBy) {
+        console.log("filterbydiet", "button pressed")
+        console.log(filterBy)
         foundItems = [];
-        displayedRecipesList.map(recipe => {
-          if (recipe.dietary.toLowerCase() === filterBy) {
-            foundItems.push(recipe)
+        console.log(foundItems);
+        permanantRecipesList.map(recipe=> {
+          // console.log("diet ", recipe.dietary)
+          if (recipe?.dietary?.toLowerCase() === filterBy) {
+            foundItems.push(recipe) 
+          console.log(foundItems);
           }
         })
+        console.log(foundItems)
         setDisplayedRecipesList(foundItems)
       }
+      
 
       const filterByBreakfast = function() {
         filterByCategory("breakfast");
