@@ -35,24 +35,24 @@ const HomePage = ()=>{
         </div>
 
         <div className="link-container">
-            <div className="button-group" onClick={() => handleClick("/addrecipe")}>
-                <p className="button-title" >Add Recipe</p>
-                <img className="button-image" src="https://icons.iconarchive.com/icons/paomedia/small-n-flat/1024/sign-add-icon.png" width="100px" height="100px"/>
+            <div className="home-button-group" onClick={() => handleClick("/addrecipe")}>
+                <img className="home-button-image" src={require('../static/CSS/graphics/AddRecipe.png')} width="100%"/>
+                <p className="button-title" >Add <br />Recipe</p>
             </div>
 
-            <div className="button-group" onClick={() => handleClick("/recipebook")}>
-                <p className="button-title" >Recipe Book</p>
-                <img className="button-image"src="https://upload.wikimedia.org/wikipedia/commons/3/3a/Book-icon-bible.png" width="100px" height="100px"/>
+            <div className="home-button-group" onClick={() => handleClick("/recipebook")}>
+                <img className="home-button-image" src={require('../static/CSS/graphics/RecipeBook.png')} width="100%"/>
+                <p className="button-title" >Recipe <br />Book</p>
             </div>
 
-            <div className="button-group" onClick={() => handleClick("/planner")}>
-                <p className="button-title" >Weekly Planner</p>
-                <img className="button-image" src="https://i.pinimg.com/originals/d2/28/d0/d228d012b5f3852abb2b66d9da526801.png" width="100px" height="100px"/>
+            <div className="home-button-group" onClick={() => handleClick("/planner")}>
+                <img className="home-button-image" src={require('../static/CSS/graphics/WeeklyPlanner.png')} width="100%"/>
+                <p className="button-title" >Weekly <br />Planner</p>
             </div>
 
-            <div className="button-group" onClick={() => handleClick("/shoppingList")}>
-                <p className="button-title" >Shopping List</p>
-                <img className="button-image" src="https://cdn.iconscout.com/icon/free/png-256/shopping-list-2923133-2434627.png" width="100px" height="100px"/>
+            <div className="home-button-group" onClick={() => handleClick("/shoppingList")}>
+                <img className="home-button-image" src={require('../static/CSS/graphics/ShoppingList.png')} width="100%"/>
+                <p className="button-title" >Shopping <br />List</p>
             </div>
         </div>
         </>

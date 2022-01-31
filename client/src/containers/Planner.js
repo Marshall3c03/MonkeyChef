@@ -18,7 +18,7 @@ function Planner({removeMeal}){
           },
       ]
 
-    const [recipesList, setRecipesList] = useState([]);
+    const [recipesList, setDisplayedRecipesList] = useState([]);
     const [recipeBookList, setRecipeBookList] = useState([]);
 
 
@@ -30,7 +30,7 @@ function Planner({removeMeal}){
     const loadAllRecipesInPlanner = url => {
         fetch(url)
         .then(result => result.json())
-        .then(recipesJson => setRecipesList(recipesJson))
+        .then(recipesJson => setDisplayedRecipesList(recipesJson))
     }
 
     const loadAllRecipes = url => {
@@ -77,7 +77,7 @@ function Planner({removeMeal}){
                         var index = array.indexOf(recipe)
                         if (index !== -1) {
                           array.splice(index, 1);
-                          setRecipesList(array);
+                          setDisplayedRecipesList(array);
                         }
                     }} src="https://findicons.com/files/icons/1262/amora/256/delete.png" width="25px"/>
                 </div>

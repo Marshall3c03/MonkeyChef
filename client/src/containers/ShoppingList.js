@@ -9,7 +9,8 @@ const ShoppingList = () => {
         }
       ]
   
-      const [recipesList, setRecipesList] = useState([]);
+      const [recipesList, setDisplayedRecipesList] = useState([]);
+      // const [shoppingList, setShoppingList] = useState([]);
 
       const shoppingList = [];
       // const condensedList = [];
@@ -21,7 +22,7 @@ const ShoppingList = () => {
       const loadRecipes = url => {
         fetch(url)
           .then(result => result.json())
-          .then(recipesJson => setRecipesList(recipesJson))
+          .then(recipesJson => setDisplayedRecipesList(recipesJson))
       }
 
 
