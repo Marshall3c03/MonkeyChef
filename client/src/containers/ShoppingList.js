@@ -10,10 +10,9 @@ const ShoppingList = () => {
       ]
   
       const [recipesList, setDisplayedRecipesList] = useState([]);
-      // const [shoppingList, setShoppingList] = useState([]);
 
       const shoppingList = [];
-      // const condensedList = [];
+      let condensedShoppingList = [];
   
       useEffect(() => {
         loadRecipes(RecipesApi[0].url)
@@ -31,7 +30,7 @@ const ShoppingList = () => {
           
         let fullIngredientList = recipe.ingredients.map(ingredient => {
             
-            shoppingList.push(ingredient); 
+            shoppingList.push(ingredient);
             
             return (
                 <>
@@ -42,55 +41,57 @@ const ShoppingList = () => {
         
     });
 
-    // const loopedList = []
-
-    
-
-    const loopedList = {};
-
-    for (let item of shoppingList){
-      // console.log(shoppingList)
-
-      // const temporyItem = {
-      //   name: item.ingredient.toLowerCase(),
-      //   quantity: parseInt(item.amount),
-      //   unit: item.unit
-      // }
-
-      // console.log("temporyItem: ", temporaryItem)
+    // const foundItemId = function(ingredientName) {
+    //   shoppingList.
+    // }
 
 
-      const keys = Object.keys(loopedList);
-      
-      // console.log(item)
-      let found = false;
-      const name = item.ingredient.toLowerCase();
-
-      // const quantityAndUnit = {quantity: "blarg",
-      // unit: item.unit}
-
-      const quantity = parseFloat(item.amount);
-      let unit = item.unit;
-      // console.log(unit)
-
-      for (let key of keys){
-        if (name == key) { 
-          found = true
-        }
-      }
-      if(found){
-            loopedList[name] += quantity
+    for (let item of shoppingList) {
+      const checkIfObjectExists = condensedShoppingList.indexOf(item.ingredient);
+              console.log("condensed list: ", condensedShoppingList);
+              console.log("item ingredient: ", item.ingredient);
+              console.log("check if object exists: ", checkIfObjectExists);
+      if (checkIfObjectExists >= 0 && item.unit === condensedShoppingList[checkIfObjectExists].unit) {
+              console.log("this is the if");
+        condensedShoppingList[checkIfObjectExists].unit += item.unit;
       } else {
-        loopedList[name] = quantity
-      };
-    };
+              console.log("this is the else")
+        condensedShoppingList.push(item);
+      }
+    }
 
-  
-    let condensedList = Object.entries(loopedList);
+    console.log("shopping list: ", shoppingList);
+    console.log("condensed shopping list: ", condensedShoppingList);
 
-    let listItem = condensedList.map(items => {
+    // const loopedList = [];
+
+    // for (let item of shoppingList) {
+
+    //   const keys = Object.keys(loopedList);
+      
+    //   let found = false;
+    //   const name = item.ingredient.toLowerCase();
+    //   const quantity = parseFloat(item.amount);
+    //   let unit = item.unit;
+
+
+    //   for (let key of keys){
+    //     if (name == key) { 
+    //       found = true
+    //     }
+    //   }
+    //   if(found){
+    //         loopedList[name] += quantity
+    //   } else {
+    //     loopedList[name] = quantity
+    //   };
+    // };
+
+    // let condensedList = Object.entries(loopedList);
+
+    let listItem = condensedShoppingList.map(item => {
       return (
-        <li key={items}>{items[0]}: {items[1]} </li>
+        <li key="{item._id}">{item.amount}{item.unit} {item.ingredient} </li>
       )
     })
     

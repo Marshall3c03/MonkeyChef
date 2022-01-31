@@ -6,14 +6,51 @@
     background-color: black;
 }
 
-/* .link-container {
+.homepage-banner {
+    background-image: url("graphics/jungle.png");
+    width: 100%;
+    height: 15vw;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 4vw;
+    border-radius: 1vw;
+}
+
+.banner-image {
+    width: 20vw;
+    filter: drop-shadow(0px 15px 15px #000000c8);
+    position: absolute;
+    animation: float 3s infinite linear;
+}
+
+@keyframes float {
+    0% { transform: translateY(0px) rotate(15deg); }
+    50% { transform: translateY(0px) rotate(0deg); }
+    100% { transform: translateY(0px) rotate(15deg); }
+  }
+
+.banner-message {
+    color: white;
+    font-weight: 700;
+    text-align: right;
+    font-size: 5vw;
+    filter: drop-shadow(0px 0px 10px #000000c8);
+    padding: 4.5vw;
+}
+
+.link-container {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     margin-bottom: 500px;
-} */
+}
+
+.home-banner-image {
+    width: 50%;
+    filter: drop-shadow(30px 10px 4px #070730);
+}
 
 .home-button-group {
     margin: var(--page-button-group-margin);
@@ -21,7 +58,7 @@
     border-radius: 10px;
     padding: 20px;
     width: 200px;
-    height: 300px;
+    height: 270px;
     display: flex;
     flex-direction: column;
     transition: 0.5s ease;
@@ -36,7 +73,7 @@
     transition: 1s ease;
     padding: 20px;
     width: 200px;
-    height: 300px;
+    height: 270px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -50,7 +87,8 @@
     font-weight: 500;
     font-size: xx-large;
     display: flex;
-    margin-bottom: 30px;
+    margin-top: 0px;
+    margin-bottom: 10px;
     text-align: center;
 }
 
@@ -60,14 +98,14 @@
     object-fit: cover;
 }
 
-/* .home-button-group .button-title .button-image{
+.home-button-group .button-title .button-image{
     display: flex;
     justify-content: center;
     align-items: center;
     height: 400px;
-} */
+}
 
-.banner-container {
+/* .banner-container {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -88,8 +126,8 @@
 
 .banner-container .banner-group:hover {
     margin: 50px;
-    background-color: rgb(152, 29, 29);
-    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;    
+    background-color: rgb(27, 90, 227);
+    box-shadow: rgba(28, 28, 162, 0.2) 0px 7px 29px 0px;    
     border-radius: 10px;
     transition: all 1s ease;
     padding: 20px;
@@ -99,42 +137,4 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-}
-
-
-.banner-container .banner-group .banner-company-text{
-    position: relative;
-    top: -25px;
-    right: 325px;
-    color: white;
-}
-
-.banner-container .banner-group .banner-instructions .instruction1{
-    color: white;
-    font-weight: 600;
-    position: relative;
-    top: -85px;
-    bottom: 0px;
-    right: 0px;
-    left: 200px;
-}
-
-.banner-container .banner-group .banner-instructions .instruction2{
-    color: white;
-    font-weight: 600;
-    position: relative;
-    top: -60px;
-    bottom: 0px;
-    right: 0px;
-    left: 175px;
-}
-
-.banner-container .banner-group .banner-instructions .instruction3{
-    color: white;
-    font-weight: 600;
-    position: relative;
-    top: -35px;
-    bottom: 0px;
-    right: 0px;
-    left: 150px;
-}
+} */

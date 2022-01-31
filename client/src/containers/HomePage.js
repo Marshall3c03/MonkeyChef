@@ -1,9 +1,17 @@
-import react from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
+import Monkey from '../static/CSS/graphics/Monkey.wav';
 
 import '../static/CSS/homepage.css';
 
 const HomePage = ()=>{
+
+    const monkey = new Audio (Monkey);
+
+    React.useEffect(() => {
+        monkey.play()
+    }, [])
+
     const navigate = useNavigate();
 
     const handleClick = (url) => {
@@ -12,26 +20,11 @@ const HomePage = ()=>{
 
     return(
         <>
-        <div className="banner-container">
-            <div className="banner-group">
-                <div className="banner-company-text">
-                    <h2 className="banner-company-name">Rossipy</h2>
-                    <h4 className="banner-company-slogan">Plan like a <b>BOSS,</b></h4>
+        <div className = "homepage-banner">
+            <img className = "banner-image" src={require('../static/CSS/graphics/MonkeyChefLogo.png')}/>
+                <div className = "banner-message">
+                    Welcome to Monkey Chef!
                 </div>
-                <div className="banner-instructions">
-                    <ul>
-                        <li className="instruction1">
-                            <a href="/addrecipe">Add a recipe</a>
-                        </li>
-                        <li className="instruction2">
-                            <a href="/planner">Plan your meals</a>
-                        </li>
-                        <li className="instruction3">
-                            <a href="/shoppinglist">Check your shoppinglist</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
         </div>
 
         <div className="link-container">

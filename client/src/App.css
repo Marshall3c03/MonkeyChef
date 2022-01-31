@@ -5,7 +5,11 @@
 body {
   background-image: url("static/CSS/graphics/MonkeyChefLogoBG.png");
   background-repeat: no-repeat;
+  background-size: 1200px;
+  background-position-x: -10vw;
+  background-position-y: center;
   background-color: rgb(144, 229, 165);
+
 }
 
 button{
