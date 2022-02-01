@@ -14,6 +14,8 @@ const RecipeBook = () => {
       const [displayedRecipesList, setDisplayedRecipesList] = useState([]);
       const [permanantRecipesList, setPermanantRecipesList] = useState([]);
       const [searchTerm, setSearchTerm] = useState([]);
+      const [noResults, setNoResults] = useState(null);
+
 
       const handleSearch = (ev) => setSearchTerm(ev.target.value);
 
@@ -36,6 +38,7 @@ const RecipeBook = () => {
         const reloadRecipes = () => { fetch("http://localhost:5000/api/recipes")
           .then(result => result.json())
           .then(recipesJson => setDisplayedRecipesList(recipesJson))
+          .then(setNoResults(null))
               }
 
       const recipeByTitle = displayedRecipesList.slice(0);
@@ -64,13 +67,17 @@ const RecipeBook = () => {
       let foundItems = [];
 
       const search = function() {
+        setDisplayedRecipesList(null);
+
         foundItems = [];
         displayedRecipesList.map(recipe => {
           if (recipe.name.toLowerCase().includes(searchTerm.toLowerCase()) === true) {
             foundItems.push(recipe)
+          } else {
+            setNoResults(<div class = "no-results"><img className="no-results-image" src={require('../static/CSS/graphics/SadMonkey.png')}/><h1>No results</h1>Your search didn't find <br/>any recipes</div>)
           }
-          setDisplayedRecipesList(foundItems)
-          document.getElementById('searchTerm').value = ''
+          setDisplayedRecipesList(foundItems);
+          document.getElementById('searchTerm').value = "";
         })
       }
 
@@ -129,7 +136,7 @@ const RecipeBook = () => {
       
     return (
       <>
-        <input onChange = {handleSearch} value = {searchTerm} type = "searchTerm" id = "searchTerm"/><button onClick = {search}>Search</button><button onClick = {reloadRecipes}>Reset</button>
+        <input onChange = {handleSearch} value = {searchTerm} type = "searchTerm" id = "searchTerm"/><button id = "search-button" onClick = {search}>Search</button><button onClick = {reloadRecipes}>Reset</button>
         <h1>Your Recipes</h1>
         <div>
           <button onClick = {sortName}>A - Z</button><button onClick = {sortDefault}>Newest</button>
@@ -144,6 +151,7 @@ const RecipeBook = () => {
           <button onClick = {filterByGlutenFree}>Gluten-Free</button>
         </div>
         <RecipesList recipes={displayedRecipesList} />
+        {noResults}
       </>
     );
 };

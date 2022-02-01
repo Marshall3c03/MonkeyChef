@@ -6,6 +6,39 @@
   background-color: black;
 }
 
+.no-results {
+  font-size: 2vw;
+  height: 13vw;
+  width: 50%;
+  padding-top: 5%;
+  line-height: 2vw;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.no-results-image {
+  margin-top: -5%;
+  width: 40%;
+  float: left;
+}
+
+#searchTerm {
+  width: 500px;
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+  height: 19px;
+  margin: 0px;
+  position: relative;
+  top: -1px;
+}
+
+#search-button {
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
+  border : 0px;
+  margin-left: 0px;
+}
+
 .home-button-group {
   margin: var(--page-button-group-margin);
   background-color: white;
@@ -173,4 +206,9 @@
     align-items: center;
     margin-top: 2rem;
     margin-bottom: 5rem;
+}
+
+.swal {
+  width: 420px;
+  padding-bottom: 30px;
 }
