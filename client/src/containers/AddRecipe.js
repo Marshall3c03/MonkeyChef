@@ -99,7 +99,7 @@ const AddRecipe = ({addRecipe})=>{
                 
                     <tr>
                         <td><label htmlFor="unit">Unit:</label></td>
-                        <select onChange={handleUnitChange} type="text"  name="unit" id="unit" value={unit}>
+                        <select onChange={handleUnitChange} type="text" id="unit" value={unit}>
                                 <option value={undefined}></option>
                                 <option value="cup">cup</option>
                                 <option value="g">g</option>
@@ -136,7 +136,8 @@ const AddRecipe = ({addRecipe})=>{
                     
                     <tr>
                         <td><label htmlFor="category">Category:</label></td>
-                        <select onChange={handleCategoryChange} type="text"  name="category" id="category" value={category}>
+                        <select onChange={handleCategoryChange} type="text" id="category" value={category}>
+                            <option value="empty"></option>
                             <option value="breakfast">breakfast</option>
                             <option value="dinner">dinner</option>
                             <option value="lunch">lunch</option>
@@ -146,7 +147,8 @@ const AddRecipe = ({addRecipe})=>{
                     </tr> 
                     <tr>
                         <td><label htmlFor="dietary">Dietary:</label></td>
-                        <select onChange={handleDietaryChange} type="text"  name="dietary" id="dietary" value={dietary}>
+                        <select onChange={handleDietaryChange} type="text" id="dietary" value={dietary}>
+                            <option value="empty"></option>   
                             <option value="dairy-free">dairy-free</option>
                             <option value="gluten-free">gluten-free</option>
                             <option value="protein">protein</option>          
@@ -167,7 +169,6 @@ const AddRecipe = ({addRecipe})=>{
                         <td><label htmlFor="notes">Notes:</label></td>
                         <input onChange={handleNotesChange} type="text" id="notes" value={notes} />
                     </tr>
-
                     {allIngredients()}
                     <tr>
                         <td colSpan="2"><input type="submit" value="Save" id="save"/></td>

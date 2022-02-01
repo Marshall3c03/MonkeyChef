@@ -2,6 +2,10 @@ h1{
     text-align: center;
 }
 
+p{
+    font-size: 20px;
+}
+
 .form-wrap{
     display:flex;
     padding-top: 5%;
@@ -17,24 +21,18 @@ select{
     width: 50%;
     min-width: 300px;
     margin-right: 5px;
+    font-size: 20px;;
 }
 
-option{
-    font-size: 30px;
-}
-#image input{
+#image{
     width: 200%;
 }
 #method{
     width: 200%;
-
 }
-
 #notes{
     width: 200%;
- 
 }
-
 input{
     height: 10%;
     width: 50%;
