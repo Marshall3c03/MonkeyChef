@@ -45,64 +45,78 @@ const ShoppingList = () => {
     //   shoppingList.
     // }
 
-
-    for (let item of shoppingList) {
-      const checkIfObjectExists = condensedShoppingList.indexOf(item.ingredient);
-              console.log("condensed list: ", condensedShoppingList);
-              console.log("item ingredient: ", item.ingredient);
-              console.log("check if object exists: ", checkIfObjectExists);
-      if (checkIfObjectExists >= 0 && item.unit === condensedShoppingList[checkIfObjectExists].unit) {
-              console.log("this is the if");
-        condensedShoppingList[checkIfObjectExists].unit += item.unit;
-      } else {
-              console.log("this is the else")
-        condensedShoppingList.push(item);
-      }
-    }
-
-    console.log("shopping list: ", shoppingList);
-    console.log("condensed shopping list: ", condensedShoppingList);
-
-    // const loopedList = [];
+    // condensedShoppingList.push(shoppingList[0])
 
     // for (let item of shoppingList) {
-
-    //   const keys = Object.keys(loopedList);
-      
-    //   let found = false;
-    //   const name = item.ingredient.toLowerCase();
-    //   const quantity = parseFloat(item.amount);
-    //   let unit = item.unit;
-
-
-    //   for (let key of keys){
-    //     if (name == key) { 
-    //       found = true
-    //     }
-    //   }
-    //   if(found){
-    //         loopedList[name] += quantity
+    //   const checkIfObjectExists = condensedShoppingList.indexOf(item.ingredient);
+    //           console.log("condensed list: ", condensedShoppingList);
+    //           console.log("item ingredient: ", item.ingredient);
+    //           console.log("check if object exists: ", checkIfObjectExists);
+    //   if (checkIfObjectExists >= 0 && item.unit === condensedShoppingList[checkIfObjectExists].unit) {
+    //           console.log("this is the if");
+    //     condensedShoppingList[checkIfObjectExists].unit += item.unit;
     //   } else {
-    //     loopedList[name] = quantity
-    //   };
-    // };
+    //           console.log("this is the else")
+    //     condensedShoppingList.push(item);
+    //   }
+    // }
 
-    // let condensedList = Object.entries(loopedList);
 
-    let listItem = condensedShoppingList.map(item => {
+    const loopedList = {};
+
+    console.log("Shopping List: ", shoppingList)
+    for (let item of shoppingList) {
+
+      const ingNames = Object.keys(loopedList);
+      // const ingUnits = Object.keys(ingNames);
+      console.log('ingNames: ', ingNames)
+      
+      let found = false;
+      const name = item.ingredient.toLowerCase();
+      const amount = item.amount;
+      let unit = item.unit;
+      let details = {"unit" : unit, "amount": amount};
+      // console.log("details: ", details);
+
+      // console.log("before looped list: ", loopedList)
+
+      for (let ingName of ingNames){
+        // console.log(`looped list ${name}: `, loopedList)
+        if (loopedList[name] !== undefined) {
+          //if (loopedList[name]["unit"] !== undefined) {
+            if (ingName === name) {
+                found = true
+            }
+          //}
+      }
+    }
+      if(found){
+        loopedList[name]["amount"] += details["amount"];
+      } else {
+        loopedList[name] = details
+      };
+      // if (loopedList[name]["unit"] != undefined) {
+        // console.log("accessing unit: ", loopedList[name]["unit"])
+      // }
+    };
+
+    let condensedList = Object.entries(loopedList);
+
+    console.log("condensed list", condensedList);
+
+    let listItems = condensedList.map((item, index) => {
+      console.log("item:", item)
       return (
-        <li key="{item._id}">{item.amount}{item.unit} {item.ingredient} </li>
+    <li key={index}>{item[1]["amount"]} {item[1]["unit"]} {item[0]}</li>
       )
     })
-    
-    
-    
+        
     
     return(
         <>
             <h1>Shopping List</h1>
             <div>
-                {listItem}
+                {listItems}
             </div>
         </>
     );

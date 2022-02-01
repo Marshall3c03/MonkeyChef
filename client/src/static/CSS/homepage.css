@@ -19,8 +19,9 @@
 .banner-image {
     width: 20vw;
     filter: drop-shadow(0px 15px 15px #000000c8);
-    position: absolute;
+    display: flex;
     animation: float 3s infinite linear;
+    display:inline-block;
 }
 
 @keyframes float {
@@ -35,7 +36,9 @@
     text-align: right;
     font-size: 5vw;
     filter: drop-shadow(0px 0px 10px #000000c8);
-    padding: 4.5vw;
+    display: inline-block;
+    position: relative;
+    top: -11vw;
 }
 
 .link-container {
@@ -50,6 +53,8 @@
 .home-banner-image {
     width: 50%;
     filter: drop-shadow(30px 10px 4px #070730);
+    display:inline-block;
+    vertical-align:top
 }
 
 .home-button-group {
