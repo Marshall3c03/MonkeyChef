@@ -139,14 +139,14 @@ const RecipeBook = () => {
         <input onChange = {handleSearch} value = {searchTerm} type = "searchTerm" id = "searchTerm"/><button id = "search-button" onClick = {search}>Search</button><button onClick = {reloadRecipes}>Reset</button>
         <h1>Your Recipes</h1>
         <div>
-          Sort by: <button onClick = {sortName}>A - Z</button><button onClick = {sortDefault}>Newest</button>
+          <button onClick = {sortName}>A - Z</button><button onClick = {sortDefault}>Newest</button>
 
-          Filter By: MEAL <button onClick = {filterByBreakfast}>Breakfast</button>
+          <button onClick = {filterByBreakfast}>Breakfast</button>
           <button onClick = {filterByLunch}>Lunch</button>
           <button onClick = {filterByDinner}>Dinner</button>
           <button onClick = {filterBySweet}>Sweet</button>
 
-          DIET <button onClick = {filterByVegetarian}>Vegetarian</button>
+          <button onClick = {filterByVegetarian}>Vegetarian</button>
           <button onClick = {filterByVegan}>Vegan</button>
           <button onClick = {filterByGlutenFree}>Gluten-Free</button>
         </div>
