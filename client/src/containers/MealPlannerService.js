@@ -1,7 +1,6 @@
 const baseURL = "http://localhost:5000/api/planner/"
 
 const MealPlannerService = {
-
     getById(recipeId) {
         return fetch(baseURL + recipeId)
         .then(result => result.json())
@@ -13,9 +12,11 @@ const MealPlannerService = {
     },
 
     create (recipe){
+        const plannerRecipe = { recipeId: recipe._id }
+
         return fetch(baseURL, {
             method: 'POST',
-            body: JSON.stringify(recipe),
+            body: JSON.stringify(plannerRecipe),
             headers: { 'Content-Type': 'application/json' }
         })
         .then(res => res.json())
