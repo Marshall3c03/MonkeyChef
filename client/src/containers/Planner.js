@@ -3,6 +3,8 @@ import MealPlannerService from "./MealPlannerService";
 import '../static/CSS/planner.css'
 import { useNavigate } from "react-router-dom";
 import MealRecipeService from "./MealRecipeService";
+import { nanoid } from 'nanoid'
+
 
 
 function Planner({}){
@@ -25,24 +27,27 @@ function Planner({}){
     const [wordEntered, setWordEntered] = useState("");
 
     useEffect(() => {
-        loadAllRecipesInPlanner(PlannerApi[0].url);
         loadAllRecipes(PlannerApi[1].url);
     },[])
 
-    const loadAllRecipesInPlanner = url => {
+    const loadAllRecipesInPlanner = (url, allRecipes) => {
         fetch(url)
-        .then(result => result.json())
-        .then(recipesJson => setRecipesList(recipesJson))
-        .then(recipesJson => setDisplayedRecipesList(recipesJson))
+            .then(result => result.json())
+            .then(allRecipesInPlanner => {
+                const allRecipesInPLanner = allRecipes
+                    .filter(r => allRecipesInPlanner.some(p => p.recipeId === r._id))
+                setRecipesList(allRecipesInPLanner)
+                setRecipeBookList(allRecipes);
+                setFilteredRecipeBookList(allRecipes);
+            });
     }
 
     const loadAllRecipes = url => {
         fetch(url)
-        .then(result => result.json())
-        .then(recipesJson => {
-            setRecipeBookList(recipesJson);
-            setFilteredRecipeBookList(recipesJson);
-        })
+            .then(result => result.json())
+            .then(async (allRecipes) => {
+                await loadAllRecipesInPlanner(PlannerApi[0].url, allRecipes);
+            })
     };
 
     const recipesSearchList = filteredRecipeBookList?.map(recipe=>{
@@ -50,21 +55,15 @@ function Planner({}){
                 MealPlannerService.create(recipe)
                 .then(savedRecipe => setRecipesList([...recipesList, savedRecipe]))
             } 
-            const handleClick = ()=>{
-                window.location.href = "/recipebook/" + recipe._id
-            }
             return(
-            <>
-                <div className="recipe-group">
-                    <div onClick={handleClick} className="recipe" >
-                         <img className="image" src={recipe.image} width="70px"/>
-                         <p>{recipe.name}</p>
+                <div className="planner-recipe-group" key={recipe._id}>
+                    <div className="planner-recipe">
+                        <img className="image" src={recipe.image} width="70px"/>
+                        <p>{recipe.name}</p>
+                        <img className="planner-button-add"onClick={handleAdding} 
+                        src="https://icons.iconarchive.com/icons/martz90/circle-addon1/48/text-plus-icon.png" width="25px"/>
                     </div>
-                    <div>
-                        <button onClick={handleAdding}>Add to Meal Plan</button>
-                    </div>  
                 </div>
-            </> 
             )
         });    
 
@@ -95,11 +94,10 @@ function Planner({}){
         }
 
         return(
-        <>
-            <div className="button-group">
+            <div className="button-group" key={ nanoid() }>
                 <img onClick = {handleImageClick} className="button-image" src={recipe.image} width="100px"/>
                 <p className="button-text">{recipe.name}</p>
-                <img 
+                <img className="planner-button-delete"
                 onClick={()=>{
                     MealPlannerService.delete(recipeId).then(() => {
                         var array = [...recipesList]; 
@@ -112,32 +110,34 @@ function Planner({}){
                     }} 
                 src="https://findicons.com/files/icons/1262/amora/256/delete.png" width="25px"/>
             </div>
-        </>
     )}), [recipesList]);
 
 
     return(
         <>
             <h1>Planner</h1>
-            <div className="link-container">
-                {plannerList}
-            </div>
+            <div className="planner-overall-container">
 
-            <div className="search">
-                <div className="searchInput">
-                    <input onChange = {handleFilter}
-                           type="text" 
-                           value={wordEntered}
-                           placeholder="Enter a recipe to search ..." />
-                    <div className="searchButton">
-                        <button >Search</button>
-                        <button onClick={clearInput}>Clear</button>
-                     </div>
+                <div className="search">
+                    <div className="searchInput">
+                        <input onChange = {handleFilter}
+                            type="text" 
+                            value={wordEntered}
+                            placeholder="Enter a recipe to search ..." />
+                        <div className="searchButton">
+                            <button onClick={clearInput}>Clear</button>
+                        </div>
+                    </div>
+                
+                    <div className="data-result">
+                    {recipesSearchList}
+                    </div>
                 </div>
-              
-                <div className="dataResult">
-                {recipesSearchList}
+
+                <div className="planner-link-container">
+                    {plannerList}
                 </div>
+
             </div>
         </>
     )

@@ -1,4 +1,4 @@
-import react, {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import MealPlannerService from "./MealPlannerService";
 import MealRecipeService from "./MealRecipeService";
@@ -15,8 +15,8 @@ const Recipe = () => {
         MealRecipeService.getById(recipeId)
             .then(resultJson => setCurrentRecipe(resultJson))
 
-        MealPlannerService.getById(recipeId)
-            .then(resultJson => setCurrentRecipe(resultJson))
+        // MealPlannerService.getById(recipeId)
+        //     .then(resultJson => setCurrentRecipe(resultJson))
     }, []);
     
     const handleMinus = function() {
@@ -28,6 +28,11 @@ const Recipe = () => {
     const handlePlus = function() {
         setServings(servings + 1);
     };
+
+    const handleDelete = ()=>{
+        MealRecipeService.delete(recipeId)
+        setTimeout(()=>navigate("/recipebook"),500)
+    }
 
     const numOfServings = currentRecipe?.servings;
 
@@ -44,7 +49,6 @@ const Recipe = () => {
         
         counter += 1; 
         return(
-            
             <div key={counter}>
             <p><b>{perDesiredPortions} {ingredient?.unit}</b> {ingredient.ingredient}</p>
             </div>
@@ -59,21 +63,24 @@ const Recipe = () => {
         /> {currentRecipe?.name}</h1>
             <table>
                 <tbody>
-                    <td>
-                        <div>
-                            Serves <button onClick = {handleMinus}>-</button> {servings} <button onClick = {handlePlus}>+</button>
-                        </div>
-                        {fullIngredients}
-                    </td>
-                    <td width = "70%"><p>{currentRecipe?.method}</p></td>
+                    <tr>
+                        <td>
+                            <div>
+                                <img className="recipe-avatar" src={currentRecipe?.image}/>
+                                Serves <button onClick = {handleMinus}>-</button> {servings} <button onClick = {handlePlus}>+</button>
+                            </div>
+                            {fullIngredients}
+                        </td>
+                        <td width = "70%"><p>{currentRecipe?.method}</p></td>
+                    </tr>
                 </tbody>
             </table>
+            <button onClick={handleDelete}>Delete Recipe</button>
             <button onClick={handleAdding}>Add Recipe to Meal Plan</button>
                     {mealAddedToPlanner}
         </div>
             /* // the questionmark means a Nullcoalesent meaning if current recipe has a value... then try index into name */
             /* If ingredient can produce a null or undefined for the value its trying to index into.. i.e units then put a ? before the .unit  */
-        
     );
 };
 
