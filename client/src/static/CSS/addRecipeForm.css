@@ -1,51 +1,88 @@
-h1{
-    text-align: center;
+.add-recipe-title{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
 }
 
-p{
+.ingredient-text{
     font-size: 20px;
+    font-style: italic;
+    font-weight: bold;
 }
-
-.form-wrap{
+.add-recipe-form-container{
     display:flex;
+    flex-direction: row;
+    justify-content: center;
     padding-top: 5%;
-    margin-left: 10%;
+    margin-left:  2rem;
+    margin-right: 2rem;
 }
 
-select{
-    /* width: 200px; */
+.select-option-recipe {
     height: 43px;
     padding: 10px;
     border-radius: 20px;
     border: 1px solid grey;
-    width: 100%;
+    width: 300px;
     margin-right: 5px;
     font-size: 20px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
-#image{
-    width: 200%;
+.add-recipe-imageurl{
+    width: 31rem;
+    border-radius: 20px;
+    border: 1px solid grey;
+    height: 2.6rem;
 }
+
 #method{
-    width: 200%;
-}
-#notes{
-    width: 200%;
+    width: 30rem;
+    height: 20rem;
 }
 
-input {
+#notes{
+    width: 30rem;
+    height: 10rem;
+}
+
+.input-add-recipe {
     padding: 10px;
     border-radius: 20px;
     border: 1px solid grey;
-    width: 52%;
+    width: 280px;
     height: 20px;
-    min-width: 300px;
     margin-right: 5px;
-  }
+    font-size: 20px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+textarea{
+    border-radius: 20px;
+    border: 1px solid grey;
+    font-size: 22px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    padding: 10px;    
+}
 
-.plus td{
-    width: 20%;
-    height: 20px;
+.plus input{
+    border-radius: 20px;
+    background-color: black;
+    height: 30px;
+    width: 70px;
+    color: white;
+    padding: 0px;
+    text-align: center;
+}
+
+.save input{
+    border-radius: 20px;
+    background-color: black;
+    height: 30px;
+    width: 70px;
+    color: white;
+    padding: 0px;
+    text-align: center;
 }
 
 label{
@@ -60,6 +97,10 @@ label{
 .ingredient-form{
     padding-right: 80px;
 }
+/* 
+.ingredient-input{
+    background-color: white;  
+} */
 
 td{
     padding-right:50px;
