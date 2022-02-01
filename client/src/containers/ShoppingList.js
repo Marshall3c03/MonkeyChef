@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from "react";
+import "../static/CSS/shoppinglist.css";
 
 const ShoppingList = () => {
 
@@ -90,7 +91,10 @@ const ShoppingList = () => {
 
     let listItem = condensedList.map(items => {
       return (
-        <li key={items}>{items[0]}: {items[1]} </li>
+        <div>
+          <input type="checkbox" id="checkbox" name="items"/>
+          <label for="items" key={items}>{items[0]}: {items[1]}</label>
+        </div>
       )
     })
     
