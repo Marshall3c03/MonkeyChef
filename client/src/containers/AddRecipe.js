@@ -6,7 +6,7 @@ import "../static/CSS/addRecipeForm.css";
 const AddRecipe = ({addRecipe})=>{
 
     const [name, setName] = useState("");
-    const [amount, setAmount] = useState();
+    const [amount, setAmount] = useState("");
     const [unit, setUnit] = useState(undefined);
     const [ingredient, setIngredient] = useState("");
     const [ingredients, setIngredients] = useState([]);

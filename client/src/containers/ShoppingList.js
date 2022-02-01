@@ -5,7 +5,7 @@ const ShoppingList = () => {
     const RecipesApi = [
         {
           name: "recipes", 
-          url: "http://localhost:5000/api/recipes"
+          url: "http://localhost:5000/api/planner"
         }
       ]
   
@@ -29,7 +29,7 @@ const ShoppingList = () => {
 
       let listOfIngredients = recipesList.map(recipe => {
           
-        let fullIngredientList = recipe.ingredients.map(ingredient => {
+        let fullIngredientList = recipe.ingredients?.map(ingredient => {
             
             shoppingList.push(ingredient); 
             
@@ -37,7 +37,6 @@ const ShoppingList = () => {
                 <>
                 <a>{ingredient.amount}{ingredient.unit} {ingredient.ingredient}</a><br />
                 </>
-
                    
         )})
         
@@ -70,7 +69,7 @@ const ShoppingList = () => {
       // const quantityAndUnit = {quantity: "blarg",
       // unit: item.unit}
 
-      const quantity = parseInt(item.amount);
+      const quantity = parseFloat(item.amount);
       let unit = item.unit;
       // console.log(unit)
 

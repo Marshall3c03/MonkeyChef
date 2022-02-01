@@ -1,12 +1,6 @@
 import React, {useEffect, useState} from "react";
 import RecipesList from "../components/RecipesList";
-import MealRecipeService from "./MealRecipeService";
 import '../static/CSS/recipebook.css'
-
-// import { useMatch } from "@reach/router"
-
-
-// const RecipeID = useMatch("/films/:id").params.id;
 
 const RecipeBook = () => {
 
@@ -35,7 +29,7 @@ const RecipeBook = () => {
         .then(recipesJson => {
           setDisplayedRecipesList(recipesJson)
           setPermanantRecipesList(recipesJson)})
-        }
+      }
 
       
 
@@ -81,8 +75,6 @@ const RecipeBook = () => {
       }
 
       const filterByCategory = function(filterBy) {
-        console.log("filterBy", filterBy);
-        console.log("recipeList", displayedRecipesList);
         foundItems = [];
         permanantRecipesList.map(recipe => {
           if (recipe.category.toLowerCase() === filterBy) {
@@ -94,12 +86,9 @@ const RecipeBook = () => {
       }
 
       const filterByDiet = function(filterBy) {
-        console.log("filterbydiet", "button pressed")
-        console.log(filterBy)
         foundItems = [];
         console.log(foundItems);
         permanantRecipesList.map(recipe=> {
-          // console.log("diet ", recipe.dietary)
           if (recipe?.dietary?.toLowerCase() === filterBy) {
             foundItems.push(recipe) 
           console.log(foundItems);
@@ -137,22 +126,13 @@ const RecipeBook = () => {
       const filterByGlutenFree = function() {
         filterByDiet("gluten-free");
       }
-
-      // const onRecipeClick = function(recipe) {
-      //   setSelectedRecipe(recipe);
-      // }  
-
-      // const resetOnClick = () => {
-      //   MealRecipeService.getAll()
-      //     .then(recipesJson => setRecipesList(recipesJson))
-      // };
-
+      
     return (
       <>
-        <input onChange = {handleSearch} value = {searchTerm} type = "searchTerm" id = "searchTerm"/>
+        <input onChange = {handleSearch} value = {searchTerm} type = "searchTerm" id = "searchTerm"/><button onClick = {search}>Search</button><button onClick = {reloadRecipes}>Reset</button>
         <h1>Your Recipes</h1>
         <div>
-          Sort by: <button onClick = {sortName}>A - Z</button>
+          Sort by: <button onClick = {sortName}>A - Z</button><button onClick = {sortDefault}>Newest</button>
 
           Filter By: MEAL <button onClick = {filterByBreakfast}>Breakfast</button>
           <button onClick = {filterByLunch}>Lunch</button>
@@ -163,7 +143,6 @@ const RecipeBook = () => {
           <button onClick = {filterByVegan}>Vegan</button>
           <button onClick = {filterByGlutenFree}>Gluten-Free</button>
         </div>
-
         <RecipesList recipes={displayedRecipesList} />
       </>
     );

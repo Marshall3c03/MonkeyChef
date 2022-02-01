@@ -4,6 +4,7 @@
 
 body {
   background-image: url("static/CSS/graphics/MonkeyChefLogoBG.png");
+  /* background-size: cover; */
   background-repeat: no-repeat;
   background-color: rgb(144, 229, 165);
 }
