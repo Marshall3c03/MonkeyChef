@@ -1,9 +1,10 @@
-import {useState} from "react";
+import {useState, useEffect} from "react";
+import { useParams } from "react-router-dom";
 import MealRecipeService from "./MealRecipeService";
 import "../static/CSS/addRecipeForm.css";
 
 
-const AddRecipe = ({addRecipe})=>{
+const AddRecipe = ()=>{
 
     const [name, setName] = useState("");
     const [amount, setAmount] = useState("");
@@ -16,6 +17,26 @@ const AddRecipe = ({addRecipe})=>{
     const [category, setCategory]= useState("");
     const [dietary,setDietary]=useState("");
     const [notes, setNotes]=useState("");
+    const {recipeId} = useParams();
+
+    useEffect(()=>{
+        if(recipeId){
+            MealRecipeService.getById(recipeId)
+                .then(resultJson => {
+                    setName(resultJson.name);
+                    setAmount(resultJson.amount);
+                    setUnit(resultJson.unit);
+                    setIngredient(resultJson.ingredient);
+                    setIngredients(resultJson.ingredients);
+                    setImage(resultJson.image);
+                    setMethod(resultJson.method);
+                    setNotes(resultJson.notes);
+                    setServings(resultJson.servings);
+                    setCategory(resultJson.category);
+                    setDietary(resultJson.dietary);
+                });
+        }
+    }, {});
 
 
     const handleNameChange = (ev) => setName(ev.target.value);
@@ -50,7 +71,6 @@ const AddRecipe = ({addRecipe})=>{
         setAmount();
         setUnit(undefined);
         setIngredient("");
-        // console.log("you clicked new ingredient")
         const newIngredient =
             {"amount" : amount,
              "unit" : unit,
@@ -62,29 +82,47 @@ const AddRecipe = ({addRecipe})=>{
     const  allIngredients = ()=>{
         return ingredients.map(ingredient =>{
             return(
-                <div className="ingredient-input">
+            <div className="ingredient-input">
                 <ul>   
-                <li><p className="ingredient-text">{ingredient.amount} {ingredient.unit} {ingredient.ingredient} </p></li>
+                    <li>
+                        <p className="ingredient-text">{ingredient.amount} {ingredient.unit} {ingredient.ingredient} </p>
+                    </li>
                 </ul>   
-                </div>
-                )
+            </div>
+            )
         })
     };
 
 
     const handleSubmit = (e) =>{
-        e.preventDefault()
-        const newRecipe = {
-            "name": name,
-            "ingredients": ingredients,
-            "image" : image,
-            "method": method,
-            "servings": servings,
-            "category": category,
-            "dietary":dietary,
-            "notes": notes
-        };
-        MealRecipeService.create(newRecipe).then(() => clearState());
+        if(recipeId){
+            e.preventDefault()
+            const updatedRecipe = {
+                "id": recipeId,
+                "name": name,
+                "ingredients": ingredients,
+                "image" : image,
+                "method": method,
+                "servings": servings,
+                "category": category,
+                "dietary":dietary,
+                "notes": notes
+            };
+            MealRecipeService.update(updatedRecipe).then(() => clearState());
+        } else {
+            e.preventDefault()
+            const newRecipe = {
+                "name": name,
+                "ingredients": ingredients,
+                "image" : image,
+                "method": method,
+                "servings": servings,
+                "category": category,
+                "dietary":dietary,
+                "notes": notes
+            };
+            MealRecipeService.create(newRecipe).then(() => clearState());
+        }
     };
     
     return(

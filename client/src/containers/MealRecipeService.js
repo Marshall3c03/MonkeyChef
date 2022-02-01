@@ -26,9 +26,11 @@ const MealRecipeService = {
         }) 
     },
 
-    update (id) {
-        return fetch(baseURL + id, {
-            method: 'PUT'
+    update (recipe) {
+        return fetch(baseURL + recipe.id, {
+            method: 'PUT',
+            body: JSON.stringify(recipe),
+            headers: { 'Content-Type': 'application/json' }
         }) 
     }
 }
