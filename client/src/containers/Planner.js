@@ -18,29 +18,31 @@ function Planner({}){
             name: "recipe", 
             url: "http://localhost:5000/api/recipes"
           },
-      ]
+    ]
 
-    const [recipesList, setRecipesList] = useState([]);
+    const [recipesInPlannerList, setrecipesInPlannerList] = useState([]);
     const [recipeBookList, setRecipeBookList] = useState([]);
-    const [displayedRecipesList, setDisplayedRecipesList] = useState([]);
+    const [plannerDBList, setPlannerDBList] = useState([]);
     const [filteredRecipeBookList, setFilteredRecipeBookList] = useState([]);
     const [wordEntered, setWordEntered] = useState("");
 
     useEffect(() => {
         loadAllRecipes(PlannerApi[1].url);
-    },[])
+    },[]);
 
     const loadAllRecipesInPlanner = (url, allRecipes) => {
         fetch(url)
             .then(result => result.json())
-            .then(allRecipesInPlanner => {
-                const allRecipesInPLanner = allRecipes
-                    .filter(r => allRecipesInPlanner.some(p => p.recipeId === r._id))
-                setRecipesList(allRecipesInPLanner)
+            .then(response => {
+                const allRecipesInPlanner = allRecipes
+                    .filter(r => response.some(p => p.recipeId === r._id));
+
+                setrecipesInPlannerList(allRecipesInPlanner);
+                setPlannerDBList(response);
                 setRecipeBookList(allRecipes);
                 setFilteredRecipeBookList(allRecipes);
             });
-    }
+    };
 
     const loadAllRecipes = url => {
         fetch(url)
@@ -53,7 +55,7 @@ function Planner({}){
     const recipesSearchList = filteredRecipeBookList?.map(recipe=>{
             const handleAdding = ()=> {
                 MealPlannerService.create(recipe)
-                .then(savedRecipe => setRecipesList([...recipesList, savedRecipe]))
+                .then(savedRecipe => setrecipesInPlannerList([...recipesInPlannerList, savedRecipe]))
             } 
             return(
                 <div className="planner-recipe-group" key={recipe._id}>
@@ -91,7 +93,7 @@ function Planner({}){
         setFilteredRecipeBookList(recipeBookList);
     };
         
-    const plannerList= useMemo(() => recipesList?.map(recipe=>{
+    const displayrecipesInPlannerList= useMemo(() => recipesInPlannerList?.map(recipe=>{
 
         const recipeId = recipe._id;
 
@@ -105,7 +107,6 @@ function Planner({}){
                 <p className="button-text">{recipe.name}</p>
                 <img className="planner-button-delete"
                 onClick={()=>{
-                    
                     swal({
                         title: "Are you sure?",
                         icon: "warning",
@@ -113,15 +114,17 @@ function Planner({}){
                         dangerMode: true,
                         buttons: ['No!', 'Yes..'],
                         className: "swal-sure"
-                        })
+                    })
                     .then((willDelete) => {
                         if (willDelete) {
-                            MealPlannerService.delete(recipeId).then(() => {
-                                var array = [...recipesList]; 
+                            const plannerId = plannerDBList.find(p => p.recipeId === recipe._id)._id;
+
+                            MealPlannerService.delete(plannerId).then(() => {
+                                var array = [...recipesInPlannerList]; 
                                 var index = array.indexOf(recipe)
                                 if (index !== -1) {
                                     array.splice(index, 1);
-                                    setRecipesList(array);
+                                    setrecipesInPlannerList(array);
                                 }
                                 });
                           swal("Poof! Recipe deleted!", {
@@ -133,8 +136,7 @@ function Planner({}){
                 }} 
                 src="https://findicons.com/files/icons/1262/amora/256/delete.png" width="25px"/>
             </div>
-    )}), [recipesList]);
-
+    )}), [recipesInPlannerList, plannerDBList]);
 
     return(
         <>
@@ -158,7 +160,7 @@ function Planner({}){
                 </div>
 
                 <div className="planner-link-container">
-                    {plannerList}
+                    {displayrecipesInPlannerList}
                 </div>
 
             </div>
