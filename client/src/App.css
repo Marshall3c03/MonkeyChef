@@ -21,14 +21,7 @@ button{
   font-size: large;
 }
 
-input {
-  padding: 10px;
-  border-radius: 20px;
-  border: 1px solid grey;
-  width: 50%;
-  min-width: 300px;
-  margin-right: 5px;
-}
+
 
 .App-logo {
   height: 40vmin;

@@ -13,15 +13,14 @@ p{
 }
 
 select{
-    width: 200px;
-    height: 45px;
+    /* width: 200px; */
+    height: 43px;
     padding: 10px;
     border-radius: 20px;
     border: 1px solid grey;
-    width: 50%;
-    min-width: 300px;
+    width: 100%;
     margin-right: 5px;
-    font-size: 20px;;
+    font-size: 20px;
 }
 
 #image{
@@ -33,11 +32,20 @@ select{
 #notes{
     width: 200%;
 }
-input{
-    height: 10%;
-    width: 50%;
-    box-sizing: border-box;
-    font-size: 20px;
+
+input {
+    padding: 10px;
+    border-radius: 20px;
+    border: 1px solid grey;
+    width: 52%;
+    height: 20px;
+    min-width: 300px;
+    margin-right: 5px;
+  }
+
+.plus td{
+    width: 20%;
+    height: 20px;
 }
 
 label{
@@ -57,6 +65,11 @@ td{
     padding-right:50px;
     min-width: 80px;
 }
+
+
+   
+
+
 
 
 

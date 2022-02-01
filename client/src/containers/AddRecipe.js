@@ -116,7 +116,7 @@ const AddRecipe = ({addRecipe})=>{
                         <input onChange={handleIngredientChange} type="text" id="ingredient" value={ingredient}/>
                     </tr>
                     <tr>
-                        <td colSpan="2"><input type="submit" value="+" id="save" border="0"/>   </td>
+                        <td className="plus" colSpan="2"><input type="submit" value="+" id="save" border="0"/>   </td>
                     </tr>
                 </table>      
                 </form>
