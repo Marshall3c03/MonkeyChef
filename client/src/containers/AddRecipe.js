@@ -1,5 +1,6 @@
 import {useState} from "react";
 import MealRecipeService from "./MealRecipeService";
+import "../static/CSS/addRecipeForm.css";
 
 
 const AddRecipe = ({addRecipe})=>{
@@ -11,7 +12,11 @@ const AddRecipe = ({addRecipe})=>{
     const [ingredients, setIngredients] = useState([]);
     const [image, setImage] = useState();
     const [method, setMethod] = useState();
-    const [servings, setServings]=useState()
+    const [servings, setServings]=useState();
+    const [category, setCategory]= useState("");
+    const [dietary,setDietary]=useState("");
+    const [notes, setNotes]=useState("");
+
 
     const handleNameChange = (ev) => setName(ev.target.value);
     const handleAmountChange = (ev) => setAmount(parseFloat(ev.target.value));
@@ -20,6 +25,10 @@ const AddRecipe = ({addRecipe})=>{
     const handleMethodChange = (ev) => setMethod(ev.target.value);
     const handleImageChange = (ev) => setImage(ev.target.value);
     const handleServingsChange = (ev) => setServings(parseInt(ev.target.value));
+    const handleCategoryChange = (ev) => setCategory(ev.target.value);
+    const handleDietaryChange = (ev) => setDietary(ev.target.value);
+    const handleNotesChange=(ev)=>setNotes(ev.target.value);
+
 
 
     const clearState= ()=>{
@@ -31,6 +40,9 @@ const AddRecipe = ({addRecipe})=>{
         setMethod("");
         setImage("");
         setServings();
+        setCategory("");
+        setDietary("");
+        setNotes("");
     }
     
     const handleNewIngredientClick = (e) => {
@@ -47,13 +59,13 @@ const AddRecipe = ({addRecipe})=>{
         setIngredients([...ingredients, newIngredient])
     };
 
-    const allIngredients = ()=>{
+    const  allIngredients = ()=>{
         return ingredients.map(ingredient =>{
             return(
                 <p>{ingredient.amount} {ingredient.unit} {ingredient.ingredient} </p>
             )
         })
-    }
+    };
 
 
     const handleSubmit = (e) =>{
@@ -63,69 +75,108 @@ const AddRecipe = ({addRecipe})=>{
             "ingredients": ingredients,
             "image" : image,
             "method": method,
-            "servings": servings
+            "servings": servings,
+            "category": category,
+            "dietary":dietary,
+            "notes": notes
         };
         MealRecipeService.create(newRecipe).then(() => clearState());
     };
     
     return(
         <>
-        <h2>Add a Recipe</h2>
+       <h1>Recipe Form</h1>
+        <div className="form-wrap">
+            <form className="ingredient-form" onSubmit={handleNewIngredientClick} id="ingredient-form" >
+            
+                <table>  
+                    <label className="ingredients" htmlFor="ingredients">Ingredients:</label>
+            
+                    <tr>
+                    <td><label htmlFor="amount">Amount:</label></td>
+                        <input onChange={handleAmountChange} type="number" step="any" id="amount" value={amount} required placeholder="Enter amount"/>
+                    </tr>
+                
+                    <tr>
+                        <td><label htmlFor="unit">Unit:</label></td>
+                        <select onChange={handleUnitChange} type="text" id="unit" value={unit}>
+                                <option value={undefined}></option>
+                                <option value="cup">cup</option>
+                                <option value="g">g</option>
+                                <option value="kg">kg</option>
+                                <option value="l">l</option>
+                                <option value="ml">ml</option>
+                                <option value="tbsp">tbsp</option>
+                                <option value="tsp">tsp</option>
+                        </select>
+                    </tr>
+            
+                    <tr>
+                        <td><label htmlFor="ingredient">Ingredient:</label></td>
+                        <input onChange={handleIngredientChange} type="text" id="ingredient" value={ingredient}/>
+                    </tr>
+                    <tr>
+                        <td className="plus" colSpan="2"><input type="submit" value="+" id="save" border="0"/>   </td>
+                    </tr>
+                </table>      
+                </form>
 
-        <form onSubmit={handleNewIngredientClick} id="ingredient-form" >
-            <label htmlFor="ingredients">Ingredients:</label>
-            <br/>
+            
 
-            <label htmlFor="amount">Amount:</label>
-            <input onChange={handleAmountChange} type="number" id="amount" value={amount} required/>
-
-            <label htmlFor="unit">Unit:</label>
-            <select onChange={handleUnitChange} type="text" name="unit" id="unit" value={unit}>
-                    <option value={undefined}></option>
-                    <option value="kg">kg</option>
-                    <option value="g">g</option>
-                    <option value="l">l</option>
-                    <option value="tbsp">tbsp</option>
-                    <option value="ml">ml</option>
-                    <option value="tsp">tsp</option>
-                    <option value="cup">cup</option>
-            </select>
-
-            <label htmlFor="ingredient">Ingredient:</label>
-            <input onChange={handleIngredientChange} type="text" id="ingredient" value={ingredient}/>
-
-            <input type="submit" value="+" id="save"/>   
-        </form>
-        <br/>
-        <form method= "post" onSubmit={handleSubmit} id="recipe-form" >
-            <div className="formWrap">
-                <label htmlFor="name">Name:</label>
-                <input onChange={handleNameChange} type="name" id="name" value={name} required />
-            </div>
-            <div>
-                <label htmlFor="servings">Servings:</label>
-                <input onChange={handleServingsChange} type="number" value={servings}  id="servings" />
-            </div> 
-            <br/>
-            <div>
-                <label htmlFor="image">Image URL:</label>
-                <input onChange={handleImageChange} type="text" value={image}  id="image" />
-            </div>    
-            <div className="formWrap">
-
-            </div>
-            <br/>
-           
-            <div className="formWrap">
-                <label htmlFor="method">Method:</label>
-                <input onChange={handleMethodChange} type="text" id="method" value={method} width="500px" />
-            </div>
-
-            {allIngredients()}
-            <input type="submit" value="Save" id="save"/>
-	    </form>
-
-        
+                <form  className="recipe-form"  method= "post" onSubmit={handleSubmit} id="recipe-form" >
+                <table>
+                    <tr>
+                        <td><label htmlFor="name">Name:</label></td>
+                        <input onChange={handleNameChange} type="name" id="name" value={name} required />
+                    </tr>
+                    <tr>
+                        <td><label htmlFor="servings">Servings:</label></td>
+                        <input onChange={handleServingsChange} type="number" value={servings}  id="servings" />
+                    </tr> 
+                    
+                    <tr>
+                        <td><label htmlFor="category">Category:</label></td>
+                        <select onChange={handleCategoryChange} type="text" id="category" value={category}>
+                            <option value="empty"></option>
+                            <option value="breakfast">breakfast</option>
+                            <option value="dinner">dinner</option>
+                            <option value="lunch">lunch</option>
+                            <option value="snack">snack</option>
+                            <option value="sweet">sweet</option>          
+                        </select>          
+                    </tr> 
+                    <tr>
+                        <td><label htmlFor="dietary">Dietary:</label></td>
+                        <select onChange={handleDietaryChange} type="text" id="dietary" value={dietary}>
+                            <option value="empty"></option>   
+                            <option value="dairy-free">dairy-free</option>
+                            <option value="gluten-free">gluten-free</option>
+                            <option value="protein">protein</option>          
+                            <option value="vegan">vegan</option>
+                            <option value="vegetarian">vegetarian</option>
+                        </select>          
+                    </tr> 
+                    <tr>
+                        <td><label htmlFor="image">Image URL:</label></td>
+                        <input onChange={handleImageChange} type="text" value={image}  id="image" />
+                    </tr>    
+            
+                    <tr>
+                        <td><label htmlFor="method">Method:</label></td>
+                        <input onChange={handleMethodChange} type="text" id="method" value={method} />
+                    </tr>
+                    <tr>
+                        <td><label htmlFor="notes">Notes:</label></td>
+                        <input onChange={handleNotesChange} type="text" id="notes" value={notes} />
+                    </tr>
+                    {allIngredients()}
+                    <tr>
+                        <td colSpan="2"><input type="submit" value="Save" id="save"/></td>
+                    </tr>    
+                </table> 
+            </form>
+        </div>
+    
         </>
         )
     }

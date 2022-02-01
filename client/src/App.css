@@ -4,6 +4,7 @@
 
 body {
   background-image: url("static/CSS/graphics/MonkeyChefLogoBG.png");
+  /* background-size: cover; */
   background-repeat: no-repeat;
   background-color: rgb(144, 229, 165);
 }
@@ -21,14 +22,7 @@ button{
   font-size: large;
 }
 
-input {
-  padding: 10px;
-  border-radius: 20px;
-  border: 1px solid grey;
-  width: 50%;
-  min-width: 300px;
-  margin-right: 5px;
-}
+
 
 .App-logo {
   height: 40vmin;

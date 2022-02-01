@@ -1,7 +1,7 @@
 import react, { useState, useEffect} from "react";
 import Recipe from "../containers/Recipe";
 import MealPlannerService from "../containers/MealPlannerService";
-
+import { nanoid } from 'nanoid'
 
 
 const RecipesList = ({recipes} )=>{
@@ -17,24 +17,22 @@ const RecipesList = ({recipes} )=>{
 
         return(
             <>
-                <div className="button-group" key={recipe}>
-                    <img onClick={handleClick} className="button-image" src={recipe.image} width="100px"/>
-                    <p className="button-text">{recipe.name}</p>
-                    <img onClick={ ()=>{
-                        MealPlannerService.create(recipe);
-                    }} src="https://icons.iconarchive.com/icons/martz90/circle-addon1/48/text-plus-icon.png" width="25px"/>
-                </div>
+                <div className="recipe-button-group" key={nanoid()}>
+                <img onClick={handleClick} className="button-image" src={recipe.image} width="100px"/>
+                <p className="recipe-button-text" >{recipe.name}</p>
+                <img className="recipe-button-image"onClick={()=>{
+                    MealPlannerService.create(recipe);
+                }} src="https://icons.iconarchive.com/icons/martz90/circle-addon1/48/text-plus-icon.png" width="25px"/>
+            </div>
             </>
         )
     });
 
     return(
         <>
-        <div className="link-container">
+        <div className="recipe-book-link-container">
         {listOfRecipes}
-        
         </div>
-        
         </>
     );
 };
