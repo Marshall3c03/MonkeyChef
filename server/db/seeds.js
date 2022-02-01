@@ -236,7 +236,7 @@ db.recipes.insertMany([
       "image" : "https://www.deliciousmagazine.co.uk/wp-content/uploads/2021/06/01.Delicious-BBQ-buffalo-wings-960-768x960.jpg",
       "category" : "dinner",
       "servings" : 4,
-      "notes" : ""
+      "notes" : "here is note"
       },
       
       {

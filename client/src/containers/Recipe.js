@@ -14,9 +14,6 @@ const Recipe = () => {
     useEffect(()=>{
         MealRecipeService.getById(recipeId)
             .then(resultJson => setCurrentRecipe(resultJson))
-
-        // MealPlannerService.getById(recipeId)
-        //     .then(resultJson => setCurrentRecipe(resultJson))
     }, []);
     
     const handleMinus = function() {
@@ -63,16 +60,20 @@ const Recipe = () => {
         /> {currentRecipe?.name}</h1>
             <table>
                 <tbody>
-                    <tr>
-                        <td>
-                            <div>
-                                <img className="recipe-avatar" src={currentRecipe?.image}/>
-                                Serves <button onClick = {handleMinus}>-</button> {servings} <button onClick = {handlePlus}>+</button>
-                            </div>
-                            {fullIngredients}
-                        </td>
-                        <td width = "70%"><p>{currentRecipe?.method}</p></td>
-                    </tr>
+                    <td>
+                        <div className="core-recipe-details"> 
+                            <img className="recipe-avatar" src={currentRecipe?.image}/>
+                           <div className="recipe-serving-buttons"> Serves <button onClick = {handleMinus}>-</button> {servings} <button onClick = {handlePlus}>+</button></div>
+                        </div>
+                        {fullIngredients}
+                    </td>
+                    <td width = "70%">
+                        <p><b>Method:</b> {currentRecipe?.method}</p>
+                        <p><b>Notes:</b>{currentRecipe?.notes}</p>
+                        <p><b>Category:</b>{currentRecipe?.category} </p>
+                        <p><b>Dietary:</b>{currentRecipe?.dietary} </p>
+                        <p><b>Recommended Servings:</b>{currentRecipe?.servings} </p>
+                    </td>
                 </tbody>
             </table>
             <button onClick={handleDelete}>Delete Recipe</button>
