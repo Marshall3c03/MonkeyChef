@@ -135,5 +135,13 @@
 }
 
 .planner-button-add {
- margin-left: 1rem;
+    margin-left: 1rem;
+}
+
+.swal-sure {
+    width: 400px;
+}
+
+.swal-delete {
+    width: 360px;
 }

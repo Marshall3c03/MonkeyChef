@@ -174,3 +174,8 @@
     margin-top: 2rem;
     margin-bottom: 5rem;
 }
+
+.swal {
+  width: 420px;
+  padding-bottom: 30px;
+}

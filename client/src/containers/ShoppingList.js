@@ -30,7 +30,7 @@ const ShoppingList = () => {
 
       let listOfIngredients = recipesList.map(recipe => {
           
-        let fullIngredientList = recipe.ingredients?.map(ingredient => {
+        let fullIngredientList = recipe.ingredients.map(ingredient => {
             
             shoppingList.push(ingredient); 
             

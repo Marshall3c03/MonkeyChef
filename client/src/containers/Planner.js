@@ -4,7 +4,7 @@ import '../static/CSS/planner.css'
 import { useNavigate } from "react-router-dom";
 import MealRecipeService from "./MealRecipeService";
 import { nanoid } from 'nanoid'
-
+import swal from "sweetalert";
 
 
 function Planner({}){
@@ -60,7 +60,13 @@ function Planner({}){
                     <div className="planner-recipe">
                         <img className="image" src={recipe.image} width="70px"/>
                         <p>{recipe.name}</p>
-                        <img className="planner-button-add"onClick={handleAdding} 
+                        <img className="planner-button-add"onClick={() => {swal({
+                        title: "Recipe added to meal planner!",
+                        icon: "success",
+                        timer: 2000,
+                        buttons: false,
+                        className: "swal"
+                    })}, handleAdding} 
                         src="https://icons.iconarchive.com/icons/martz90/circle-addon1/48/text-plus-icon.png" width="25px"/>
                     </div>
                 </div>
@@ -99,15 +105,32 @@ function Planner({}){
                 <p className="button-text">{recipe.name}</p>
                 <img className="planner-button-delete"
                 onClick={()=>{
-                    MealPlannerService.delete(recipeId).then(() => {
-                        var array = [...recipesList]; 
-                        var index = array.indexOf(recipe)
-                        if (index !== -1) {
-                            array.splice(index, 1);
-                            setRecipesList(array);
-                        }
-                        });
-                    }} 
+                    
+                    swal({
+                        title: "Are you sure?",
+                        icon: "warning",
+                        buttons: true,
+                        dangerMode: true,
+                        buttons: ['No!', 'Yes..'],
+                        className: "swal-sure"
+                        })
+                    .then((willDelete) => {
+                        if (willDelete) {
+                            MealPlannerService.delete(recipeId).then(() => {
+                                var array = [...recipesList]; 
+                                var index = array.indexOf(recipe)
+                                if (index !== -1) {
+                                    array.splice(index, 1);
+                                    setRecipesList(array);
+                                }
+                                });
+                          swal("Poof! Recipe deleted!", {
+                            icon: "success",
+                            confirmButtonColor: '#329e75',
+                            className: "swal-delete"
+                          });
+                      }});;
+                }} 
                 src="https://findicons.com/files/icons/1262/amora/256/delete.png" width="25px"/>
             </div>
     )}), [recipesList]);
