@@ -12,7 +12,7 @@ const MealPlannerService = {
     },
 
     create (recipe){
-        const plannerRecipe = { recipeId: recipe._id }
+        const plannerRecipe = { recipeId: recipe._id, ingredients: recipe.ingredients }
 
         return fetch(baseURL, {
             method: 'POST',
