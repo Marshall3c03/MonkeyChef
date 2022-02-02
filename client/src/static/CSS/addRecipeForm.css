@@ -63,6 +63,19 @@
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
+.input-add-recipe-ingredient {
+    padding: 10px;
+    border-radius: 20px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    border: 1px solid grey;
+    width: 237px;
+    height: 20px;
+    margin-right: 0px;
+    font-size: 20px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
 
 textarea{
     border-radius: 20px;
@@ -74,10 +87,14 @@ textarea{
 }
 
 .plus input{
-    border-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    border: 0px;
     background-color: black;
-    height: 30px;
-    width: 70px;
+    height: 42px;
+    width: 40px;
+    position: relative;
+    top: -3px;
     color: white;
     padding: 0px;
     text-align: center;
@@ -85,6 +102,7 @@ textarea{
 
 .save input{
     border-radius: 20px;
+    border: 0px;
     background-color: black;
     height: 3rem;
     width: 20rem;

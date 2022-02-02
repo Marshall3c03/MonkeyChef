@@ -148,11 +148,9 @@ const AddRecipe = ()=>{
                         </tr>
                         <tr>
                             <td><label htmlFor="ingredient">Ingredient:</label></td>
-                            <input className="input-add-recipe" onChange={handleIngredientChange} type="text" id="ingredient" value={ingredient}/>
-                        </tr>
-                        <tr>
-                            <td className="plus" colSpan="2"><input type="submit" value="+" id="save" border="0"/>   </td>
-                        </tr>
+                            <input className="input-add-recipe-ingredient" onChange={handleIngredientChange} type="text" id="ingredient" value={ingredient}/>
+                            <a className="plus" colSpan="2"><input type="submit" value="+" id="save" border="0"/></a>
+                            </tr>
                     </table>      
                         {allIngredients()}
                     </form>
