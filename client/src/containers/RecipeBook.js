@@ -36,10 +36,9 @@ const RecipeBook = () => {
           setPermanantRecipesList(recipesJson)})
       }
 
-      const reloadRecipes = () => { fetch("http://localhost:5000/api/recipes")
-        .then(result => result.json())
-        .then(recipesJson => setDisplayedRecipesList(recipesJson))
-        .then(setNoResults(false))
+      const reloadRecipes = () => { 
+        setDisplayedRecipesList(permanantRecipesList)
+        setNoResults(false)
         setSearchTerm("")
       }
 
