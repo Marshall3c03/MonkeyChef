@@ -73,11 +73,11 @@ const Recipe = () => {
                         {fullIngredients}
                     </td>
                     <td width = "70%">
-                        <p><b>Method:</b> {currentRecipe?.method}</p>
-                        <p><b>Notes:</b>{currentRecipe?.notes}</p>
-                        <p><b>Category:</b>{currentRecipe?.category} </p>
-                        <p><b>Dietary:</b>{currentRecipe?.dietary} </p>
-                        <p><b>Recommended Servings:</b>{currentRecipe?.servings} </p>
+                        <p><b>Method: </b> {currentRecipe?.method}</p>
+                        <p><b>Notes: </b>{currentRecipe?.notes}</p>
+                        <p><b>Category: </b>{currentRecipe?.category} </p>
+                        <p><b>Dietary: </b>{currentRecipe?.dietary} </p>
+                        <p><b>Recommended Servings: </b>{currentRecipe?.servings} </p>
                     </td>
                 </tbody>
             </table>

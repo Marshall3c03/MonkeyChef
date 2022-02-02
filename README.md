@@ -1,14 +1,15 @@
-# ![MonkeyChef](https://github.com/Marshall3c03/CapstoneMealPlanner/tree/main)
+# ![MonkeyChef](https://raw.githubusercontent.com/Marshall3c03/CapstoneMealPlanner/main/client/src/static/CSS/graphics/MonkeyChefLogo.png)
+
 <table>
+<td>
 <tr>
-<td>
   A web app built using Javascript, communicating with a MongoDB database through express. The front-end is displayed using React.
-</td>
-<td>
+</tr>
+<tr>
   The app allows the user to manage their recipes and meal planner. The user has full CRUD methods on the recipes, and they can assign them to a weekly meal planner, where they can also be managed. The app automatically updates a shopping list, sourcing the ingredients from the recipes in the planner, and consilidates it to avoid multiples of the same item.<br>
   Other functions include search and filters for easier recipe management.
-</td>
 </tr>
+</td>
 </table>
 
 ## Site
@@ -20,24 +21,22 @@
 ### Add Recipe
 ![](https://raw.githubusercontent.com/Marshall3c03/CapstoneMealPlanner/main/demo/AddRecipe.png)
 
-### Recipe page
-![](https://raw.githubusercontent.com/Marshall3c03/CapstoneMealPlanner/main/demo/AddRecipe.
+### Recipe Page
+![](https://raw.githubusercontent.com/Marshall3c03/CapstoneMealPlanner/main/demo/RecipePage.png)
+
 ### Recipe Book
 ![](https://raw.githubusercontent.com/Marshall3c03/CapstoneMealPlanner/main/demo/RecipeBook.png)
 
-## Planner
+### Planner
 ![](https://raw.githubusercontent.com/Marshall3c03/CapstoneMealPlanner/main/demo/Planner.png)
 
-## Shopping List
+### Shopping List
+![](https://raw.githubusercontent.com/Marshall3c03/CapstoneMealPlanner/main/demo/ShoppingList.png)
 
-
-
-## [Usage](https://iharsh234.github.io/WebApp/) 
 
 ### Development
-Want to contribute? Great!
 
-To fix a bug or enhance an existing module, follow these steps:
+Follow these steps if you want to run and use the app:
 
 - Fork the repo
 - Create a new branch (`git checkout -b improve-feature`)
@@ -72,6 +71,5 @@ If you'd like to request a new function, feel free to do so by opening an issue 
 ---|---
 [Harsh Vijay ](https://github.com/iharsh234) |[Quandl](https://www.quandl.com)
 
-## [License](https://github.com/iharsh234/WebApp/blob/master/LICENSE.md)
 
-MIT © [Harsh Vijay ](https://github.com/iharsh234)
+
