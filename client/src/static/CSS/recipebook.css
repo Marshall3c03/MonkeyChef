@@ -23,13 +23,54 @@
 }
 
 #searchTerm {
-  width: 500px;
+  
+  padding: 10px;
+  border-radius: 20px;
+  border: 1px solid grey;
+  width: 50%;
+  min-width: 300px;
+  padding-top: 13px;
+  padding-bottom: 11px;
+  margin-right: 0px;
   border-top-right-radius: 0px;
-  border-bottom-right-radius: 0px;
-  height: 19px;
-  margin: 0px;
-  position: relative;
-  top: -1px;
+  border-bottom-right-radius: 0px;  
+  
+}
+
+.recipebook-filters-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.recipebook-monkey {
+  margin-right: 1rem;
+  margin-left: 1rem;
+}
+
+.recipebook-title{
+  margin-top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3rem;
+}
+
+.recipebook-search-container{
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.recipebook-filters-container{
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
 
 #search-button {
@@ -92,6 +133,8 @@
   box-shadow: 0px 2px 10px #939393;
   border-radius: 10px;
 }
+
+
 
 
 .recipe-button-group:hover {

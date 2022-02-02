@@ -216,7 +216,11 @@ const AddRecipe = ()=>{
                             <textarea onChange={handleNotesChange} type="text" cols="30" rows="10" id="notes" value={notes} />
                         </tr>
                         <tr>
-                            <td className="save" colSpan="2"><input type="submit" value="Save" id="save"/></td>
+                            <td className="save" colSpan="2">
+                                <div className="add-recipe-save">
+                                    <input type="submit" value="Save" id="save"/>
+                                </div>
+                            </td>
                         </tr>    
                     </table> 
                 </form>

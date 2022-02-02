@@ -8,10 +8,11 @@
 
 .homepage-banner {
     background-image: url("graphics/jungle.png");
-    width: 100%;
+    width: 95%;
     height: 15vw;
     margin-left: auto;
     margin-right: auto;
+    margin-top: 0.5 rem;
     margin-bottom: 4vw;
     border-radius: 1vw;
 }
@@ -47,7 +48,7 @@
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    margin-bottom: 500px;
+    margin-bottom: 2.5rem;
 }
 
 .home-banner-image {

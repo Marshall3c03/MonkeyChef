@@ -85,19 +85,44 @@
     border-radius: 10px;
 }
 
+.planner-pagetitle{
+    margin-top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3rem;
+}
+
 .search input {
     background-color: white;
+    margin: 0px;
     border-color: black;
-    border-radius: 10px;
+    border: 2px solid black;
+    border-bottom-left-radius: 10px;
+    border-top-left-radius: 10px;
     font-size: 18px;
     padding: 15px;
     height: 30px;
-    width: 220px;
+    width: 263px;
 }
   
 .searchInputs {
     margin-top: 105px;
     display: flex;
+}
+
+.searchinput {
+    display: flex;
+    flex-direction: row;
+}
+
+#clear-button {
+    height: 64px;
+    margin: 0px;
+    border-bottom-left-radius: 0px;
+    border-top-left-radius: 0px;
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;
 }
   
 .button-text {

@@ -139,19 +139,18 @@ function Planner({}){
     )}), [recipesInPlannerList, plannerDBList]);
 
     return(
-        <>
-            <h1>Planner</h1>
+        <div>
+            <h1 className="planner-pagetitle">Planner</h1>
             <div className="planner-overall-container">
 
+                <div className="search">
                 <div className="search">
                     <div className="searchInput">
                         <input onChange = {handleFilter}
                             type="text" 
                             value={wordEntered}
-                            placeholder="Enter a recipe to search ..." />
-                        <div className="searchButton">
-                            <button onClick={clearInput}>Clear</button>
-                        </div>
+                            placeholder="Enter a recipe to search ..." /><button id = "clear-button" onClick={clearInput}>X</button>
+                    </div>
                     </div>
                 
                     <div className="data-result">
@@ -164,7 +163,7 @@ function Planner({}){
                 </div>
 
             </div>
-        </>
+        </div>
     )
 };
 

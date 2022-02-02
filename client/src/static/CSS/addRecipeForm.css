@@ -78,11 +78,18 @@ textarea{
 .save input{
     border-radius: 20px;
     background-color: black;
-    height: 30px;
-    width: 70px;
+    height: 3rem;
+    width: 20rem;
     color: white;
     padding: 0px;
     text-align: center;
+}
+
+.add-recipe-save{
+    padding-left: 13.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 label{

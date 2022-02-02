@@ -42,26 +42,6 @@ const ShoppingList = () => {
         
     });
 
-    // const foundItemId = function(ingredientName) {
-    //   shoppingList.
-    // }
-
-    // condensedShoppingList.push(shoppingList[0])
-
-    // for (let item of shoppingList) {
-    //   const checkIfObjectExists = condensedShoppingList.indexOf(item.ingredient);
-    //           console.log("condensed list: ", condensedShoppingList);
-    //           console.log("item ingredient: ", item.ingredient);
-    //           console.log("check if object exists: ", checkIfObjectExists);
-    //   if (checkIfObjectExists >= 0 && item.unit === condensedShoppingList[checkIfObjectExists].unit) {
-    //           console.log("this is the if");
-    //     condensedShoppingList[checkIfObjectExists].unit += item.unit;
-    //   } else {
-    //           console.log("this is the else")
-    //     condensedShoppingList.push(item);
-    //   }
-    // }
-
 
     const loopedList = {};
 
@@ -118,7 +98,11 @@ const ShoppingList = () => {
     
     return(
         <>
-            <h1>Shopping List</h1>
+          <div className = "banner">
+              <h1 className = "titles">
+                  Shopping List
+              </h1>
+          </div>
             <div>
                 {listItems}
             </div>
