@@ -52,7 +52,7 @@ Start the application in development mode. running this command will open ( http
 
     npm start
 
-Server:
+### Server:
 
 To get the application running you must install all the dependencies:
 
@@ -77,7 +77,7 @@ Then seed the database and run the server:
 
 ## Team
 
-### [![Anita Safar]()](https://github.com/AnitaSafar) 
-### [![Craig Marshall]()](https://github.com/Marshall3c03)
-### [![Ina Kurlovich]()](https://github.com/Marshall3c03)
-### [![Ross Napier]()](https://github.com/RossNapier)
+### [Anita Safar](https://github.com/AnitaSafar) 
+### [Craig Marshall](https://github.com/Marshall3c03)
+### [Ina Kurlovich](https://github.com/Marshall3c03)
+### [Ross Napier](https://github.com/RossNapier)
