@@ -5,7 +5,8 @@
   A web app built using Javascript, communicating with a MongoDB database through express. The front-end is displayed using React.
 </td>
 <td>
-  The app allows the user to manage their recipes and meal planner. The user has full CRUD methods on the recipes, and they can assign them to a weekly meal planner.
+  The app allows the user to manage their recipes and meal planner. The user has full CRUD methods on the recipes, and they can assign them to a weekly meal planner, where they can also be managed. The app automatically updates a shopping list, sourcing the ingredients from the recipes in the planner, and consilidates it to avoid multiples of the same item.<br>
+  Other functions include search and filters for easier recipe management.
 </td>
 </tr>
 </table>
@@ -14,23 +15,20 @@
 
 ### Homepage
 
-![](https://iharsh234.github.io/WebApp/images/demo/web_app_face.JPG)
+![](https://raw.githubusercontent.com/Marshall3c03/CapstoneMealPlanner/main/demo/Homepage.png)
 
-### Add recipe
-![](https://iharsh234.github.io/WebApp/images/demo/demo_query.JPG)
+### Add Recipe
+![](https://raw.githubusercontent.com/Marshall3c03/CapstoneMealPlanner/main/demo/AddRecipe.png)
 
-### Recipe book
-![](https://iharsh234.github.io/WebApp/images/demo/demo_chart1.JPG)
-![](https://iharsh234.github.io/WebApp/images/demo/demo_chart2.JPG)
-![](https://iharsh234.github.io/WebApp/images/demo/demo_chart3.JPG)
-
+### Recipe page
+![](https://raw.githubusercontent.com/Marshall3c03/CapstoneMealPlanner/main/demo/AddRecipe.
+### Recipe Book
+![](https://raw.githubusercontent.com/Marshall3c03/CapstoneMealPlanner/main/demo/RecipeBook.png)
 
 ## Planner
-The WebApp is compatible with devices of all sizes and all OS's, and consistent improvements are being made.
+![](https://raw.githubusercontent.com/Marshall3c03/CapstoneMealPlanner/main/demo/Planner.png)
 
-![](https://iharsh234.github.io/WebApp/images/demo/mobile.png)
-
-## Shopping list
+## Shopping List
 
 
 
