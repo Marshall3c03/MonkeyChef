@@ -22,7 +22,7 @@
 ![](https://raw.githubusercontent.com/Marshall3c03/CapstoneMealPlanner/main/demo/AddRecipe.png)
 
 ### Recipe Page
-![](https://raw.githubusercontent.com/Marshall3c03/CapstoneMealPlanner/main/demo/RecipePage.png)
+![](https://raw.githubusercontent.com/Marshall3c03/CapstoneMealPlanner/main/demo/Recipepage.png)
 
 ### Recipe Book
 ![](https://raw.githubusercontent.com/Marshall3c03/CapstoneMealPlanner/main/demo/RecipeBook.png)
