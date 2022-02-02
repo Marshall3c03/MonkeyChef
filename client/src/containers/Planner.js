@@ -60,9 +60,9 @@ function Planner({}){
             return(
                 <div className="planner-recipe-group" key={recipe._id}>
                     <div className="planner-recipe">
-                        <img className="image" src={recipe.image} width="70px"/>
+                        <img className="image" src={recipe.image}/>
                         <p>{recipe.name}</p>
-                        <img className="planner-button-add"onClick={() => {swal({
+                        <img className="planner-button-add" onClick={() => {swal({
                         title: "Recipe added to meal planner!",
                         icon: "success",
                         timer: 2000,
@@ -128,10 +128,8 @@ function Planner({}){
                                 }
                                 });
                           swal("Poof! Recipe deleted!", {
-                            icon: "error",
+                            icon: "success",
                             confirmButtonColor: '#329e75',
-                            buttons: false,
-                            timer: 1500,
                             className: "swal-delete"
                           });
                       }});;
@@ -145,13 +143,11 @@ function Planner({}){
             <div className="planner-overall-container">
 
                 <div className="search">
-                <div className="search">
                     <div className="searchInput">
                         <input onChange = {handleFilter}
                             type="text" 
                             value={wordEntered}
                             placeholder="Enter a recipe to search ..." /><button id = "clear-button" onClick={clearInput}>X</button>
-                    </div>
                     </div>
                 
                     <div className="data-result">
@@ -165,6 +161,7 @@ function Planner({}){
                         {displayrecipesInPlannerList}
                     </div>
                 </div>
+
             </div>
         </div>
     )

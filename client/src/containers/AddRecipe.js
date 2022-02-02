@@ -168,10 +168,8 @@ const AddRecipe = ()=>{
                         <tr>
                             <td className="plus" colSpan="2"><input type="submit" value="+" id="save" border="0"/>   </td>
                         </tr>
-                        <tr>
-                            {allIngredients()}
-                        </tr>
                     </table>      
+                        {allIngredients()}
                     </form>
 
                 
