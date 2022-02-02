@@ -144,6 +144,11 @@
     flex-direction: row;
 }
 
+.planner-overall{
+    margin-left: 2rem;
+    width: 60vw;
+}
+
 .data-result {
     padding-top: 1rem;
     height: 75vh;

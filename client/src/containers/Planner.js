@@ -62,13 +62,7 @@ function Planner({}){
                     <div className="planner-recipe">
                         <img className="image" src={recipe.image}/>
                         <p>{recipe.name}</p>
-                        <img className="planner-button-add" onClick={() => {swal({
-                        title: "Recipe added to meal planner!",
-                        icon: "success",
-                        timer: 2000,
-                        buttons: false,
-                        className: "swal"
-                    })}, handleAdding} 
+                        <img className="planner-button-add" onClick={handleAdding} 
                         src="https://icons.iconarchive.com/icons/martz90/circle-addon1/48/text-plus-icon.png" width="25px"/>
                     </div>
                 </div>
@@ -126,8 +120,9 @@ function Planner({}){
                                 }
                                 });
                           swal("Poof! Recipe deleted!", {
-                            icon: "success",
-                            confirmButtonColor: '#329e75',
+                            icon: "error",
+                            timer: 1500,
+                            buttons: false,
                             className: "swal-delete"
                           });
                       }});;
@@ -139,7 +134,6 @@ function Planner({}){
     return(
         <div>
             <div className="planner-overall-container">
-
                 <div className="search">
                     <div className="searchInput">
                         <input onChange = {handleFilter}
