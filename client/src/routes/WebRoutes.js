@@ -17,6 +17,7 @@ import AddRecipe from '../containers/AddRecipe';
         <Route path='/planner' element={<Planner />} />
         <Route path='/shoppingList' element={<ShoppingList />} />
         <Route path='/recipebook/:recipeId' element={<Recipe/>} />
+        <Route path='/update-recipe/:recipeId' element={<AddRecipe/>} />
       </Routes>
     )
   }

@@ -38,6 +38,11 @@ const Recipe = () => {
         setMealAddedToPlanner(<button>&#10004; Recipe added to Planner</button>)
     };
 
+    const handleUpdate=()=>{
+        MealRecipeService.update(recipeId);
+        navigate(`/update-recipe/${recipeId}`);
+    }
+
     let counter = 1;
 
     const fullIngredients = currentRecipe?.ingredients.map((ingredient) => {
@@ -78,6 +83,8 @@ const Recipe = () => {
             </table>
             <button onClick={handleDelete}>Delete Recipe</button>
             <button onClick={handleAdding}>Add Recipe to Meal Plan</button>
+            <button onClick={handleUpdate}>Update Recipe</button>
+
                     {mealAddedToPlanner}
         </div>
             /* // the questionmark means a Nullcoalesent meaning if current recipe has a value... then try index into name */
