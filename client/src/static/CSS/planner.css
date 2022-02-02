@@ -87,10 +87,9 @@
 
 .planner-pagetitle{
     margin-top: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    position: relative;
     font-size: 3rem;
+    text-align: center;
 }
 
 .search input {
@@ -114,6 +113,11 @@
 .searchinput {
     display: flex;
     flex-direction: row;
+}
+
+.planner-overall{
+    display: flex;
+    flex-direction: column;
 }
 
 #clear-button {

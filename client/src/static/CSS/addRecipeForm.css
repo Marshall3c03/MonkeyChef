@@ -7,7 +7,6 @@
 
 .ingredient-text{
     font-size: 20px;
-    font-style: italic;
     font-weight: bold;
 }
 .add-recipe-form-container{
@@ -21,7 +20,8 @@
 
 .select-option-recipe {
     height: 43px;
-    padding: 10px;
+    padding: 2px;
+    padding-left: 1rem;
     border-radius: 20px;
     border: 1px solid grey;
     width: 300px;
@@ -31,10 +31,12 @@
 }
 
 .add-recipe-imageurl{
-    width: 31rem;
+    font-size: 15px;
+    width: 30.5rem;
     border-radius: 20px;
     border: 1px solid grey;
     height: 2.6rem;
+    padding-left: 1rem;
 }
 
 #method{
@@ -49,20 +51,24 @@
 
 .input-add-recipe {
     padding: 10px;
+    padding-left: 1rem;
     border-radius: 20px;
     border: 1px solid grey;
-    width: 280px;
+    width: 272px;
     height: 20px;
     margin-right: 5px;
     font-size: 20px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
+
+
 textarea{
     border-radius: 20px;
     border: 1px solid grey;
     font-size: 22px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    padding: 10px;    
+    padding: 10px;
+    padding-left: 1rem;
 }
 
 .plus input{
@@ -104,10 +110,14 @@ label{
 .ingredient-form{
     padding-right: 80px;
 }
-/* 
+
+
 .ingredient-input{
-    background-color: white;  
-} */
+    display: flex;
+    flex-direction: row;
+    background-color: white;
+    width: 20rem;
+}
 
 td{
     padding-right:50px;

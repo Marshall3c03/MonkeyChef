@@ -25,7 +25,7 @@ const RecipesList = ({recipes} )=>{
                     swal({
                         title: "Recipe added to meal planner!",
                         icon: "success",
-                        timer: 2000,
+                        timer: 1500,
                         buttons: false,
                         className: "swal"
                     });

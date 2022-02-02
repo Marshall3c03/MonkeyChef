@@ -128,8 +128,10 @@ function Planner({}){
                                 }
                                 });
                           swal("Poof! Recipe deleted!", {
-                            icon: "success",
+                            icon: "error",
                             confirmButtonColor: '#329e75',
+                            buttons: false,
+                            timer: 1500,
                             className: "swal-delete"
                           });
                       }});;
@@ -140,7 +142,6 @@ function Planner({}){
 
     return(
         <div>
-            <h1 className="planner-pagetitle">Planner</h1>
             <div className="planner-overall-container">
 
                 <div className="search">
@@ -158,10 +159,12 @@ function Planner({}){
                     </div>
                 </div>
 
-                <div className="planner-link-container">
-                    {displayrecipesInPlannerList}
+                <div className="planner-overall">
+                    <h1 className="planner-pagetitle">Planner</h1>
+                    <div className="planner-link-container">
+                        {displayrecipesInPlannerList}
+                    </div>
                 </div>
-
             </div>
         </div>
     )

@@ -2,9 +2,15 @@ import {useState, useEffect} from "react";
 import { useParams } from "react-router-dom";
 import MealRecipeService from "./MealRecipeService";
 import "../static/CSS/addRecipeForm.css";
+import swal from "sweetalert";
+import { useNavigate } from "react-router-dom";
+
+
 
 
 const AddRecipe = ()=>{
+
+    const navigate = useNavigate();
 
     const [name, setName] = useState("");
     const [amount, setAmount] = useState("");
@@ -82,11 +88,11 @@ const AddRecipe = ()=>{
     const  allIngredients = ()=>{
         return ingredients.map(ingredient =>{
             return(
-            <div className="ingredient-input">
+            // <div className="ingredient-input">
                 <ul>   
                     <p className="ingredient-text">{ingredient.amount} {ingredient.unit} {ingredient.ingredient} </p>
                 </ul>   
-            </div>
+            // </div>
             )
         })
     };
@@ -124,6 +130,7 @@ const AddRecipe = ()=>{
             };
             MealRecipeService.create(newRecipe).then(() => clearState());
         }
+        setTimeout(navigate('/recipebook'),10000)
     };
     
     return(
@@ -218,7 +225,13 @@ const AddRecipe = ()=>{
                         <tr>
                             <td className="save" colSpan="2">
                                 <div className="add-recipe-save">
-                                    <input type="submit" value="Save" id="save"/>
+                                    <input type="submit" value="Save" id="save" onClick = {() => {swal({
+                                            title: "Recipe added to meal planner!",
+                                            icon: "success",
+                                            timer: 1500,
+                                            buttons: false,
+                                            className: "swal"
+                                        })}}/>
                                 </div>
                             </td>
                         </tr>    
