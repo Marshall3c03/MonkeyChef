@@ -60,9 +60,9 @@ function Planner({}){
             return(
                 <div className="planner-recipe-group" key={recipe._id}>
                     <div className="planner-recipe">
-                        <img className="image" src={recipe.image} width="70px"/>
+                        <img className="image" src={recipe.image}/>
                         <p>{recipe.name}</p>
-                        <img className="planner-button-add"onClick={() => {swal({
+                        <img className="planner-button-add" onClick={() => {swal({
                         title: "Recipe added to meal planner!",
                         icon: "success",
                         timer: 2000,
@@ -74,7 +74,6 @@ function Planner({}){
                 </div>
             )
         });    
-
 
     const handleFilter = (event) => {
         const searchWord = event.target.value;
@@ -118,7 +117,6 @@ function Planner({}){
                     .then((willDelete) => {
                         if (willDelete) {
                             const plannerId = plannerDBList.find(p => p.recipeId === recipe._id)._id;
-
                             MealPlannerService.delete(plannerId).then(() => {
                                 var array = [...recipesInPlannerList]; 
                                 var index = array.indexOf(recipe)
@@ -139,8 +137,7 @@ function Planner({}){
     )}), [recipesInPlannerList, plannerDBList]);
 
     return(
-        <>
-            <h1>Planner</h1>
+        <div>
             <div className="planner-overall-container">
 
                 <div className="search">
@@ -148,10 +145,7 @@ function Planner({}){
                         <input onChange = {handleFilter}
                             type="text" 
                             value={wordEntered}
-                            placeholder="Enter a recipe to search ..." />
-                        <div className="searchButton">
-                            <button onClick={clearInput}>Clear</button>
-                        </div>
+                            placeholder="Enter a recipe to search ..." /><button id = "clear-button" onClick={clearInput}>X</button>
                     </div>
                 
                     <div className="data-result">
@@ -159,12 +153,15 @@ function Planner({}){
                     </div>
                 </div>
 
-                <div className="planner-link-container">
-                    {displayrecipesInPlannerList}
+                <div className="planner-overall">
+                    <h1 className="planner-pagetitle">Planner</h1>
+                    <div className="planner-link-container">
+                        {displayrecipesInPlannerList}
+                    </div>
                 </div>
 
             </div>
-        </>
+        </div>
     )
 };
 

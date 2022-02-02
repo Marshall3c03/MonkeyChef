@@ -22,7 +22,6 @@ db.recipes.insertMany([
         ],
         "method" : "1. Preheat oven to 180°C. 2. Slice down the side of each chicken breast, making a pocket. 3. Slice the haggis into small chunks and squidge (technical term) into the chicken pocket. 4. Wrap each breast in a rasher of bacon and secure with a toothpick if necessary. 5. Heat the oil and butter in a non-stick frying pan, sear the bacon wrapped around the chicken breasts. Give 2 minutes on each side. 6. Place in an oven proof dish and transfer to the oven for 35-40 minutes or until cooked through & piping hot. 7. Serve with the peppercorn sauce and a selection of vegetables and/ or mash potato.",
         "image": "https://www.carolinescooking.com/wp-content/uploads/2022/01/haggis-stuffed-chicken-Balmoral-featured-pic-sq.jpg",
-        "dietary": "gluten-free",
         "category": "dinner",
         "servings" : 4
     },
@@ -90,13 +89,11 @@ db.recipes.insertMany([
         ],
         "method" : "STEP 1: In a medium bowl, mix all the marinade ingredients with some seasoning. Chop the chicken into bite-sized pieces and toss with the marinade. Cover and chill in the fridge for 1 hr or overnight. STEP 2: In a large, heavy saucepan, heat the oil. Add the onion, garlic, green chilli, ginger and some seasoning. Fry on a medium heat for 10 mins or until soft. STEP 3: Add the spices with the tomato purée, cook for a further 2 mins until fragrant, then add the stock and marinated chicken. Cook for 15 mins, then add any remaining marinade left in the bowl. Simmer for 5 mins, then sprinkle with the toasted almonds. Serve with rice, naan bread, chutney, coriander and lime wedges, if you like.",
         "image": "https://img.buzzfeed.com/video-api-prod/assets/6e6a56c27c68410991ce7d4e4acc7dee/BFV8692_Easy_Butter_Chicken_Thumb.jpg",
-        "dietary": "vegan",
         "category": "dinner",
         "servings" : 4
     },
     {
         "name" : "Thumbprint Cookies",
-
         "ingredients" : [
             { "amount" : 270,
               "unit" : "g",
@@ -115,7 +112,6 @@ db.recipes.insertMany([
             }],
         
         "image": "https://www.livewellbakeoften.com/wp-content/uploads/2019/07/Thumbprint-Cookies-10-5.jpg",
-        "dietary": "gluten-free",
         "category": "sweet",
         "servings" : 16
     },

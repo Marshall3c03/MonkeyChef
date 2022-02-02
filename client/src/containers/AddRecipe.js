@@ -1,10 +1,13 @@
-import {useState, useEffect} from "react";
+import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import MealRecipeService from "./MealRecipeService";
+import swal from "sweetalert";
 import "../static/CSS/addRecipeForm.css";
 
-
 const AddRecipe = ()=>{
+
+    const navigate = useNavigate();
 
     const [name, setName] = useState("");
     const [amount, setAmount] = useState("");
@@ -38,7 +41,6 @@ const AddRecipe = ()=>{
         }
     }, {});
 
-
     const handleNameChange = (ev) => setName(ev.target.value);
     const handleAmountChange = (ev) => setAmount(parseFloat(ev.target.value));
     const handleUnitChange = (ev) => setUnit(ev.target.value === "" ? undefined : ev.target.value);
@@ -49,8 +51,6 @@ const AddRecipe = ()=>{
     const handleCategoryChange = (ev) => setCategory(ev.target.value);
     const handleDietaryChange = (ev) => setDietary(ev.target.value);
     const handleNotesChange=(ev)=>setNotes(ev.target.value);
-
-
 
     const clearState= ()=>{
         setName("");
@@ -82,15 +82,10 @@ const AddRecipe = ()=>{
     const  allIngredients = ()=>{
         return ingredients.map(ingredient =>{
             return(
-            <div className="ingredient-input">
-                <ul>   
-                    <p className="ingredient-text">{ingredient.amount} {ingredient.unit} {ingredient.ingredient} </p>
-                </ul>   
-            </div>
+                <p className="ingredient-text">{ingredient.amount} {ingredient.unit} {ingredient.ingredient} </p> 
             )
         })
     };
-
 
     const handleSubmit = (e) =>{
         if(recipeId){
@@ -124,22 +119,20 @@ const AddRecipe = ()=>{
             };
             MealRecipeService.create(newRecipe).then(() => clearState());
         }
+        setTimeout(navigate('/recipebook'),10000)
     };
     
     return(
-        <>
-        <h1 className="add-recipe-title">Recipe Form</h1>
+        <div>
+            <h1 className="add-recipe-title">Recipe Form</h1>
             <div className="add-recipe-form-container">
                 <form className="ingredient-form" onSubmit={handleNewIngredientClick} id="ingredient-form" >
-                
                     <table>  
                         <label className="ingredients" htmlFor="ingredients">Ingredients:</label>
-                
                         <tr>
                         <td><label htmlFor="amount">Amount:</label></td>
                             <input className="input-add-recipe" onChange={handleAmountChange} type="number" step="any" id="amount" value={amount} required placeholder="Enter amount"/>
                         </tr>
-                    
                         <tr>
                             <td><label htmlFor="unit">Unit:</label></td>
                             <select className="select-option-recipe" onChange={handleUnitChange} type="text" id="unit" value={unit}>
@@ -153,22 +146,14 @@ const AddRecipe = ()=>{
                                     <option value="tsp">tsp</option>
                             </select>
                         </tr>
-                
                         <tr>
                             <td><label htmlFor="ingredient">Ingredient:</label></td>
-                            <input className="input-add-recipe" onChange={handleIngredientChange} type="text" id="ingredient" value={ingredient}/>
-                        </tr>
-                        <tr>
-                            <td className="plus" colSpan="2"><input type="submit" value="+" id="save" border="0"/>   </td>
-                        </tr>
-                        <tr>
-                            {allIngredients()}
-                        </tr>
+                            <input className="input-add-recipe-ingredient" onChange={handleIngredientChange} type="text" id="ingredient" value={ingredient}/>
+                            <a className="plus" colSpan="2"><input type="submit" value="+" id="save" border="0"/></a>
+                            </tr>
                     </table>      
+                        {allIngredients()}
                     </form>
-
-                
-
                     <form  className="recipe-form"  method= "post" onSubmit={handleSubmit} id="recipe-form" >
                     <table>
                         <tr>
@@ -179,7 +164,6 @@ const AddRecipe = ()=>{
                             <td><label htmlFor="servings">Servings:</label></td>
                             <input className="input-add-recipe" onChange={handleServingsChange} type="number" value={servings}  id="servings" />
                         </tr> 
-                        
                         <tr>
                             <td><label htmlFor="category">Category:</label></td>
                             <select className="select-option-recipe" onChange={handleCategoryChange} type="text" id="category" value={category}>
@@ -206,7 +190,6 @@ const AddRecipe = ()=>{
                             <td><label htmlFor="image">Image URL:</label></td>
                             <input className="input-add-recipe" className="add-recipe-imageurl" onChange={handleImageChange} type="text" value={image}  id="image" />
                         </tr>    
-                
                         <tr>
                             <td><label htmlFor="method">Method:</label></td>
                             <textarea onChange={handleMethodChange} type="text" cols="30" rows="10" id="method" value={method} />
@@ -216,13 +199,22 @@ const AddRecipe = ()=>{
                             <textarea onChange={handleNotesChange} type="text" cols="30" rows="10" id="notes" value={notes} />
                         </tr>
                         <tr>
-                            <td className="save" colSpan="2"><input type="submit" value="Save" id="save"/></td>
+                            <td className="save" colSpan="2">
+                                <div className="add-recipe-save">
+                                    <input type="submit" value="Save" id="save" onClick = {() => {swal({
+                                            title: "Recipe added to meal planner!",
+                                            icon: "success",
+                                            timer: 1500,
+                                            buttons: false,
+                                            className: "swal"
+                                        })}}/>
+                                </div>
+                            </td>
                         </tr>    
                     </table> 
                 </form>
             </div>
-        
-            </>
+        </div>
         )
     }
 

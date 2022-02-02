@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
 import RecipesList from "../components/RecipesList";
 import '../static/CSS/recipebook.css'
+import logo from '../static/CSS/graphics/MonkeyChefLogo.png'
 
 const RecipeBook = () => {
 
@@ -16,14 +17,13 @@ const RecipeBook = () => {
       const [searchTerm, setSearchTerm] = useState([]);
       const [noResults, setNoResults] = useState(null);
 
-
       const handleSearch = (ev) => setSearchTerm(ev.target.value);
 
       useEffect(() => {
             loadRecipes(RecipesApi[0].url)
             return () => {
             }
-        }, [])
+      }, [])
       
       const loadRecipes = url => {
         fetch(url)
@@ -33,13 +33,11 @@ const RecipeBook = () => {
           setPermanantRecipesList(recipesJson)})
       }
 
-      
-
-        const reloadRecipes = () => { fetch("http://localhost:5000/api/recipes")
-          .then(result => result.json())
-          .then(recipesJson => setDisplayedRecipesList(recipesJson))
-          .then(setNoResults(null))
-              }
+      const reloadRecipes = () => { fetch("http://localhost:5000/api/recipes")
+        .then(result => result.json())
+        .then(recipesJson => setDisplayedRecipesList(recipesJson))
+        .then(setNoResults(null))
+      }
 
       const recipeByTitle = displayedRecipesList.slice(0);
       recipeByTitle.sort(function(a,b) {
@@ -62,7 +60,6 @@ const RecipeBook = () => {
       const sortDefault = function() {
         setDisplayedRecipesList(recipeByDefault.reverse());
       }
-
 
       let foundItems = [];
 
@@ -104,7 +101,6 @@ const RecipeBook = () => {
         console.log(foundItems)
         setDisplayedRecipesList(foundItems)
       }
-      
 
       const filterByBreakfast = function() {
         filterByCategory("breakfast");
@@ -135,24 +131,29 @@ const RecipeBook = () => {
       }
       
     return (
-      <>
-        <input onChange = {handleSearch} value = {searchTerm} type = "searchTerm" id = "searchTerm"/><button id = "search-button" onClick = {search}>Search</button><button onClick = {reloadRecipes}>Reset</button>
-        <h1>Your Recipes</h1>
-        <div>
-          <button onClick = {sortName}>A - Z</button><button onClick = {sortDefault}>Newest</button>
-
+      <div>
+        <h1 className="recipebook-title">Your Recipes</h1>
+        <div className="recipebook-search-container">
+          <input className="recipe-search-bar" onChange = {handleSearch} value = {searchTerm} type = "searchTerm" id = "searchTerm"/>
+          <button id = "search-button" onClick = {search}>Search</button>
+          <button onClick = {reloadRecipes}>Reset</button>
+        </div>
+        <div className="recipebook-filters-container">
+          <button onClick = {sortName}>A - Z</button>
+          <button onClick = {sortDefault}>Newest</button>
+          <img className="recipebook-monkey" src={logo} width="50px"/>
           <button onClick = {filterByBreakfast}>Breakfast</button>
           <button onClick = {filterByLunch}>Lunch</button>
           <button onClick = {filterByDinner}>Dinner</button>
           <button onClick = {filterBySweet}>Sweet</button>
-
+          <img className="recipebook-monkey" src={logo} width="50px"/>
           <button onClick = {filterByVegetarian}>Vegetarian</button>
           <button onClick = {filterByVegan}>Vegan</button>
           <button onClick = {filterByGlutenFree}>Gluten-Free</button>
         </div>
         <RecipesList recipes={displayedRecipesList} />
         {noResults}
-      </>
+      </div>
     );
 };
 

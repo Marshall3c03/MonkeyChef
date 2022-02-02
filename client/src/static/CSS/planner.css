@@ -33,7 +33,7 @@
     transition: 1s ease;
     padding: 0px;
     width: 12rem;
-  height: 18rem;
+    height: 18rem;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -56,18 +56,18 @@
 .image {
     margin-left:0%;
     float:left; 
-    height:40px;
-    width:40px;
+    height: 3rem;
+    width: 3rem;
     margin-right:7px;
+    display: cover;
     } 
    
 .planner-recipe-group {
     display: flex;
     flex-direction: column;
     justify-content: left;
-    margin-bottom: 1.5rem;
-    
-    padding:1px;
+    margin-bottom: 0.5rem;
+    padding: 0px;
 }
 
 .planner-recipe{
@@ -75,9 +75,10 @@
     flex-direction: row;
     align-items: center;
     margin-bottom: 1rem;
-    width: 18.75rem;
+    width: 21rem;
+    height: 3rem;
     background-color: rgba(240, 255, 240, 0.82);
-    padding: 1rem;
+    padding: 0rem;
     margin: auto;
 }
 
@@ -85,19 +86,42 @@
     border-radius: 10px;
 }
 
+.planner-pagetitle{
+    margin-top: 0;
+    position: relative;
+    font-size: 3rem;
+    text-align: center;
+}
+
 .search input {
     background-color: white;
+    margin: 0px;
     border-color: black;
-    border-radius: 10px;
+    border: 2px solid black;
+    border-bottom-left-radius: 10px;
+    border-top-left-radius: 10px;
     font-size: 18px;
     padding: 15px;
     height: 30px;
-    width: 220px;
+    width: 15.6rem;
 }
   
 .searchInputs {
     margin-top: 105px;
     display: flex;
+}
+
+.searchInput{
+    margin-bottom: 1rem;
+}
+
+#clear-button {
+    height: 64px;
+    margin: 0px;
+    border-bottom-left-radius: 0px;
+    border-top-left-radius: 0px;
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;
 }
   
 .button-text {
@@ -121,10 +145,7 @@
 }
 
 .data-result {
-    margin-top: 1rem;
     padding-top: 1rem;
-    padding-left: 1rem;
-    padding-right: 1rem;
     height: 75vh;
     overflow: scroll;
     overflow-x: hidden;
@@ -135,7 +156,9 @@
 }
 
 .planner-button-add {
-    margin-left: 1rem;
+    margin: 0.7rem;
+    display: block;
+    margin-left: auto;
 }
 
 .swal-sure {
