@@ -75,7 +75,6 @@ function Planner({}){
             )
         });    
 
-
     const handleFilter = (event) => {
         const searchWord = event.target.value;
         setWordEntered(searchWord);
@@ -118,7 +117,6 @@ function Planner({}){
                     .then((willDelete) => {
                         if (willDelete) {
                             const plannerId = plannerDBList.find(p => p.recipeId === recipe._id)._id;
-
                             MealPlannerService.delete(plannerId).then(() => {
                                 var array = [...recipesInPlannerList]; 
                                 var index = array.indexOf(recipe)

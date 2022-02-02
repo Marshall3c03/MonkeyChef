@@ -29,14 +29,11 @@ const createRouter = function (collection) {
     });
 
     router.post('/', (req,res)=>{
-      // console.log("router.post")
         const newData=req.body;
         req.body._id = ObjectID(req.body.id);
         collection
         .insertOne(newData)
         .then((result)=>{
-          // console.log("Hello");
-          // console.log(result);
           res.json(result.ops[0])
         })
         .catch((err) => {
@@ -50,7 +47,6 @@ const createRouter = function (collection) {
         const id=req.params.id;
         collection
         .deleteOne({_id: ObjectID(id)})
-        //.deleteOne({_id: (id)})
         .then((result)=>{
           res.json(result)
         })
@@ -78,7 +74,5 @@ const createRouter = function (collection) {
 
    return router;
 };
-
-
 
 module.exports = createRouter;

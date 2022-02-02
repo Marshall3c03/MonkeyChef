@@ -17,14 +17,13 @@ const RecipeBook = () => {
       const [searchTerm, setSearchTerm] = useState([]);
       const [noResults, setNoResults] = useState(null);
 
-
       const handleSearch = (ev) => setSearchTerm(ev.target.value);
 
       useEffect(() => {
             loadRecipes(RecipesApi[0].url)
             return () => {
             }
-        }, [])
+      }, [])
       
       const loadRecipes = url => {
         fetch(url)
@@ -34,13 +33,11 @@ const RecipeBook = () => {
           setPermanantRecipesList(recipesJson)})
       }
 
-      
-
-        const reloadRecipes = () => { fetch("http://localhost:5000/api/recipes")
-          .then(result => result.json())
-          .then(recipesJson => setDisplayedRecipesList(recipesJson))
-          .then(setNoResults(null))
-              }
+      const reloadRecipes = () => { fetch("http://localhost:5000/api/recipes")
+        .then(result => result.json())
+        .then(recipesJson => setDisplayedRecipesList(recipesJson))
+        .then(setNoResults(null))
+      }
 
       const recipeByTitle = displayedRecipesList.slice(0);
       recipeByTitle.sort(function(a,b) {
@@ -63,7 +60,6 @@ const RecipeBook = () => {
       const sortDefault = function() {
         setDisplayedRecipesList(recipeByDefault.reverse());
       }
-
 
       let foundItems = [];
 
@@ -105,7 +101,6 @@ const RecipeBook = () => {
         console.log(foundItems)
         setDisplayedRecipesList(foundItems)
       }
-      
 
       const filterByBreakfast = function() {
         filterByCategory("breakfast");

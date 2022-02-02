@@ -54,9 +54,9 @@ const ShoppingList = () => {
       
       for (let ingName of ingNames){
         if (loopedList[name] !== undefined) {
-            if (ingName === name) {
-                found = true
-            }
+          if (ingName === name) {
+            found = true
+          }
       }
     }
       if(found){
