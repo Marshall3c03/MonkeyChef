@@ -84,9 +84,7 @@ const AddRecipe = ()=>{
             return(
             <div className="ingredient-input">
                 <ul>   
-                    <li>
-                        <p className="ingredient-text">{ingredient.amount} {ingredient.unit} {ingredient.ingredient} </p>
-                    </li>
+                    <p className="ingredient-text">{ingredient.amount} {ingredient.unit} {ingredient.ingredient} </p>
                 </ul>   
             </div>
             )
@@ -106,7 +104,10 @@ const AddRecipe = ()=>{
                 "servings": servings,
                 "category": category,
                 "dietary":dietary,
-                "notes": notes
+                "notes": notes,
+                "amount" : amount,
+                "unit" : unit,
+                "ingredient": ingredient
             };
             MealRecipeService.update(updatedRecipe).then(() => clearState());
         } else {
