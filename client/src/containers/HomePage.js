@@ -1,7 +1,17 @@
-import react from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
+import Monkey from '../static/CSS/graphics/Monkey.wav';
+
+import '../static/CSS/homepage.css';
 
 const HomePage = ()=>{
+
+    const monkey = new Audio (Monkey);
+
+    React.useEffect(() => {
+        monkey.play()
+    }, [])
+
     const navigate = useNavigate();
 
     const handleClick = (url) => {
@@ -10,21 +20,34 @@ const HomePage = ()=>{
 
     return(
         <>
-            <div onClick={() => handleClick("/")}>
-                <h1>Home Page</h1>
+        <div className = "homepage-banner">
+            <img className = "banner-image" src={require('../static/CSS/graphics/MonkeyChefLogo.png')}/>
+                <div className = "banner-message">
+                    Welcome to Monkey Chef!
+                </div>
+        </div>
+
+        <div className="link-container">
+            <div className="home-button-group" onClick={() => handleClick("/addrecipe")}>
+                <img className="home-button-image" src={require('../static/CSS/graphics/AddRecipe.png')} width="100%"/>
+                <p className="home-button-title" >Add <br />Recipe</p>
             </div>
-            <div onClick={() => handleClick("/addrecipe")}>
-                <p>Add Recipe</p>
+
+            <div className="home-button-group" onClick={() => handleClick("/recipebook")}>
+                <img className="home-button-image" src={require('../static/CSS/graphics/RecipeBook.png')} width="100%"/>
+                <p className="home-button-title" >Recipe <br />Book</p>
             </div>
-            <div onClick={() => handleClick("/recipebook")}>
-                <p>Recipe Book</p>
+
+            <div className="home-button-group" onClick={() => handleClick("/planner")}>
+                <img className="home-button-image" src={require('../static/CSS/graphics/WeeklyPlanner.png')} width="100%"/>
+                <p className="home-button-title" >Weekly <br />Planner</p>
             </div>
-            <div onClick={() => handleClick("/planner")}>
-            <p>Weekly Planner</p>
+
+            <div className="home-button-group" onClick={() => handleClick("/shoppingList")}>
+                <img className="home-button-image" src={require('../static/CSS/graphics/ShoppingList.png')} width="100%"/>
+                <p className="home-button-title" >Shopping <br />List</p>
             </div>
-            <div onClick={() => handleClick("/shoppingList")}>
-                <p>Shopping List</p>
-            </div>
+        </div>
         </>
     );
 };

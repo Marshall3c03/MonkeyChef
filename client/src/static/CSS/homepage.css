@@ -1,0 +1,139 @@
+:root {
+    --page-button-group-margin: 30px;
+}
+
+.body{
+    background-color: black;
+}
+
+.homepage-banner {
+    background-image: url("graphics/jungle.png");
+    width: 95%;
+    height: 15vw;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0.5 rem;
+    margin-bottom: 4vw;
+    border-radius: 1vw;
+}
+
+.banner-image {
+    width: 20vw;
+    filter: drop-shadow(0px 15px 15px #000000c8);
+    display: flex;
+    animation: float 3s infinite linear;
+    display:inline-block;
+}
+
+@keyframes float {
+    0% { transform: translateY(0px) rotate(15deg); }
+    50% { transform: translateY(0px) rotate(0deg); }
+    100% { transform: translateY(0px) rotate(15deg); }
+  }
+
+.banner-message {
+    color: white;
+    font-weight: 700;
+    text-align: right;
+    font-size: 5vw;
+    filter: drop-shadow(0px 0px 10px #000000c8);
+    display: inline-block;
+    position: relative;
+    top: -11vw;
+}
+
+.link-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2.5rem;
+}
+
+.home-banner-image {
+    width: 50%;
+    filter: drop-shadow(30px 10px 4px #070730);
+    display:inline-block;
+    vertical-align:top
+}
+
+.home-button-group {
+    margin: var(--page-button-group-margin);
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    width: 200px;
+    height: 270px;
+    display: flex;
+    flex-direction: column;
+    transition: 0.5s ease;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 2px 2px 5px #818181;
+}
+
+.home-button-group:hover {
+    margin: var(--page-button-group-margin);
+    background-color: rgb(255, 255, 255);
+    transition: 1s ease;
+    padding: 20px;
+    width: 200px;
+    height: 270px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transform: scale(1.1, 1.1);
+    box-shadow: 0px 10px 30px #555555;
+}
+
+.home-button-group .home-button-title {
+    color: black;
+    font-weight: 500;
+    font-size: xx-large;
+    display: flex;
+    margin-top: 0;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.home-button-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.banner-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.banner-container .banner-group {
+    margin: 50px;
+    background-color: rgb(50, 191, 183);
+    border-radius: 10px;
+    padding: 20px;
+    width: 800px;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;}
+
+.banner-container .banner-group:hover {
+    margin: 50px;
+    background-color: rgb(27, 90, 227);
+    box-shadow: rgba(28, 28, 162, 0.2) 0px 7px 29px 0px;    
+    border-radius: 10px;
+    transition: all 1s ease;
+    padding: 20px;
+    width: 800px;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

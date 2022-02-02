@@ -1,0 +1,24 @@
+.recipe {
+    background-color: rgba(240, 255, 240, 0.82);
+    width:80%;
+    padding: 1px 20px 20px 20px;
+}
+
+.recipe h1 {
+    text-align: left;
+    font-size: 50px;
+}
+
+.recipe-avatar {
+    width: 10rem;
+}
+.core-recipe-details{
+    display: flex;
+    flex-direction: column;   
+}
+.recipe-serving-buttons{
+    display: flex;
+    flex-direction: row;
+    /* justify-content: center; */
+    align-items: center;
+}

@@ -2,6 +2,32 @@
   text-align: center;
 }
 
+body {
+  background-image: url("static/CSS/graphics/MonkeyChefLogoBG.png");
+  /* background-size: cover; */
+  background-repeat: no-repeat;
+  background-size: 1200px;
+  background-position-x: -10vw;
+  background-position-y: center;
+  background-color: rgb(144, 229, 165);
+
+}
+
+button{
+  border-radius: 50px;
+  color: white;
+  background-color: black;
+  border: 0px;
+  padding: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin: 5px;
+  font-weight: 700;
+  font-size: large;
+}
+
+
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;

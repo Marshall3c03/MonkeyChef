@@ -1,0 +1,158 @@
+.add-recipe-title{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+    font-size: 3rem;
+    margin-top: 0;
+}
+
+.ingredient-text{
+    font-size: 20px;
+    font-weight: bold;
+}
+.add-recipe-form-container{
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+    padding-top: 5%;
+    margin-left:  2rem;
+    margin-right: 2rem;
+}
+
+.select-option-recipe {
+    height: 43px;
+    padding: 2px;
+    padding-left: 1rem;
+    border-radius: 20px;
+    border: 1px solid grey;
+    width: 300px;
+    margin-right: 5px;
+    font-size: 20px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.add-recipe-imageurl{
+    font-size: 15px;
+    width: 30.5rem;
+    border-radius: 20px;
+    border: 1px solid grey;
+    height: 2.6rem;
+    padding-left: 1rem;
+}
+
+#method{
+    width: 30rem;
+    height: 20rem;
+}
+
+#notes{
+    width: 30rem;
+    height: 10rem;
+}
+
+.input-add-recipe {
+    padding: 10px;
+    padding-left: 1rem;
+    border-radius: 20px;
+    border: 1px solid grey;
+    width: 272px;
+    height: 20px;
+    margin-right: 5px;
+    font-size: 20px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.input-add-recipe-ingredient {
+    padding: 10px;
+    border-radius: 20px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    border: 1px solid grey;
+    width: 237px;
+    height: 20px;
+    margin-right: 0px;
+    font-size: 20px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+
+textarea{
+    border-radius: 20px;
+    border: 1px solid grey;
+    font-size: 22px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    padding: 10px;
+    padding-left: 1rem;
+}
+
+.plus input{
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    border: 0px;
+    background-color: black;
+    height: 42px;
+    width: 40px;
+    position: relative;
+    top: -3px;
+    color: white;
+    padding: 0px;
+    text-align: center;
+}
+
+.save input{
+    border-radius: 20px;
+    border: 0px;
+    background-color: black;
+    height: 3rem;
+    width: 20rem;
+    color: white;
+    padding: 0px;
+    text-align: center;
+}
+
+.add-recipe-save{
+    padding-left: 13.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+label{
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.ingredients{
+    font-size: 25px;
+}
+
+.ingredient-form{
+    padding-right: 80px;
+}
+
+
+.ingredient-input{
+    display: flex;
+    flex-direction: row;
+    background-color: white;
+    width: 20rem;
+}
+
+td{
+    padding-right:50px;
+    min-width: 80px;
+}
+
+
+   
+
+
+
+
+
+
+
+
+
+

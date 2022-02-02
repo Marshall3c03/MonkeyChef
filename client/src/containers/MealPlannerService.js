@@ -1,31 +1,36 @@
-const baseURL = "http://localhost:5000/api/recipes"
+const baseURL = "http://localhost:5000/api/planner/"
 
 const MealPlannerService = {
-//     getRecipes () {
-//     return fetch(baseURL)
-//         .then(res => res.json());
-// },
+    getById(recipeId) {
+        return fetch(baseURL + recipeId)
+        .then(result => result.json())
+    },
 
-    createRecipe (recipe){
-        // console.log(JSON.stringify(recipe))
+    getAll() {
+        return fetch(baseURL)
+        .then(result => result.json())
+    },
+
+    create (recipe){
+        const plannerRecipe = { recipeId: recipe._id, ingredients: recipe.ingredients}
         return fetch(baseURL, {
             method: 'POST',
-            body: JSON.stringify(recipe),
+            body: JSON.stringify(plannerRecipe),
             headers: { 'Content-Type': 'application/json' }
         })
         .then(res => res.json())
     },
 
-    deleteRecipe (id) {
-    return fetch(baseURL + id, {
-        method: 'DELETE'
-    }) 
-},
+    delete (id) {
+        return fetch(baseURL + id, {
+            method: 'DELETE'
+        }) 
+    },
 
-    updateRecipe (id) {
-    return fetch(baseURL + id, {
-        method: 'PUT'
-    }) 
-}
+    update (id) {
+        return fetch(baseURL + id, {
+            method: 'PUT'
+        }) 
+    }
 }
 export default MealPlannerService;
