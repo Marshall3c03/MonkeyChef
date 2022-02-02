@@ -2,8 +2,11 @@ import React, {useEffect, useState} from "react";
 import RecipesList from "../components/RecipesList";
 import '../static/CSS/recipebook.css'
 import logo from '../static/CSS/graphics/MonkeyChefLogo.png'
+import Chomp from '../static/CSS/graphics/aud_chomp.wav';
 
 const RecipeBook = () => {
+
+  const chomp = new Audio (Chomp);
 
     const RecipesApi = [
         {
@@ -15,7 +18,7 @@ const RecipeBook = () => {
       const [displayedRecipesList, setDisplayedRecipesList] = useState([]);
       const [permanantRecipesList, setPermanantRecipesList] = useState([]);
       const [searchTerm, setSearchTerm] = useState([]);
-      const [noResults, setNoResults] = useState(null);
+      const [noResults, setNoResults] = useState(false);
 
       const handleSearch = (ev) => setSearchTerm(ev.target.value);
 
@@ -36,7 +39,8 @@ const RecipeBook = () => {
       const reloadRecipes = () => { fetch("http://localhost:5000/api/recipes")
         .then(result => result.json())
         .then(recipesJson => setDisplayedRecipesList(recipesJson))
-        .then(setNoResults(null))
+        .then(setNoResults(false))
+        setSearchTerm("")
       }
 
       const recipeByTitle = displayedRecipesList.slice(0);
@@ -68,14 +72,17 @@ const RecipeBook = () => {
 
         foundItems = [];
         displayedRecipesList.map(recipe => {
+          // setDisplayedRecipesList(permanantRecipesList)
           if (recipe.name.toLowerCase().includes(searchTerm.toLowerCase()) === true) {
             foundItems.push(recipe)
           } else {
-            setNoResults(<div class = "no-results"><img className="no-results-image" src={require('../static/CSS/graphics/SadMonkey.png')}/><h1>No results</h1>Your search didn't find <br/>any recipes</div>)
+            // setNoResults(<div class = "no-results"><img className="no-results-image" src={require('../static/CSS/graphics/SadMonkey.png')}/><h1>No results</h1>Your search didn't find <br/>any recipes</div>)
+            setNoResults(true)
           }
           setDisplayedRecipesList(foundItems);
           document.getElementById('searchTerm').value = "";
         })
+        chomp.play()
       }
 
       const filterByCategory = function(filterBy) {
@@ -152,7 +159,7 @@ const RecipeBook = () => {
           <button onClick = {filterByGlutenFree}>Gluten-Free</button>
         </div>
         <RecipesList recipes={displayedRecipesList} />
-        {noResults}
+        {/* {noResults ? <div class = "no-results"><img className="no-results-image" src={require('../static/CSS/graphics/SadMonkey.png')}/><h1>No results</h1>Your search didn't find <br/>any recipes</div> : null} */}
       </div>
     );
 };

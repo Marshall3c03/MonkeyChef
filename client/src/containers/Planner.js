@@ -9,6 +9,8 @@ import swal from "sweetalert";
 
 function Planner({}){
 
+    
+
     const PlannerApi = [
         {
             name: "planner", 
@@ -119,7 +121,7 @@ function Planner({}){
                                     setrecipesInPlannerList(array);
                                 }
                                 });
-                          swal("Poof! Recipe deleted!", {
+                          swal("Recipe deleted!", {
                             icon: "error",
                             timer: 1500,
                             buttons: false,
