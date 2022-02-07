@@ -24,8 +24,6 @@ const ShoppingList = () => {
           .then(recipesJson => setDisplayedRecipesList(recipesJson))
       }
 
-
-
       let listOfIngredients = recipesList.map(recipe => {
           
         let fullIngredientList = recipe.ingredients.map(ingredient => {
@@ -77,7 +75,6 @@ const ShoppingList = () => {
       )
     })
         
-    
     return(
         <>
           <div className = "banner">

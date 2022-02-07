@@ -1,16 +1,12 @@
 import React, {useState, useEffect, useMemo} from "react";
 import MealPlannerService from "./MealPlannerService";
 import '../static/CSS/planner.css'
-import { useNavigate } from "react-router-dom";
-import MealRecipeService from "./MealRecipeService";
 import { nanoid } from 'nanoid'
 import swal from "sweetalert";
-
 
 function Planner({}){
 
     
-
     const PlannerApi = [
         {
             name: "planner", 
@@ -38,7 +34,6 @@ function Planner({}){
             .then(response => {
                 const allRecipesInPlanner = allRecipes
                     .filter(r => response.some(p => p.recipeId === r._id));
-
                 setrecipesInPlannerList(allRecipesInPlanner);
                 setPlannerDBList(response);
                 setRecipeBookList(allRecipes);
@@ -54,7 +49,7 @@ function Planner({}){
             })
     };
 
-    const recipesSearchList = filteredRecipeBookList?.map(recipe=>{
+	const recipesSearchList = filteredRecipeBookList?.map(recipe=>{
             const handleAdding = ()=> {
                 MealPlannerService.create(recipe)
                 .then(savedRecipe => setrecipesInPlannerList([...recipesInPlannerList, savedRecipe]))

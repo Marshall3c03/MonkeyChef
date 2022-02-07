@@ -1,5 +1,4 @@
 import React from 'react'
-import home from '../static/CSS/graphics/HomeIcon.png'
 import add from '../static/CSS/graphics/AddRecipeIcon.png'
 import book from '../static/CSS/graphics/RecipeBookIcon.png'
 import planner from '../static/CSS/graphics/WeeklyPlannerIcon.png'

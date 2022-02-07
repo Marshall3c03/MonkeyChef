@@ -71,7 +71,6 @@ const RecipeBook = () => {
 
         foundItems = [];
         displayedRecipesList.map(recipe => {
-          // setDisplayedRecipesList(permanantRecipesList)
           if (recipe.name.toLowerCase().includes(searchTerm.toLowerCase()) === true) {
             foundItems.push(recipe)
           } else {
@@ -97,14 +96,11 @@ const RecipeBook = () => {
 
       const filterByDiet = function(filterBy) {
         foundItems = [];
-        console.log(foundItems);
         permanantRecipesList.map(recipe=> {
           if (recipe?.dietary?.toLowerCase() === filterBy) {
             foundItems.push(recipe) 
-          console.log(foundItems);
           }
         })
-        console.log(foundItems)
         setDisplayedRecipesList(foundItems)
       }
 

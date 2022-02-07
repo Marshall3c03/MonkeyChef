@@ -1,13 +1,9 @@
 import react from "react";
 import { SidebarData } from "./SidebarData";
 import { useNavigate } from "react-router-dom";
-
-
 import '../static/CSS/sidenav.css'
 
-
 const SideNav = ( {})=>{
-
 
     const navigate = useNavigate();
     
