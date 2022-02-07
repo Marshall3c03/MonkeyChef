@@ -79,5 +79,5 @@ Then seed the database and run the server:
 
 ### [Anita Safar](https://github.com/AnitaSafar) 
 ### [Craig Marshall](https://github.com/Marshall3c03)
-### [Ina Kurlovich](https://github.com/Marshall3c03)
+### [Ina Kurlovich](https://github.com/innessa89)
 ### [Ross Napier](https://github.com/RossNapier)
